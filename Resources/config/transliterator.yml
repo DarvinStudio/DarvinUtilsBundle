@@ -1,0 +1,6 @@
+parameters:
+    darvin_utils.transliterator.class: Darvin\Utils\Strings\Transliterator\Transliterator
+
+services:
+    darvin_utils.transliterator:
+        class: %darvin_utils.transliterator.class%
