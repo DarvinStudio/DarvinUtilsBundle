@@ -10,12 +10,13 @@
 
 namespace Darvin\UtilsBundle\Security\Authorization;
 
+use Darvin\Utils\Security\Authorization\AuthorizationCheckerProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Authorization checker provider
  */
-class AuthorizationCheckerProvider
+class AuthorizationCheckerProvider implements AuthorizationCheckerProviderInterface
 {
     /**
      * @var \Symfony\Component\DependencyInjection\ContainerInterface
@@ -31,7 +32,7 @@ class AuthorizationCheckerProvider
     }
 
     /**
-     * @return \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface
+     * {@inheritdoc}
      */
     public function getAuthorizationChecker()
     {

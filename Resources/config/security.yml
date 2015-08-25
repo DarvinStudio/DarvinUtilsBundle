@@ -1,7 +1,14 @@
 parameters:
+    darvin_utils.security.accessibility_checker.securable.class: Darvin\Utils\Security\Authorization\Accessibility\SecurableAccessibilityChecker
+
     darvin_utils.security.authorization_checker_provider.class: Darvin\UtilsBundle\Security\Authorization\AuthorizationCheckerProvider
 
 services:
+    darvin_utils.security.accessibility_checker.securable:
+        class: %darvin_utils.security.accessibility_checker.securable.class%
+        arguments:
+            - "@darvin_utils.security.authorization_checker_provider"
+
     darvin_utils.security.authorization_checker_provider:
         class: %darvin_utils.security.authorization_checker_provider.class%
         arguments:
