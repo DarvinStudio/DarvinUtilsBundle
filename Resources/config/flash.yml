@@ -1,0 +1,8 @@
+parameters:
+    darvin_utils.flash.notifier.class: Darvin\Utils\Flash\FlashNotifier
+
+services:
+    darvin_utils.flash.notifier:
+        class: %darvin_utils.flash.notifier.class%
+        arguments:
+            - "@session.flash_bag"
