@@ -31,6 +31,7 @@ class DarvinUtilsExtension extends Extension
 //        $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('cloner.yml');
         $loader->load('flash.yml');
         $loader->load('mapping.yml');
         $loader->load('security.yml');

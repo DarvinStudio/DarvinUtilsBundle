@@ -1,0 +1,9 @@
+parameters:
+    darvin_utils.cloner.class: Darvin\Utils\Cloner\Cloner
+
+services:
+    darvin_utils.cloner:
+        class: %darvin_utils.cloner.class%
+        arguments:
+            - "@darvin_utils.mapping.metadata_factory"
+            - "@property_accessor"
