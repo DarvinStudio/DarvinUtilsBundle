@@ -1,0 +1,24 @@
+parameters:
+    darvin_utils.mapping.annotation_driver.abstract.class: Darvin\Utils\Mapping\AnnotationDriver\AbstractDriver
+
+    darvin_utils.mapping.annotation_driver.clonable.class: Darvin\Utils\Mapping\AnnotationDriver\ClonableDriver
+
+    darvin_utils.mapping.metadata_factory.class: Darvin\Utils\Mapping\MetadataFactory
+
+services:
+    darvin_utils.mapping.annotation_driver.abstract:
+        class:    %darvin_utils.mapping.annotation_driver.abstract.class%
+        abstract: true
+        arguments:
+            - "@annotation_reader"
+
+    darvin_utils.mapping.annotation_driver.clonable:
+        class:  %darvin_utils.mapping.annotation_driver.clonable.class%
+        parent: darvin_utils.mapping.annotation_driver.abstract
+        tags:
+            - { name: darvin_utils.annotation_driver }
+
+    darvin_utils.mapping.metadata_factory:
+        class: %darvin_utils.mapping.metadata_factory.class%
+        arguments:
+            - "@doctrine.orm.entity_manager"

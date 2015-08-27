@@ -10,6 +10,8 @@
 
 namespace Darvin\UtilsBundle;
 
+use Darvin\UtilsBundle\DependencyInjection\Compiler\MetadataFactoryPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -17,5 +19,13 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class DarvinUtilsBundle extends Bundle
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
 
+        $container->addCompilerPass(new MetadataFactoryPass());
+    }
 }
