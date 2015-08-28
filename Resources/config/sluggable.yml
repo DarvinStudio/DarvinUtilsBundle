@@ -1,0 +1,8 @@
+parameters:
+    darvin_utils.sluggable.transliterator.class: Darvin\Utils\Sluggable\SluggableTransliterator
+
+services:
+    darvin_utils.sluggable.transliterator:
+        class: %darvin_utils.sluggable.transliterator.class%
+        arguments:
+            - "@darvin_utils.transliterator"
