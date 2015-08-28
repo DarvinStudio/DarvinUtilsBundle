@@ -11,7 +11,6 @@
 namespace Darvin\UtilsBundle;
 
 use Darvin\UtilsBundle\DependencyInjection\Compiler\MetadataFactoryPass;
-use Darvin\UtilsBundle\DependencyInjection\Compiler\SluggableListenerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -27,8 +26,6 @@ class DarvinUtilsBundle extends Bundle
     {
         parent::build($container);
 
-        $container
-            ->addCompilerPass(new MetadataFactoryPass())
-            ->addCompilerPass(new SluggableListenerPass());
+        $container->addCompilerPass(new MetadataFactoryPass());
     }
 }

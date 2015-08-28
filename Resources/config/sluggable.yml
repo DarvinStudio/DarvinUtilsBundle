@@ -1,7 +1,16 @@
 parameters:
+    darvin_utils.sluggable.listener.class: Gedmo\Sluggable\SluggableListener
+
     darvin_utils.sluggable.transliterator.class: Darvin\Utils\Sluggable\SluggableTransliterator
 
 services:
+    darvin_utils.sluggable.listener:
+        class: %darvin_utils.sluggable.listener.class%
+        calls:
+            - [ setTransliterator, [ [ "@darvin_utils.sluggable.transliterator", transliterate ] ] ]
+        tags:
+            - { name: doctrine.event_subscriber, priority: 10 }
+
     darvin_utils.sluggable.transliterator:
         class: %darvin_utils.sluggable.transliterator.class%
         arguments:
