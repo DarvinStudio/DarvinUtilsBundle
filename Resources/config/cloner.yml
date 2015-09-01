@@ -7,4 +7,5 @@ services:
         arguments:
             - "@event_dispatcher"
             - "@darvin_utils.mapping.metadata_factory"
+            - "@doctrine.orm.entity_manager"
             - "@property_accessor"

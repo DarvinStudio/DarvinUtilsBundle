@@ -9,8 +9,6 @@ parameters:
 
     darvin_utils.mapping.metadata_factory.class: Darvin\Utils\Mapping\MetadataFactory
 
-    darvin_utils.mapping.metadata_factory_provider.class: Darvin\UtilsBundle\Mapping\MetadataFactoryProvider
-
 services:
     darvin_utils.mapping.annotation_driver.abstract:
         class:    %darvin_utils.mapping.annotation_driver.abstract.class%
@@ -38,10 +36,3 @@ services:
 
     darvin_utils.mapping.metadata_factory:
         class: %darvin_utils.mapping.metadata_factory.class%
-        arguments:
-            - "@doctrine.orm.entity_manager"
-
-    darvin_utils.mapping.metadata_factory_provider:
-        class: %darvin_utils.mapping.metadata_factory_provider.class%
-        arguments:
-            - "@service_container"
