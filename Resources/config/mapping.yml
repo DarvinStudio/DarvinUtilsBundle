@@ -3,6 +3,8 @@ parameters:
 
     darvin_utils.mapping.annotation_driver.clonable.class: Darvin\Utils\Mapping\AnnotationDriver\ClonableDriver
 
+    darvin_utils.mapping.annotation_driver.default_value.class: Darvin\Utils\Mapping\AnnotationDriver\DefaultValueDriver
+
     darvin_utils.mapping.annotation_driver.slug.class: Darvin\Utils\Mapping\AnnotationDriver\SlugDriver
 
     darvin_utils.mapping.metadata_factory.class: Darvin\Utils\Mapping\MetadataFactory
@@ -18,6 +20,12 @@ services:
 
     darvin_utils.mapping.annotation_driver.clonable:
         class:  %darvin_utils.mapping.annotation_driver.clonable.class%
+        parent: darvin_utils.mapping.annotation_driver.abstract
+        tags:
+            - { name: darvin_utils.annotation_driver }
+
+    darvin_utils.mapping.annotation_driver.default_value:
+        class:  %darvin_utils.mapping.annotation_driver.default_value.class%
         parent: darvin_utils.mapping.annotation_driver.abstract
         tags:
             - { name: darvin_utils.annotation_driver }
