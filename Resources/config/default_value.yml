@@ -8,4 +8,4 @@ services:
             - "@darvin_utils.mapping.metadata_factory"
             - "@property_accessor"
         tags:
-            - { name: doctrine.event_listener, event: onFlush }
+            - { name: doctrine.event_listener, event: prePersist }
