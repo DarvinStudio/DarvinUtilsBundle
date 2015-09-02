@@ -1,0 +1,17 @@
+parameters:
+    darvin_utils.transliteratable.subscriber.class: Darvin\Utils\EventListener\TransliteratableSubscriber
+
+    darvin_utils.transliteratable.transliterator.class: Darvin\Utils\Strings\Transliterator\Transliterator
+
+services:
+    darvin_utils.transliteratable.subscriber:
+        class: %darvin_utils.transliteratable.subscriber.class%
+        arguments:
+            - "@darvin_utils.mapping.metadata_factory"
+            - "@property_accessor"
+            - "@darvin_utils.transliteratable.transliterator"
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    darvin_utils.transliteratable.transliterator:
+        class: %darvin_utils.transliteratable.transliterator.class%
