@@ -5,6 +5,7 @@ services:
     darvin_utils.slug.subscriber:
         class: %darvin_utils.slug.subscriber.class%
         arguments:
+            - "@event_dispatcher"
             - "@darvin_utils.mapping.metadata_factory"
             - "@property_accessor"
         tags:
