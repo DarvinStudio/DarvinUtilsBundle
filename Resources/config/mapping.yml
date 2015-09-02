@@ -7,6 +7,8 @@ parameters:
 
     darvin_utils.mapping.annotation_driver.slug.class: Darvin\Utils\Mapping\AnnotationDriver\SlugDriver
 
+    darvin_utils.mapping.annotation_driver.transliteratable.class: Darvin\Utils\Mapping\AnnotationDriver\TransliteratableDriver
+
     darvin_utils.mapping.metadata_factory.class: Darvin\Utils\Mapping\MetadataFactory
 
 services:
@@ -30,6 +32,12 @@ services:
 
     darvin_utils.mapping.annotation_driver.slug:
         class:  %darvin_utils.mapping.annotation_driver.slug.class%
+        parent: darvin_utils.mapping.annotation_driver.abstract
+        tags:
+            - { name: darvin_utils.annotation_driver }
+
+    darvin_utils.mapping.annotation_driver.transliteratable:
+        class:  %darvin_utils.mapping.annotation_driver.transliteratable.class%
         parent: darvin_utils.mapping.annotation_driver.abstract
         tags:
             - { name: darvin_utils.annotation_driver }
