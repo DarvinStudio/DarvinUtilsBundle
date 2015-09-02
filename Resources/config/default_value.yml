@@ -1,11 +1,11 @@
 parameters:
-    darvin_utils.default_value.listener.class: Darvin\Utils\EventListener\DefaultValueListener
+    darvin_utils.default_value.subscriber.class: Darvin\Utils\EventListener\DefaultValueSubscriber
 
 services:
-    darvin_utils.default_value.listener:
-        class: %darvin_utils.default_value.listener.class%
+    darvin_utils.default_value.subscriber:
+        class: %darvin_utils.default_value.subscriber.class%
         arguments:
             - "@darvin_utils.mapping.metadata_factory"
             - "@property_accessor"
         tags:
-            - { name: doctrine.event_listener, event: onFlush }
+            - { name: doctrine.event_subscriber }
