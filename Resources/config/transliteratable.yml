@@ -1,7 +1,7 @@
 parameters:
     darvin_utils.transliteratable.subscriber.class: Darvin\Utils\EventListener\TransliteratableSubscriber
 
-    darvin_utils.transliteratable.transliterator.class: Darvin\Utils\Strings\Transliterator\Transliterator
+    darvin_utils.transliteratable.transliterator.class: Darvin\Utils\Transliteratable\Transliterator
 
 services:
     darvin_utils.transliteratable.subscriber:
