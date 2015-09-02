@@ -36,6 +36,7 @@ class DarvinUtilsExtension extends Extension
         $loader->load('flash.yml');
         $loader->load('mapping.yml');
         $loader->load('security.yml');
+        $loader->load('slug.yml');
         $loader->load('stringifier.yml');
         $loader->load('transliteratable.yml');
     }
