@@ -16,6 +16,6 @@ $(document).ready(function () {
             url:  $form.attr('action')
         }).done(function (data) {
             $form.replaceWith(data.html);
-        }).error(onAjaxError);
+        });
     });
 });
