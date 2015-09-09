@@ -9,4 +9,4 @@ services:
             - "@darvin_utils.mapping.metadata_factory"
             - "@property_accessor"
         tags:
-            - { name: doctrine.event_subscriber, priority: -20 }
+            - { name: doctrine.event_subscriber, priority: 200 }

@@ -11,7 +11,7 @@ services:
             - "@property_accessor"
             - "@darvin_utils.transliteratable.transliterator"
         tags:
-            - { name: doctrine.event_subscriber, priority: -10 }
+            - { name: doctrine.event_subscriber, priority: 300 }
 
     darvin_utils.transliteratable.transliterator:
         class: %darvin_utils.transliteratable.transliterator.class%
