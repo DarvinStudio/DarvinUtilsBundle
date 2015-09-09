@@ -1,0 +1,9 @@
+parameters:
+    darvin_utils.new_object.counter.entity.class: Darvin\Utils\NewObject\NewEntityCounter
+
+services:
+    darvin_utils.new_object.counter.entity:
+        class: %darvin_utils.new_object.counter.entity.class%
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@darvin_utils.mapping.metadata_factory"
