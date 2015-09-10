@@ -33,6 +33,7 @@ class DarvinUtilsExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('anti_spam.yml');
         $loader->load('cloner.yml');
+        $loader->load('custom_object.yml');
         $loader->load('default_value.yml');
         $loader->load('flash.yml');
         $loader->load('mapping.yml');

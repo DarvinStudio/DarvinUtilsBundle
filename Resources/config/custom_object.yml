@@ -1,0 +1,10 @@
+parameters:
+    darvin_utils.custom_object.loader.entity.class: Darvin\Utils\CustomObject\CustomEntityLoader
+
+services:
+    darvin_utils.custom_object.loader.entity:
+        class: %darvin_utils.custom_object.loader.entity.class%
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@darvin_utils.mapping.metadata_factory"
+            - "@property_accessor"

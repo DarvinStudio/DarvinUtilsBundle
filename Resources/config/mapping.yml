@@ -3,6 +3,8 @@ parameters:
 
     darvin_utils.mapping.annotation_driver.clonable.class: Darvin\Utils\Mapping\AnnotationDriver\ClonableDriver
 
+    darvin_utils.mapping.annotation_driver.custom_object.class: Darvin\Utils\Mapping\AnnotationDriver\CustomObjectDriver
+
     darvin_utils.mapping.annotation_driver.default_value.class: Darvin\Utils\Mapping\AnnotationDriver\DefaultValueDriver
 
     darvin_utils.mapping.annotation_driver.new_object_flag.class: Darvin\Utils\Mapping\AnnotationDriver\NewObjectFlagDriver
@@ -22,6 +24,12 @@ services:
 
     darvin_utils.mapping.annotation_driver.clonable:
         class:  %darvin_utils.mapping.annotation_driver.clonable.class%
+        parent: darvin_utils.mapping.annotation_driver.abstract
+        tags:
+            - { name: darvin_utils.annotation_driver }
+
+    darvin_utils.mapping.annotation_driver.custom_object:
+        class:  %darvin_utils.mapping.annotation_driver.custom_object.class%
         parent: darvin_utils.mapping.annotation_driver.abstract
         tags:
             - { name: darvin_utils.annotation_driver }
