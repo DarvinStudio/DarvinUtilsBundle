@@ -8,3 +8,6 @@ This bundle provides "darvin-utils" library integration for Symfony2:
  сущности, значение которого не задано, значение другого свойства;
 - [**Flash notifier**](/Resources/doc/flash_notifier.md) - сервис, упрощающий добавление flash-сообщений;
 - [**New entity counter**](/Resources/doc/new_entity_counter.md) - сервис подсчета количества новых сущностей.
+
+
+- [**Аннотации**](/Resources/doc/annotations.md)
