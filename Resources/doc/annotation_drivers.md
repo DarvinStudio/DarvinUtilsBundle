@@ -1,7 +1,7 @@
-Аннотации
-=========
+Драйверы аннотаций
+==================
 
-## Добавление драйвера аннотаций
+## Добавление
 
 1. Создаем класс, реализующий "Darvin\Utils\Mapping\AnnotationDriver\AnnotationDriverInterface" или наследующийся от
  "Darvin\Utils\Mapping\AnnotationDriver\AbstractDriver".

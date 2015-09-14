@@ -10,4 +10,4 @@ This bundle provides "darvin-utils" library integration for Symfony2:
 - [**New entity counter**](/Resources/doc/new_entity_counter.md) - сервис подсчета количества новых сущностей.
 
 
-- [**Аннотации**](/Resources/doc/annotations.md)
+- [**Драйверы аннотаций**](/Resources/doc/annotations.md)
