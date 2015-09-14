@@ -3,7 +3,8 @@ parameters:
 
 services:
     darvin_utils.default_value.subscriber:
-        class: %darvin_utils.default_value.subscriber.class%
+        class:  %darvin_utils.default_value.subscriber.class%
+        public: false
         arguments:
             - "@darvin_utils.mapping.metadata_factory"
             - "@property_accessor"

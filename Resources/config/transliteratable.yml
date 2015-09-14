@@ -5,7 +5,8 @@ parameters:
 
 services:
     darvin_utils.transliteratable.subscriber:
-        class: %darvin_utils.transliteratable.subscriber.class%
+        class:  %darvin_utils.transliteratable.subscriber.class%
+        public: false
         arguments:
             - "@darvin_utils.mapping.metadata_factory"
             - "@property_accessor"
