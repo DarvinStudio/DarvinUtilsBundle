@@ -9,7 +9,8 @@ This bundle provides "darvin-utils" library integration for Symfony2:
 - [**Flash notifier**](/Resources/doc/flash_notifier.md) - сервис, упрощающий добавление flash-сообщений;
 - [**New entity counter**](/Resources/doc/new_entity_counter.md) - сервис подсчета количества новых сущностей.
 
+См. также:
 
-- [**Драйверы аннотаций**](/Resources/doc/annotation_drivers.md)
-- [**Конфигурация**](/Resources/doc/configuration.yml)
-- [**Список публичных сервисов**](/Resources/doc/services.md)
+- [**Драйверы аннотаций**](/Resources/doc/annotation_drivers.md);
+- [**Конфигурация**](/Resources/doc/configuration.md);
+- [**Список публичных сервисов**](/Resources/doc/services.md).
