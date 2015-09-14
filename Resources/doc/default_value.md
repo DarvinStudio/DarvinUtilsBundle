@@ -8,7 +8,7 @@ Default value - функционал, который позволяет испо
 
 ## Использование
 
-__1. Помечаем необходимые свойства аннотацией «\Darvin\Utils\Mapping\Annotation\DefaultValue».__
+__1. Помечаем необходимые свойства аннотацией «Darvin\Utils\Mapping\Annotation\DefaultValue».__
 
 Эта аннотация имеет один аргумент - «sourcePropertyPath» - путь до свойства, из которого нужно брать значение по умолчанию.
 
@@ -42,6 +42,6 @@ class Page
 }
 ```
 
-__2. Остальное сделает event subscriber «\Darvin\Utils\EventListener\DefaultValueSubscriber»:__
+__2. Остальное сделает event subscriber «Darvin\Utils\EventListener\DefaultValueSubscriber»:__
 
 при flush'е сущности «Page» значение свойства «metaTitle», если оно не задано, будет взято из свойства «title».
