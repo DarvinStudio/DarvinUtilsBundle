@@ -11,7 +11,8 @@ services:
             - "@darvin_utils.mapping.metadata_factory"
 
     darvin_utils.new_object.twig_extension:
-        class: %darvin_utils.new_object.twig_extension.class%
+        class:  %darvin_utils.new_object.twig_extension.class%
+        public: false
         arguments:
             - "@darvin_utils.new_object.counter.entity"
         tags:
