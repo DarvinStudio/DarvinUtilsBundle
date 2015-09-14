@@ -3,13 +3,13 @@ New entity counter
 
 ## Описание
 
-New entity counter - сервис для подсчета количества новых сущностей.
+New entity counter - сервис подсчета количества новых сущностей.
 
 ## Использование
 
-__1. Помечаем свойство, являющееся флагом, показывающим, что сущность новая, аннотацией «Darvin\Utils\Mapping\Annotation\NewObjectFlag».__
+**1. Помечаем свойство, являющееся критерием новизны объекта, аннотацией "Darvin\Utils\Mapping\Annotation\NewObjectFlag".**
 
-Пример:
+Пример использования аннотации:
 
 ```php
 use Darvin\Utils\Mapping\Annotation as Darvin;
@@ -30,12 +30,12 @@ class Page
 }
 ```
 
-__2. Используем метод «count()» сервиса «darvin_utils.new_object.counter.entity» для подсчета количества новых сущностей:__
+**2. Используем метод "count()" сервиса «darvin_utils.new_object.counter.entity» для подсчета количества новых сущностей:**
 
 ```php
 $newPagesCount = $this->getContainer()->get('darvin_utils.new_object.counter.entity')->count('AppBundle:Page');
 ```
 
-Для проверки, возможен ли подсчет новых сущностей того или иного класса, сервис содержит метод «isCountable()».
+Для проверки возможности подсчета новых сущностей того или иного класса сервис содержит метод "isCountable()".
 
-Эти же методы доступны в Twig через функции «utils_count_new_objects()» и «utils_new_objects_countable()» соответственно.
+Методы сервиса доступны в Twig - это функции "utils_count_new_objects()" и "utils_new_objects_countable()" соответственно.
