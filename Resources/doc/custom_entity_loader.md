@@ -3,8 +3,8 @@ Custom entity loader
 
 ## Описание
 
-Custom entity loader - сервис инициализации сущности в поле другой сущности с использованием аттрибутов для инициализации
- из свойств последней.
+Custom entity loader - сервис инициализации сущности в поле другой сущности с использованием атрибутов инициализации из
+ свойств последней.
 
 ## Использование
 
@@ -62,7 +62,7 @@ $this->getContainer()->get('darvin_utils.custom_object.loader.entity')->loadForO
 или
 
 ```php
-$this->getContainer()->get('darvin_utils.custom_object.loader.entity')->loadForObject(array($page));
+$this->getContainer()->get('darvin_utils.custom_object.loader.entity')->loadForObjects(array($page));
 ```
 
 Сервис осуществит поиск сущности "AppBundle\Entity\Post\Post" по значению свойства "id", взятому из "Page::$postId".
