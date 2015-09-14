@@ -3,19 +3,21 @@ Cloner
 
 ## Описание
 
-Cloner - сервис для клонирования сущностей.
+Cloner - сервис клонирования сущностей.
 
 ## Использование
 
-__1. Помечаем класс сущности как клонируемый, используя аннотацию «Darvin\Utils\Mapping\Annotation\Clonable\Clonable».__
+**1. Помечаем сущность как клонируемую, используя аннотацию "Darvin\Utils\Mapping\Annotation\Clonable\Clonable".**
 
-При этом доступны две стратегии копирования (аргумент «copyingPolicy» аннотации): «ALL» и «NONE» (по умолчанию). При использовании
-первой будут копироваться значения всех свойств, за исключением помеченных аннотацией «Darvin\Utils\Mapping\Annotation\Clonable\Skip»,
-во втором случае будут копироваться значения только тех свойств, которые помечены «Darvin\Utils\Mapping\Annotation\Clonable\Copy».
+С помощью аргумента "copyingPolicy" можно выбрать одну из двух стратегий копирования свойств:
 
-_(!) Идентификатор сущности не должен быть копируемым._
+- "NONE" (по умолчанию): копировать значения только тех свойств, которые помечены "Darvin\Utils\Mapping\Annotation\Clonable\Copy";
+- "ALL": копировать значения всех свойств, за исключением помеченных аннотацией "Darvin\Utils\Mapping\Annotation\Clonable\Skip".
 
-_(!) Если значением свойства является сущность, она должна быть также помечена аннотацией «Clonable»._
+Особенности:
+
+- идентификатор сущности не должен быть копируемым;
+- если значением свойства является сущность, она должна быть также клонируемой.
 
 Пример клонируемой сущности:
 
@@ -48,15 +50,14 @@ class Page
 }
 ```
 
-__2. Используем метод «createClone()» сервиса «darvin_utils.cloner»:__
+**2. Клонируем сущность с помощью сервиса "darvin_utils.cloner":**
 
 ```php
 $page = new Page();
-$page->setContent('Hello, cloner!');
+$page->setContent('Hello, world!');
 
 $pageClone = $this->getContainer()->get('darvin_utils.cloner')->createClone($page);
 ```
 
-__3. При клонировании сущности вызывается событие «Darvin\Utils\Event\Events::POST_CLONE» ("darvin_utils.post_clone").__
-
-Класс события - «Darvin\Utils\Event\CloneEvent».
+При клонировании вызывается событие "Darvin\Utils\Event\Events::POST_CLONE" ("darvin_utils.post_clone"). Класс события
+- «Darvin\Utils\Event\CloneEvent».
