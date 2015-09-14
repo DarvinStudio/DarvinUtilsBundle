@@ -11,4 +11,5 @@ This bundle provides "darvin-utils" library integration for Symfony2:
 
 
 - [**Драйверы аннотаций**](/Resources/doc/annotation_drivers.md)
+- [**Конфигурация**](/Resources/doc/configuration.yml)
 - [**Список публичных сервисов**](/Resources/doc/services.md)
