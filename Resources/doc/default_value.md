@@ -3,16 +3,18 @@ Default value
 
 ## Описание
 
-Default value - функционал, который позволяет использовать значение одного свойства сущности в качестве значения по
-умолчанию другого свойства.
+Default value - функционал, позволяющий автоматически присваивать свойству сущности, значение которого не задано, значение
+ другого свойства.
 
 ## Использование
 
-__1. Помечаем необходимые свойства аннотацией «Darvin\Utils\Mapping\Annotation\DefaultValue».__
+**1. Помечаем целевое свойство аннотацией "Darvin\Utils\Mapping\Annotation\DefaultValue".**
 
-Эта аннотация имеет один аргумент - «sourcePropertyPath» - путь до свойства, из которого нужно брать значение по умолчанию.
+Аргументы аннотации:
 
-Пример:
+- **sourcePropertyPath** - путь до свойства - источника.
+
+Пример использования аннотации:
 
 ```php
 use Darvin\Utils\Mapping\Annotation as Darvin;
@@ -42,6 +44,5 @@ class Page
 }
 ```
 
-__2. Остальное сделает event subscriber «Darvin\Utils\EventListener\DefaultValueSubscriber»:__
-
-при flush'е сущности «Page» значение свойства «metaTitle», если оно не задано, будет взято из свойства «title».
+**2. On flush event subscriber "Darvin\Utils\EventListener\DefaultValueSubscriber" автоматически присвоит свойству
+ "Page::$metaTitle" значение из "Page::$title", если значение первого будет не задано.**
