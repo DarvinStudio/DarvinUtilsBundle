@@ -19,6 +19,7 @@ services:
     darvin_utils.mapping.annotation_driver.abstract:
         class:    %darvin_utils.mapping.annotation_driver.abstract.class%
         abstract: true
+        public:   false
         arguments:
             - "@annotation_reader"
 
