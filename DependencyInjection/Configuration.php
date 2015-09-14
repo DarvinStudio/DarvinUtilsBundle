@@ -26,11 +26,21 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-//        $rootNode = $treeBuilder->root('darvin_utils');
+        $rootNode = $treeBuilder->root('darvin_utils');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
+        $rootNode
+            ->children()
+                ->arrayNode('mailer')
+                    ->isRequired()
+                    ->children()
+                        ->scalarNode('charset')->defaultValue('utf-8')->end()
+                        ->scalarNode('from')->isRequired()->end()
+                    ->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }

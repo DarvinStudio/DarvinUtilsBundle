@@ -1,0 +1,11 @@
+parameters:
+    darvin_utils.mailer.class: Darvin\Utils\Mailer\Mailer
+
+services:
+    darvin_utils.mailer:
+        class: %darvin_utils.mailer.class%
+        arguments:
+            - "@logger"
+            - "@mailer"
+            - %darvin_utils.mailer.charset%
+            - %darvin_utils.mailer.from%
