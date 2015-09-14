@@ -34,7 +34,7 @@
  для обхода циклических зависимостей сервисов;
 
 
-- **darvin_utils.stringifier.doctrine** - stringifier свойств объектов Doctrine;
+- **darvin_utils.stringifier.doctrine** - сервис приведения свойств объектов Doctrine к строке;
 
 
 - **darvin_utils.transliteratable.transliterator** - сервис транслитерации.
