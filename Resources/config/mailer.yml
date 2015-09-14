@@ -7,5 +7,6 @@ services:
         arguments:
             - "@logger"
             - "@mailer"
+            - "@translator"
             - %darvin_utils.mailer.charset%
             - %darvin_utils.mailer.from%
