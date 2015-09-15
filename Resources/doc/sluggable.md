@@ -26,7 +26,6 @@ Sluggable - функционал генерации slug'ов.
 Пример использования аннотации:
 
 ```php
-
 use Darvin\Utils\Mapping\Annotation as Darvin;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
