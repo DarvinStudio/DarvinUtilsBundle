@@ -73,3 +73,16 @@ Event subscriber использует обработчики slug'ов для п
 1. Создаем класс, реализующий "Darvin\Utils\Slug\SlugHandlerInterface".
 
 2. Объявляем класс сервисом и помечаем его тегом "darvin_utils.slug_handler".
+
+Пример определения сервиса:
+
+```yaml
+parameters:
+    darvin_content.slug.handler.unique.class: Darvin\ContentBundle\Slug\UniqueSlugHandler
+
+services:
+    darvin_content.slug.handler.unique:
+        class: %darvin_content.slug.handler.unique.class%
+        tags:
+            - { name: darvin_utils.slug_handler }
+```
