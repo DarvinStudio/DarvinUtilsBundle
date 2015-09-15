@@ -21,7 +21,9 @@ This bundle provides "darvin-utils" library integration for Symfony2:
 - [**Transliteratable**](/Resources/doc/transliteratable.md) - функционал, позволяющий автоматически транслитерировать
  значения свойств сущностей.
 
-См. также:
+Справочники:
 
-- [**Конфигурация**](/Resources/doc/configuration.md);
-- [**Список публичных сервисов**](/Resources/doc/services.md).
+- [**DI-теги**](/Resources/doc/reference/di_tags.md);
+- [**Конфигурация**](/Resources/doc/reference/configuration.md);
+- [**Публичные сервисы**](/Resources/doc/reference/services.md);
+- [**События**](/Resources/doc/reference/events.md).
