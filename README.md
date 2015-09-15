@@ -3,6 +3,8 @@ This bundle provides "darvin-utils" library integration for Symfony2:
 
 - [**Accessibility checker**](/Resources/doc/accessibility_checker.md) - сервис проверки доступности объекта для текущего
  пользователя;
+- [**Authorization checker provider**](/Resources/doc/authorization_checker_provider.md) - провайдер сервиса
+ "security.authorization_checker", необходим для обхода циклических зависимостей сервисов;
 - [**Cloner**](/Resources/doc/cloner.md) - сервис клонирования сущностей;
 - [**Custom entity loader**](/Resources/doc/custom_entity_loader.md) - сервис инициализации сущности в поле другой
  сущности с использованием атрибутов инициализации из свойств последней;
@@ -14,6 +16,7 @@ This bundle provides "darvin-utils" library integration for Symfony2:
 - [**New entity counter**](/Resources/doc/new_entity_counter.md) - сервис подсчета количества новых сущностей;
 - [**Object namer**](/Resources/doc/object_namer.md) - сервис генерации имени объекта в нотации "under_score" по его
  классу, которое затем можно использовать, например, в строках переводов;
+- [**Stringifier**](/Resources/doc/stringifier.md) - сервис приведения свойств объектов Doctrine к строке;
 - [**Transliteratable**](/Resources/doc/transliteratable.md) - функционал, позволяющий автоматически транслитерировать
  значения свойств сущностей.
 
