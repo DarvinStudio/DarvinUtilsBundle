@@ -15,7 +15,7 @@ $this->getContainer()->get('darvin_utils.mailer')->send(
     'Hello, world!',
     'world@example.com',
     array(
-        '%name%' => 'world'
+        '%name%' => 'world',
     ),
     'text/plain'
 );
