@@ -36,5 +36,5 @@ class Page
 }
 ```
 
-**2. On flush event subscriber "darvin_utils.transliteratable.subscriber" автоматически транслитерирует значение
+**2. Event subscriber "darvin_utils.transliteratable.subscriber" автоматически транслитерирует значение
  свойства "Page::$slug" (в приведенном выше примере).**

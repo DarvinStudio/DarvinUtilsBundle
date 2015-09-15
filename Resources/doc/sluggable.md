@@ -61,8 +61,8 @@ class Page
 }
 ```
 
-**2. On flush event listener "darvin_utils.slug.subscriber" автоматически сгенерирует slug и присвоит его свойству
- Page::$slug (в приведенном выше примере).**
+**2. Event subscriber "darvin_utils.slug.subscriber" автоматически сгенерирует slug и присвоит его свойству Page::$slug
+ (в приведенном выше примере).**
 
-После обновления slug'ов listener вызывает событие "Darvin\Utils\Event\Events::POST_SLUGS_UPDATE"
+После обновления slug'ов subscriber вызывает событие "Darvin\Utils\Event\Events::POST_SLUGS_UPDATE"
  ("darvin_utils.post_slugs_update"). Класс события - "Darvin\Utils\Event\SlugsUpdateEvent".
