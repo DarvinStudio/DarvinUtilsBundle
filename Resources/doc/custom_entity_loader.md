@@ -66,4 +66,4 @@ $this->getContainer()->get('darvin_utils.custom_object.loader.entity')->loadForO
 ```
 
 Сервис осуществит поиск сущности "AppBundle\Entity\Post\Post" по значению свойства "id", взятому из "Page::$postId".
-Если объект будет найден, ссылка на него будет присвоена свойству "Page::$post".
+Если объект будет найден, ссылка на него будет присвоена свойству "Page::$post" (в приведенном выше примере).

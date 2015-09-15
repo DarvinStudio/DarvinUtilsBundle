@@ -45,4 +45,4 @@ class Page
 ```
 
 **2. On flush event subscriber "Darvin\Utils\EventListener\DefaultValueSubscriber" автоматически присвоит свойству
- "Page::$metaTitle" значение из "Page::$title", если значение первого будет не задано.**
+ "Page::$metaTitle" значение из "Page::$title", если значение первого будет не задано (в приведенном выше примере).**
