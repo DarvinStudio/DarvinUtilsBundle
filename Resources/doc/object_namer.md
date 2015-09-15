@@ -7,3 +7,9 @@ Object namer - сервис генерации имени объекта в но
  например, в строках переводов.
 
 ## Использование
+
+Пример использования:
+
+```php
+$pageObjectName = $this->getContainer()->get('darvin_utils.object_namer')->name('AppBundle\\Entity\\Page');
+```
