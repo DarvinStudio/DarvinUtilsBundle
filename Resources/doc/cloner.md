@@ -59,4 +59,5 @@ $page->setContent('Hello, world!');
 $pageClone = $this->getContainer()->get('darvin_utils.cloner')->createClone($page);
 ```
 
-При клонировании вызывается событие "Darvin\Utils\Event\Events::POST_CLONE" ("darvin_utils.post_clone"). Класс события - "Darvin\Utils\Event\CloneEvent".
+После клонирования сущности (непосредственного или сущности в свойстве) вызывается событие
+ "Darvin\Utils\Event\Events::POST_CLONE" ("darvin_utils.post_clone"). Класс события - "Darvin\Utils\Event\CloneEvent".
