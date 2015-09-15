@@ -16,6 +16,7 @@ This bundle provides "darvin-utils" library integration for Symfony2:
 - [**New entity counter**](/Resources/doc/new_entity_counter.md) - сервис подсчета количества новых сущностей;
 - [**Object namer**](/Resources/doc/object_namer.md) - сервис генерации имени объекта в нотации "under_score" по его
  классу, которое затем можно использовать, например, в строках переводов;
+- [**Sluggable**](/Resources/doc/sluggable.md) - функционал генерации slug'ов;
 - [**Stringifier**](/Resources/doc/stringifier.md) - сервис приведения свойств объектов Doctrine к строке;
 - [**Transliteratable**](/Resources/doc/transliteratable.md) - функционал, позволяющий автоматически транслитерировать
  значения свойств сущностей.
