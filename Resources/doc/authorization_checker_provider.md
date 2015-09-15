@@ -7,3 +7,10 @@ Authorization checker provider - провайдер сервиса "security.aut
  зависимостей сервисов.
 
 ## Использование
+
+Если сервис "security.authorization_checker" вызывает циклическую зависимость, для ее обхода можно воспользоваться
+ провайдером этого сервиса:
+
+```php
+$authorizationChecker = $this->getContainer()->get('darvin_utils.security.authorization_checker_provider')->getAuthorizationChecker();
+```
