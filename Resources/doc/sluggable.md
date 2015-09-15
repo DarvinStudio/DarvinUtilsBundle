@@ -65,3 +65,11 @@ class Page
 
 После обновления slug'ов subscriber вызывает событие "Darvin\Utils\Event\Events::POST_SLUGS_UPDATE"
  ("darvin_utils.post_slugs_update"). Класс события - "Darvin\Utils\Event\SlugsUpdateEvent".
+
+## Добавление обработчика slug'ов
+
+Event subscriber использует обработчики slug'ов для постобработки сгенерированных slug'ов. Чтобы добавить новый обработчик:
+
+1. Создаем класс, реализующий "Darvin\Utils\Slug\SlugHandlerInterface".
+
+2. Объявляем класс сервисом и помечаем его тегом "darvin_utils.slug_handler".
