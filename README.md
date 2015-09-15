@@ -1,5 +1,8 @@
 # DarvinUtilsBundle
-This bundle provides "darvin-utils" library integration for Symfony2:
+
+## This bundle provides "darvin-utils" library integration for Symfony2:
+
+### Компоненты:
 
 - [**Accessibility checker**](/Resources/doc/accessibility_checker.md) - сервис проверки доступности объекта для текущего
  пользователя;
@@ -21,7 +24,7 @@ This bundle provides "darvin-utils" library integration for Symfony2:
 - [**Transliteratable**](/Resources/doc/transliteratable.md) - функционал, позволяющий автоматически транслитерировать
  значения свойств сущностей.
 
-Справочники:
+### Справочники:
 
 - [**DI-теги**](/Resources/doc/reference/di_tags.md);
 - [**Конфигурация**](/Resources/doc/reference/configuration.md);
