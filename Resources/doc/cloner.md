@@ -57,6 +57,8 @@ $page = new Page();
 $page->setContent('Hello, world!');
 
 $pageClone = $this->getContainer()->get('darvin_utils.cloner')->createClone($page);
+echo $pageClone->getId();      // null
+echo $pageClone->getContent(); // 'Hello, world!'
 ```
 
 После клонирования сущности (непосредственного или сущности в свойстве) вызывается событие

@@ -13,6 +13,7 @@ Stringifier - сервис приведения свойств объектов 
 $page = new Page();
 $page->setTags(array('hello', 'world'));
 $tagsString = $this->getContainer()->get('darvin_utils.stringifier.doctrine')->stringify($page->getTags(), Type::SIMPLE_ARRAY);
+echo $tagsString; // '["hello","world"]'
 ```
 
 Особенности:
