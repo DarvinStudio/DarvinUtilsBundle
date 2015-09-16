@@ -19,10 +19,12 @@ $metadata = $this->getContainer()->get('darvin_utils.mapping.metadata_factory')-
 Metadata factory использует драйверы аннотаций для формирования метаданных. Для использования новой аннотации необходимо
  добавить ее драйвер:
 
-1. Создаем класс, реализующий "Darvin\Utils\Mapping\AnnotationDriver\AnnotationDriverInterface" или наследующийся от
- "Darvin\Utils\Mapping\AnnotationDriver\AbstractDriver".
+**1. Создаем класс, реализующий "Darvin\Utils\Mapping\AnnotationDriver\AnnotationDriverInterface" или наследующийся от
+ "Darvin\Utils\Mapping\AnnotationDriver\AbstractDriver".**
 
-2. Объявляем класс сервисом и помечаем его тегом "darvin_utils.annotation_driver". Если класс драйвера наследуется от
+**2. Объявляем класс сервисом и помечаем его тегом "darvin_utils.annotation_driver".**
+
+Если класс драйвера наследуется от
  "Darvin\Utils\Mapping\AnnotationDriver\AbstractDriver", то сервис может наследоваться от абстрактного сервиса
  "darvin_utils.mapping.annotation_driver.abstract".
 

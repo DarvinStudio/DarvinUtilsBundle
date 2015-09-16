@@ -70,9 +70,9 @@ class Page
 
 Event subscriber использует обработчики slug'ов для постобработки сгенерированных slug'ов. Чтобы добавить новый обработчик:
 
-1. Создаем класс, реализующий "Darvin\Utils\Slug\SlugHandlerInterface".
+**1. Создаем класс, реализующий "Darvin\Utils\Slug\SlugHandlerInterface".**
 
-2. Объявляем класс сервисом и помечаем его тегом "darvin_utils.slug_handler".
+**2. Объявляем класс сервисом и помечаем его тегом "darvin_utils.slug_handler".**
 
 Пример определения сервиса:
 
