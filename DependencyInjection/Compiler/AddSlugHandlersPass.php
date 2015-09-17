@@ -39,8 +39,8 @@ class AddSlugHandlersPass implements CompilerPassInterface
             return;
         }
 
-        $taggedServiceIdsSorter = new TaggedServiceIdsSorter();
-        $taggedServiceIdsSorter->sort($handlerIds);
+        $sorter = new TaggedServiceIdsSorter();
+        $sorter->sort($handlerIds);
 
         $slugSubscriberDefinition = $container->getDefinition(self::SLUG_SUBSCRIBER_ID);
 
