@@ -22,7 +22,7 @@ class AddSlugHandlersPass implements CompilerPassInterface
 {
     const SLUG_SUBSCRIBER_ID = 'darvin_utils.slug.subscriber';
 
-    const TAG_HANDLER = 'darvin_utils.slug_handler';
+    const TAG_SLUG_HANDLER = 'darvin_utils.slug_handler';
 
     /**
      * {@inheritdoc}
@@ -33,7 +33,7 @@ class AddSlugHandlersPass implements CompilerPassInterface
             return;
         }
 
-        $handlerIds = $container->findTaggedServiceIds(self::TAG_HANDLER);
+        $handlerIds = $container->findTaggedServiceIds(self::TAG_SLUG_HANDLER);
 
         if (empty($handlerIds)) {
             return;
