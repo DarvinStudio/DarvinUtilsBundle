@@ -15,21 +15,27 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Metadata factory compiler pass
+ * Add annotation drivers compiler pass
  */
-class MetadataFactoryPass implements CompilerPassInterface
+class AddAnnotationDriversPass implements CompilerPassInterface
 {
-    const TAG_ANNOTATION_DRIVER = 'darvin_utils.annotation_driver';
+    const TAG_DRIVER = 'darvin_utils.annotation_driver';
 
     /**
      * {@inheritdoc}
      */
     public function process(ContainerBuilder $container)
     {
-        $factory = $container->getDefinition('darvin_utils.mapping.metadata_factory');
+        $driverIds = $container->findTaggedServiceIds(self::TAG_DRIVER);
 
-        foreach ($container->findTaggedServiceIds(self::TAG_ANNOTATION_DRIVER) as $id => $attr) {
-            $factory->addMethodCall('addAnnotationDriver', array(
+        if (empty($driverIds)) {
+            return;
+        }
+
+        $factoryDefinition = $container->getDefinition('darvin_utils.mapping.metadata_factory');
+
+        foreach ($driverIds as $id => $attr) {
+            $factoryDefinition->addMethodCall('addAnnotationDriver', array(
                 new Reference($id),
             ));
         }

@@ -10,8 +10,8 @@
 
 namespace Darvin\UtilsBundle;
 
-use Darvin\UtilsBundle\DependencyInjection\Compiler\MetadataFactoryPass;
-use Darvin\UtilsBundle\DependencyInjection\Compiler\SlugHandlerPass;
+use Darvin\UtilsBundle\DependencyInjection\Compiler\AddAnnotationDriversPass;
+use Darvin\UtilsBundle\DependencyInjection\Compiler\AddSlugHandlersPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -28,7 +28,7 @@ class DarvinUtilsBundle extends Bundle
         parent::build($container);
 
         $container
-            ->addCompilerPass(new MetadataFactoryPass())
-            ->addCompilerPass(new SlugHandlerPass());
+            ->addCompilerPass(new AddAnnotationDriversPass())
+            ->addCompilerPass(new AddSlugHandlersPass());
     }
 }

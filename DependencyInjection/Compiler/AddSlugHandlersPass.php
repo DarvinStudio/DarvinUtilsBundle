@@ -10,18 +10,19 @@
 
 namespace Darvin\UtilsBundle\DependencyInjection\Compiler;
 
+use Darvin\Utils\DependencyInjection\TaggedServiceIdsSorter;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Slug handler compiler pass
+ * Add slug handlers compiler pass
  */
-class SlugHandlerPass implements CompilerPassInterface
+class AddSlugHandlersPass implements CompilerPassInterface
 {
     const SLUG_SUBSCRIBER_ID = 'darvin_utils.slug.subscriber';
 
-    const TAG_SLUG_HANDLER = 'darvin_utils.slug_handler';
+    const TAG_HANDLER = 'darvin_utils.slug_handler';
 
     /**
      * {@inheritdoc}
@@ -32,10 +33,19 @@ class SlugHandlerPass implements CompilerPassInterface
             return;
         }
 
-        $slugSubscriber = $container->getDefinition(self::SLUG_SUBSCRIBER_ID);
+        $handlerIds = $container->findTaggedServiceIds(self::TAG_HANDLER);
 
-        foreach ($container->findTaggedServiceIds(self::TAG_SLUG_HANDLER) as $id => $attr) {
-            $slugSubscriber->addMethodCall('addSlugHandler', array(
+        if (empty($handlerIds)) {
+            return;
+        }
+
+        $taggedServiceIdsSorter = new TaggedServiceIdsSorter();
+        $taggedServiceIdsSorter->sort($handlerIds);
+
+        $slugSubscriberDefinition = $container->getDefinition(self::SLUG_SUBSCRIBER_ID);
+
+        foreach ($handlerIds as $id => $attr) {
+            $slugSubscriberDefinition->addMethodCall('addSlugHandler', array(
                 new Reference($id),
             ));
         }
