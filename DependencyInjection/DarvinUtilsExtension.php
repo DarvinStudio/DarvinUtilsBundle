@@ -47,6 +47,7 @@ class DarvinUtilsExtension extends Extension
         $loader->load('security.yml');
         $loader->load('slug.yml');
         $loader->load('stringifier.yml');
+        $loader->load('templating.yml');
         $loader->load('transliteratable.yml');
     }
 }
