@@ -1,0 +1,8 @@
+parameters:
+    darvin_utils.doctrine.entity_manager_provider.class: Darvin\UtilsBundle\Doctrine\EntityManagerProvider
+
+services:
+    darvin_utils.doctrine.entity_manager_provider:
+        class: %darvin_utils.doctrine.entity_manager_provider.class%
+        arguments:
+            - "@service_container"
