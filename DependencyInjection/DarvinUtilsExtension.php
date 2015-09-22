@@ -40,7 +40,6 @@ class DarvinUtilsExtension extends Extension
         $loader->load('custom_object.yml');
         $loader->load('default_value.yml');
         $loader->load('flash.yml');
-        $loader->load('mailer.yml');
         $loader->load('mapping.yml');
         $loader->load('new_object.yml');
         $loader->load('object_namer.yml');
@@ -49,5 +48,9 @@ class DarvinUtilsExtension extends Extension
         $loader->load('stringifier.yml');
         $loader->load('templating.yml');
         $loader->load('transliteratable.yml');
+
+        if ($config['mailer']['enabled']) {
+            $loader->load('mailer.yml');
+        }
     }
 }

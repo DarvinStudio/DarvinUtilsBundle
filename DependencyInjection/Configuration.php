@@ -34,7 +34,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('mailer')
-                    ->isRequired()
+                    ->canBeEnabled()
                     ->children()
                         ->scalarNode('charset')->defaultValue('utf-8')->end()
                         ->scalarNode('from')->isRequired()->end()
