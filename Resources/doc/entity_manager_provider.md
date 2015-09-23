@@ -12,5 +12,5 @@ Entity manager provider - провайдер сервиса "doctrine.orm.entity
  провайдером этого сервиса:
 
 ```php
-$em = $this->getContainer()->get('darvin_utils.doctrine.entity_manager_provider')->getEntityManager();
+$em = $this->getContainer()->get('darvin_utils.doctrine.orm.entity_manager_provider')->getEntityManager();
 ```

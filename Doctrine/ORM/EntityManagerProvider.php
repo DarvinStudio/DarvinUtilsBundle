@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Darvin\UtilsBundle\Doctrine;
+namespace Darvin\UtilsBundle\Doctrine\ORM;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
