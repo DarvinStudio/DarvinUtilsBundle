@@ -1,0 +1,7 @@
+boolean:
+    - No
+    - Yes
+
+flash:
+    error:
+        form: Form errors detected. Fix them and resubmit form
