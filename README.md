@@ -34,3 +34,5 @@
 - [**Конфигурация**](Resources/doc/reference/configuration.md);
 - [**Публичные сервисы**](Resources/doc/reference/services.md);
 - [**События**](Resources/doc/reference/events.md).
+
+### [Рекомендации по стилю кода](Resources/doc/coding_standards.md)
