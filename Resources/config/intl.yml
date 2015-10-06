@@ -3,6 +3,7 @@ parameters:
 
 services:
     darvin_utils.intl.twig_extension:
-        class: %darvin_utils.intl.twig_extension.class%
+        class:  %darvin_utils.intl.twig_extension.class%
+        public: false
         tags:
             - { name: twig.extension }
