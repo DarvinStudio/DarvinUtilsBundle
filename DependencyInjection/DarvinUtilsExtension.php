@@ -41,6 +41,7 @@ class DarvinUtilsExtension extends Extension
         $loader->load('default_value.yml');
         $loader->load('doctrine.yml');
         $loader->load('flash.yml');
+        $loader->load('intl.yml');
         $loader->load('mapping.yml');
         $loader->load('new_object.yml');
         $loader->load('object_namer.yml');

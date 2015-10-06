@@ -1,0 +1,8 @@
+parameters:
+    darvin_utils.intl.twig_extension.class: Twig_Extensions_Extension_Intl
+
+services:
+    darvin_utils.intl.twig_extension:
+        class: %darvin_utils.intl.twig_extension.class%
+        tags:
+            - { name: twig.extension }
