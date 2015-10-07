@@ -58,13 +58,13 @@ class Page
 $page = new Page();
 $page->setPostId(1);
 
-$this->getContainer()->get('darvin_utils.custom_object.loader.entity')->loadForObject($page);
+$this->getContainer()->get('darvin_utils.custom_object.loader.entity')->loadCustomObjects($page);
 ```
 
 или
 
 ```php
-$this->getContainer()->get('darvin_utils.custom_object.loader.entity')->loadForObjects(array($page));
+$this->getContainer()->get('darvin_utils.custom_object.loader.entity')->loadCustomObjects(array($page));
 ```
 
 Сервис осуществит поиск сущности "AppBundle\Entity\Post\Post" по значению свойства "id", взятому из "Page::$postId".
