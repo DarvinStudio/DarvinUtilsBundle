@@ -30,10 +30,10 @@ class Page
 }
 ```
 
-**2. Используем метод "count()" сервиса "darvin_utils.new_object.counter.entity" для подсчета количества новых сущностей:**
+**2. Используем метод "count()" сервиса "darvin_utils.new_object.counter" для подсчета количества новых сущностей:**
 
 ```php
-$newPagesCount = $this->getContainer()->get('darvin_utils.new_object.counter.entity')->count('AppBundle:Page');
+$newPagesCount = $this->getContainer()->get('darvin_utils.new_object.counter')->count('AppBundle:Page');
 ```
 
 Для проверки возможности подсчета новых сущностей того или иного класса сервис содержит метод "isCountable()".

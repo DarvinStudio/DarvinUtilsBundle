@@ -4,6 +4,9 @@ parameters:
     darvin_utils.sluggable.subscriber.class: Darvin\Utils\EventListener\SluggableSubscriber
 
 services:
+    darvin_utils.sluggable.manager:
+        alias: darvin_utils.sluggable.manager.entity
+
     darvin_utils.sluggable.manager.entity:
         class: %darvin_utils.sluggable.manager.entity.class%
         arguments:
@@ -16,6 +19,6 @@ services:
         class:  %darvin_utils.sluggable.subscriber.class%
         public: false
         arguments:
-            - "@darvin_utils.sluggable.manager.entity"
+            - "@darvin_utils.sluggable.manager"
         tags:
             - { name: doctrine.event_subscriber, priority: 200 }

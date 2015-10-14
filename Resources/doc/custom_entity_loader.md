@@ -52,19 +52,19 @@ class Page
 }
 ```
 
-**2. Используем сервис "darvin_utils.custom_object.loader.entity" для инициализации сущности:**
+**2. Используем сервис "darvin_utils.custom_object.loader" для инициализации сущности:**
 
 ```php
 $page = new Page();
 $page->setPostId(1);
 
-$this->getContainer()->get('darvin_utils.custom_object.loader.entity')->loadCustomObjects($page);
+$this->getContainer()->get('darvin_utils.custom_object.loader')->loadCustomObjects($page);
 ```
 
 или
 
 ```php
-$this->getContainer()->get('darvin_utils.custom_object.loader.entity')->loadCustomObjects(array($page));
+$this->getContainer()->get('darvin_utils.custom_object.loader')->loadCustomObjects(array($page));
 ```
 
 Сервис осуществит поиск сущности "AppBundle\Entity\Post\Post" по значению свойства "id", взятому из "Page::$postId".

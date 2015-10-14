@@ -4,6 +4,9 @@ parameters:
     darvin_utils.new_object.twig_extension.class: Darvin\Utils\Twig\Extension\NewObjectExtension
 
 services:
+    darvin_utils.new_object.counter:
+        alias: darvin_utils.new_object.counter.entity
+
     darvin_utils.new_object.counter.entity:
         class: %darvin_utils.new_object.counter.entity.class%
         arguments:
@@ -14,6 +17,6 @@ services:
         class:  %darvin_utils.new_object.twig_extension.class%
         public: false
         arguments:
-            - "@darvin_utils.new_object.counter.entity"
+            - "@darvin_utils.new_object.counter"
         tags:
             - { name: twig.extension }

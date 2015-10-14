@@ -7,7 +7,7 @@
 - **darvin_utils.cloner** - [сервис](../cloner.md) клонирования сущностей;
 
 
-- **darvin_utils.custom_object.loader.entity** - [сервис](../custom_entity_loader.md) инициализации сущности в поле другой
+- **darvin_utils.custom_object.loader** - [сервис](../custom_entity_loader.md) инициализации сущности в поле другой
  сущности с использованием атрибутов инициализации из свойств последней;
 
 
@@ -20,7 +20,7 @@
 - **darvin_utils.mapping.metadata_factory** - [фабрика](../metadata_factory.md) метаданных на базе аннотаций;
 
 
-- **darvin_utils.new_object.counter.entity** - [сервис](../new_entity_counter.md) подсчета количества новых сущностей;
+- **darvin_utils.new_object.counter** - [сервис](../new_entity_counter.md) подсчета количества новых сущностей;
 
 
 - **darvin_utils.object_namer** - [сервис](../object_namer.md) генерации имени объекта в нотации "under_score" по его
