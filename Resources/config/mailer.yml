@@ -6,6 +6,7 @@ services:
         class: %darvin_utils.mailer.class%
         arguments:
             - "@logger"
+            - "@request_stack"
             - "@mailer"
             - "@translator"
             - %darvin_utils.mailer.charset%
