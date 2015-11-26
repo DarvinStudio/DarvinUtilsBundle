@@ -10,6 +10,7 @@
 
 namespace Darvin\UtilsBundle\Templating;
 
+use Darvin\Utils\Templating\TemplatingProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
