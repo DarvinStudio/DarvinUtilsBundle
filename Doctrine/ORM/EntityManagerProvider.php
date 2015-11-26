@@ -10,6 +10,7 @@
 
 namespace Darvin\UtilsBundle\Doctrine\ORM;
 
+use Darvin\Utils\Doctrine\ORM\EntityManagerProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
