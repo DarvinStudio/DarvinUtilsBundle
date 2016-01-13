@@ -35,22 +35,26 @@ class DarvinUtilsExtension extends Extension
         $configInjector->inject($config, $container, $this->getAlias());
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('anti_spam.yml');
-        $loader->load('cloner.yml');
-        $loader->load('custom_object.yml');
-        $loader->load('default_value.yml');
-        $loader->load('doctrine.yml');
-        $loader->load('flash.yml');
-        $loader->load('intl.yml');
-        $loader->load('mapping.yml');
-        $loader->load('new_object.yml');
-        $loader->load('object_namer.yml');
-        $loader->load('security.yml');
-        $loader->load('slug.yml');
-        $loader->load('stringifier.yml');
-        $loader->load('templating.yml');
-        $loader->load('transliteratable.yml');
 
+        foreach (array(
+            'anti_spam',
+            'cloner',
+            'custom_object',
+            'default_value',
+            'doctrine',
+            'flash',
+            'intl',
+            'mapping',
+            'new_object',
+            'object_namer',
+            'security',
+            'sluggable',
+            'stringifier',
+            'templating',
+            'transliteratable',
+        ) as $resource) {
+            $loader->load($resource.'.yml');
+        }
         if ($config['mailer']['enabled']) {
             $loader->load('mailer.yml');
         }
