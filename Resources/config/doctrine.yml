@@ -6,3 +6,6 @@ services:
         class: %darvin_utils.doctrine.orm.entity_manager_provider.class%
         arguments:
             - "@service_container"
+
+    darvin_utils.doctrine.object_manager_provider:
+        alias: darvin_utils.doctrine.orm.entity_manager_provider

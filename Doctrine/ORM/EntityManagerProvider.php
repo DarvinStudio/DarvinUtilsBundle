@@ -10,13 +10,14 @@
 
 namespace Darvin\UtilsBundle\Doctrine\ORM;
 
+use Darvin\Utils\Doctrine\ObjectManagerProviderInterface;
 use Darvin\Utils\Doctrine\ORM\EntityManagerProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Entity manager provider
  */
-class EntityManagerProvider implements EntityManagerProviderInterface
+class EntityManagerProvider implements EntityManagerProviderInterface, ObjectManagerProviderInterface
 {
     /**
      * @var \Symfony\Component\DependencyInjection\ContainerInterface
@@ -29,6 +30,14 @@ class EntityManagerProvider implements EntityManagerProviderInterface
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getObjectManager()
+    {
+        return $this->getEntityManager();
     }
 
     /**
