@@ -3,15 +3,14 @@ Metadata factory
 
 ## Описание
 
-Metadata factory - фабрика метаданных на базе аннотаций.
+Metadata factory - фабрика расширенных метаданных на базе аннотаций.
 
 ## Использование
 
 Пример использования:
 
 ```php
-$doctrineMetadata = $this->getContainer()->get('doctrine.orm.entity_manager')->getClassMetadata('AppBundle:Page');
-$metadata = $this->getContainer()->get('darvin_utils.mapping.metadata_factory')->getMetadata($doctrineMetadata);
+$extendedMetadata = $this->getContainer()->get('darvin_utils.mapping.metadata_factory')->getExtendedMetadata('AppBundle:Page');
 ```
 
 ## Добавление драйвера аннотации
