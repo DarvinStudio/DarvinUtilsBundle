@@ -45,9 +45,10 @@ class AddSlugHandlersPass implements CompilerPassInterface
         $sluggableManagerDefinition = $container->getDefinition(self::SLUGGABLE_MANAGER_ID);
 
         foreach ($handlerIds as $id => $attr) {
-            $sluggableManagerDefinition->addMethodCall('addSlugHandler', array(
+            $sluggableManagerDefinition->addMethodCall('addSlugHandler', [
                 new Reference($id),
-            ));
+            ]
+            );
         }
     }
 }

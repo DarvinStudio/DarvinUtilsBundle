@@ -36,7 +36,7 @@ class DarvinUtilsExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        foreach (array(
+        foreach ([
             'anti_spam',
             'cloner',
             'custom_object',
@@ -52,7 +52,7 @@ class DarvinUtilsExtension extends Extension
             'stringifier',
             'templating',
             'transliteratable',
-        ) as $resource) {
+                 ] as $resource) {
             $loader->load($resource.'.yml');
         }
         if ($config['mailer']['enabled']) {
