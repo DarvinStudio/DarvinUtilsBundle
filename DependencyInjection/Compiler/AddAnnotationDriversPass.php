@@ -43,8 +43,7 @@ class AddAnnotationDriversPass implements CompilerPassInterface
         foreach ($driverIds as $id => $attr) {
             $factoryDefinition->addMethodCall('addAnnotationDriver', [
                 new Reference($id),
-            ]
-            );
+            ]);
         }
     }
 }
