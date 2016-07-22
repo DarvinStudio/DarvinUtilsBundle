@@ -37,13 +37,13 @@ parameters:
 
 services:
     darvin_utils.mapping.annotation_driver.clonable:
-        class:  %darvin_utils.mapping.annotation_driver.clonable.class%
+        class:  "%darvin_utils.mapping.annotation_driver.clonable.class%"
         parent: darvin_utils.mapping.annotation_driver.abstract
         tags:
             - { name: darvin_utils.annotation_driver }
 
     darvin_utils.mapping.annotation_driver.custom_object:
-        class: %darvin_utils.mapping.annotation_driver.custom_object.class%
+        class: "%darvin_utils.mapping.annotation_driver.custom_object.class%"
         arguments:
             - "@annotation_reader"
         tags:

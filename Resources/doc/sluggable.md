@@ -82,7 +82,7 @@ parameters:
 
 services:
     darvin_content.slug.handler.unique:
-        class: %darvin_content.slug.handler.unique.class%
+        class: "%darvin_content.slug.handler.unique.class%"
         tags:
             - { name: darvin_utils.slug_handler }
 ```
