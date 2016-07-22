@@ -3,6 +3,6 @@ parameters:
 
 services:
     darvin_utils.stringifier.doctrine:
-        class: %darvin_utils.stringifier.doctrine.class%
+        class: "%darvin_utils.stringifier.doctrine.class%"
         arguments:
             - "@translator"

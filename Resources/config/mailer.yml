@@ -3,11 +3,11 @@ parameters:
 
 services:
     darvin_utils.mailer:
-        class: %darvin_utils.mailer.class%
+        class: "%darvin_utils.mailer.class%"
         arguments:
             - "@logger"
             - "@request_stack"
             - "@mailer"
             - "@translator"
-            - %darvin_utils.mailer.charset%
-            - %darvin_utils.mailer.from%
+            - "%darvin_utils.mailer.charset%"
+            - "%darvin_utils.mailer.from%"

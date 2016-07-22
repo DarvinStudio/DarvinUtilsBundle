@@ -3,6 +3,6 @@ parameters:
 
 services:
     darvin_utils.templating.provider:
-        class: %darvin_utils.templating.provider.class%
+        class: "%darvin_utils.templating.provider.class%"
         arguments:
             - "@service_container"

@@ -3,4 +3,4 @@ parameters:
 
 services:
     darvin_utils.object_namer:
-        class: %darvin_utils.object_namer.class%
+        class: "%darvin_utils.object_namer.class%"
