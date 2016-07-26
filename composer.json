@@ -1,6 +1,6 @@
 {
     "name":        "darvinstudio/darvin-utils-bundle",
-    "description": "This bundle provides 'darvin-utils' library integration for Symfony2.",
+    "description": "This bundle provides 'darvin-utils' library integration for Symfony.",
     "keywords":    ["utility"],
     "type":        "symfony-bundle",
     "license":     "MIT",

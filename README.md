@@ -1,6 +1,6 @@
 # DarvinUtilsBundle
 
-## This bundle provides "darvin-utils" library integration for Symfony2.
+## This bundle provides "darvin-utils" library integration for Symfony.
 
 ### Компоненты:
 
