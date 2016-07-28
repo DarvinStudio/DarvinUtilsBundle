@@ -52,7 +52,7 @@ class DarvinUtilsExtension extends Extension
             'stringifier',
             'templating',
             'transliteratable',
-                 ] as $resource) {
+        ] as $resource) {
             $loader->load($resource.'.yml');
         }
         if ($config['mailer']['enabled']) {
