@@ -48,6 +48,7 @@ class DarvinUtilsExtension extends Extension
             'new_object',
             'object_namer',
             'security',
+            'service',
             'sluggable',
             'stringifier',
             'templating',
