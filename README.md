@@ -19,8 +19,6 @@
  классу, которое затем можно использовать, например, в строках переводов;
 - [**Sluggable**](Resources/doc/sluggable.md) - функционал генерации slug'ов;
 - [**Stringifier**](Resources/doc/stringifier.md) - сервис приведения свойств объектов Doctrine к строке;
-- [**Templating provider**](Resources/doc/templating_provider.md) - провайдер сервиса "templating", необходимый для
- обхода циклических зависимостей сервисов;
 - [**Transliteratable**](Resources/doc/transliteratable.md) - функционал, позволяющий автоматически транслитерировать
  значения свойств сущностей.
 

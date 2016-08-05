@@ -34,8 +34,4 @@
 - **darvin_utils.stringifier.doctrine** - [сервис](../stringifier.md) приведения свойств объектов Doctrine к строке;
 
 
-- **darvin_utils.templating.provider** - [провайдер](../templating_provider.md) сервиса "templating", необходимый для обхода
- циклических зависимостей сервисов;
-
-
 - **darvin_utils.transliteratable.transliterator** - [сервис](../transliteratable.md) транслитерации.

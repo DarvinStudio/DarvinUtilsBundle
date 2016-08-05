@@ -50,7 +50,6 @@ class DarvinUtilsExtension extends Extension
             'service',
             'sluggable',
             'stringifier',
-            'templating',
             'transliteratable',
         ] as $resource) {
             $loader->load($resource.'.yml');
