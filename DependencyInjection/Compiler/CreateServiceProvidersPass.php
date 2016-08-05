@@ -26,24 +26,34 @@ class CreateServiceProvidersPass implements CompilerPassInterface
     const TAG_PROVIDABLE = 'darvin_utils.providable';
 
     /**
+     * @var array
+     */
+    private static $ids = [
+        'darvin_utils.authorization_checker.provider' => 'security.authorization_checker',
+        'darvin_utils.entity_manager.provider'        => 'doctrine.orm.default_entity_manager',
+        'darvin_utils.object_manager.provider'        => 'doctrine.orm.default_entity_manager',
+    ];
+
+    /**
      * {@inheritdoc}
      */
     public function process(ContainerBuilder $container)
     {
+        $ids = array_keys($container->findTaggedServiceIds(self::TAG_PROVIDABLE));
+        $ids = array_merge(self::$ids, array_combine(array_map(function ($id) {
+            return $id.self::ID_SUFFIX;
+        }, $ids), $ids));
+
         $definitions = [];
 
-        foreach ($container->findTaggedServiceIds(self::TAG_PROVIDABLE) as $id => $tags) {
-            foreach ($tags as $tag) {
-                $providerId = isset($tag['id']) ? $tag['id'] : $id.self::ID_SUFFIX;
-
-                if ($container->hasDefinition($providerId)) {
-                    throw new \UnexpectedValueException(
-                        sprintf('Unable to create provider for service "%s": service "%s" already exists.', $id, $providerId)
-                    );
-                }
-
-                $definitions[$providerId] = (new DefinitionDecorator(self::PARENT_ID))->addArgument($id);
+        foreach ($ids as $providerId => $id) {
+            if ($container->hasDefinition($providerId)) {
+                throw new \UnexpectedValueException(
+                    sprintf('Unable to create provider for service "%s": service "%s" already exists.', $id, $providerId)
+                );
             }
+
+            $definitions[$providerId] = (new DefinitionDecorator(self::PARENT_ID))->addArgument($id);
         }
 
         $container->addDefinitions($definitions);
