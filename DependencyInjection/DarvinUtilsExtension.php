@@ -41,7 +41,6 @@ class DarvinUtilsExtension extends Extension
             'cloner',
             'custom_object',
             'default_value',
-            'doctrine',
             'flash',
             'intl',
             'mapping',

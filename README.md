@@ -6,15 +6,11 @@
 
 - [**Accessibility checker**](Resources/doc/accessibility_checker.md) - сервис проверки доступности объекта для текущего
  пользователя;
-- [**Authorization checker provider**](Resources/doc/authorization_checker_provider.md) - провайдер сервиса
- "security.authorization_checker", необходим для обхода циклических зависимостей сервисов;
 - [**Cloner**](Resources/doc/cloner.md) - сервис клонирования сущностей;
 - [**Custom entity loader**](Resources/doc/custom_entity_loader.md) - сервис инициализации сущности в поле другой
  сущности с использованием атрибутов инициализации из свойств последней;
 - [**Default value**](Resources/doc/default_value.md) - функционал, позволяющий автоматически присваивать свойству
  сущности, значение которого не задано, значение другого свойства;
-- [**Entity manager provider**](Resources/doc/entity_manager_provider.md) - провайдер сервиса "doctrine.orm.entity_manager",
- необходимый для обхода циклических зависимостей сервисов;
 - [**Flash notifier**](Resources/doc/flash_notifier.md) - сервис, упрощающий добавление flash-сообщений;
 - [**Mailer**](Resources/doc/mailer.md) - сервис отправки электронной почты;
 - [**Metadata factory**](Resources/doc/metadata_factory.md) - фабрика метаданных на базе аннотаций;

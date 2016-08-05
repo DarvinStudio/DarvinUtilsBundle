@@ -32,16 +32,18 @@ class CreateServiceProvidersPass implements CompilerPassInterface
     {
         $definitions = [];
 
-        foreach ($container->findTaggedServiceIds(self::TAG_PROVIDABLE) as $id => $attr) {
-            $providerId = $id.self::ID_SUFFIX;
+        foreach ($container->findTaggedServiceIds(self::TAG_PROVIDABLE) as $id => $tags) {
+            foreach ($tags as $tag) {
+                $providerId = isset($tag['id']) ? $tag['id'] : $id.self::ID_SUFFIX;
 
-            if ($container->hasDefinition($providerId)) {
-                throw new \UnexpectedValueException(
-                    sprintf('Unable to create provider for service "%s": service "%s" already exists.', $id, $providerId)
-                );
+                if ($container->hasDefinition($providerId)) {
+                    throw new \UnexpectedValueException(
+                        sprintf('Unable to create provider for service "%s": service "%s" already exists.', $id, $providerId)
+                    );
+                }
+
+                $definitions[$providerId] = (new DefinitionDecorator(self::PARENT_ID))->addArgument($id);
             }
-
-            $definitions[$providerId] = (new DefinitionDecorator(self::PARENT_ID))->addArgument($id);
         }
 
         $container->addDefinitions($definitions);

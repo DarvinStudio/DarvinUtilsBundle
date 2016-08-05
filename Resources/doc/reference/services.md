@@ -31,10 +31,6 @@
  текущего пользователя;
 
 
-- **darvin_utils.security.authorization_checker_provider** - [провайдер](../authorization_checker_provider.md) сервиса
- "security.authorization_checker", необходим для обхода циклических зависимостей сервисов;
-
-
 - **darvin_utils.stringifier.doctrine** - [сервис](../stringifier.md) приведения свойств объектов Doctrine к строке;
 
 

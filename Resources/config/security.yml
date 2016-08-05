@@ -1,15 +1,8 @@
 parameters:
     darvin_utils.security.accessibility_checker.class: Darvin\Utils\Security\Authorization\AccessibilityChecker
 
-    darvin_utils.security.authorization_checker_provider.class: Darvin\UtilsBundle\Security\Authorization\AuthorizationCheckerProvider
-
 services:
     darvin_utils.security.accessibility_checker:
         class: "%darvin_utils.security.accessibility_checker.class%"
         arguments:
-            - "@darvin_utils.security.authorization_checker_provider"
-
-    darvin_utils.security.authorization_checker_provider:
-        class: "%darvin_utils.security.authorization_checker_provider.class%"
-        arguments:
-            - "@service_container"
+            - "@darvin_utils.authorization_checker.provider"

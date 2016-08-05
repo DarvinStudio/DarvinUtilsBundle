@@ -70,4 +70,4 @@ services:
     darvin_utils.mapping.metadata_factory:
         class: "%darvin_utils.mapping.metadata_factory.class%"
         arguments:
-            - "@darvin_utils.doctrine.object_manager_provider"
+            - "@darvin_utils.object_manager.provider"

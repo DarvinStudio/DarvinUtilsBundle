@@ -11,7 +11,7 @@ services:
         class: "%darvin_utils.sluggable.manager.entity.class%"
         arguments:
             - "@service_container"
-            - "@darvin_utils.doctrine.orm.entity_manager_provider"
+            - "@darvin_utils.entity_manager.provider"
             - "@event_dispatcher"
             - "@darvin_utils.mapping.metadata_factory"
             - "@property_accessor"
