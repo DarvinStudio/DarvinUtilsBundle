@@ -40,25 +40,43 @@ class CreateServiceProvidersPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $ids = array_keys($container->findTaggedServiceIds(self::TAG_PROVIDABLE));
-        $ids = array_merge(self::$ids, array_combine(array_map(function ($id) {
-            return $id.self::ID_SUFFIX;
-        }, $ids), $ids));
+        $this->addServiceProviders($container, self::$ids);
 
-        $this->createServiceProviders($container, $ids);
+        $this->createServiceProviders($container, array_keys($container->findTaggedServiceIds(self::TAG_PROVIDABLE)));
     }
 
     /**
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container DI container
-     * @param array                                                   $ids       Service IDs
-     *
-     * @throws \RuntimeException
+     * @param string[]                                                $ids       Service IDs
      */
     public function createServiceProviders(ContainerBuilder $container, array $ids)
     {
+        if (empty($ids)) {
+            return;
+        }
+
+        $ids = array_combine(array_map(function ($id) {
+            return $id.self::ID_SUFFIX;
+        }, $ids), $ids);
+
+        $this->addServiceProviders($container, $ids);
+    }
+
+    /**
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container        DI container
+     * @param array                                                   $idsByProviderIds Service IDs by provider IDs
+     *
+     * @throws \RuntimeException
+     */
+    private function addServiceProviders(ContainerBuilder $container, array $idsByProviderIds)
+    {
+        if (empty($idsByProviderIds)) {
+            return;
+        }
+
         $definitions = [];
 
-        foreach ($ids as $providerId => $id) {
+        foreach ($idsByProviderIds as $providerId => $id) {
             if ($container->hasDefinition($providerId)) {
                 throw new \RuntimeException(
                     sprintf('Unable to create provider for service "%s": service "%s" already exists.', $id, $providerId)
