@@ -45,6 +45,17 @@ class CreateServiceProvidersPass implements CompilerPassInterface
             return $id.self::ID_SUFFIX;
         }, $ids), $ids));
 
+        $this->createServiceProviders($container, $ids);
+    }
+
+    /**
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container DI container
+     * @param array                                                   $ids       Service IDs
+     *
+     * @throws \RuntimeException
+     */
+    public function createServiceProviders(ContainerBuilder $container, array $ids)
+    {
         $definitions = [];
 
         foreach ($ids as $providerId => $id) {
