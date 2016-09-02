@@ -63,20 +63,20 @@ class CreateServiceProvidersPass implements CompilerPassInterface
     }
 
     /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container        DI container
-     * @param array                                                   $idsByProviderIds Service IDs by provider IDs
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container DI container
+     * @param array                                                   $ids       { string providerId => string serviceId }
      *
      * @throws \RuntimeException
      */
-    private function addServiceProviders(ContainerBuilder $container, array $idsByProviderIds)
+    private function addServiceProviders(ContainerBuilder $container, array $ids)
     {
-        if (empty($idsByProviderIds)) {
+        if (empty($ids)) {
             return;
         }
 
         $definitions = [];
 
-        foreach ($idsByProviderIds as $providerId => $id) {
+        foreach ($ids as $providerId => $id) {
             if ($container->hasDefinition($providerId)) {
                 throw new \RuntimeException(
                     sprintf('Unable to create provider for service "%s": service "%s" already exists.', $id, $providerId)
