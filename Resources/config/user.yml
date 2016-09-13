@@ -6,4 +6,5 @@ services:
         class: "%darvin_utils.user.query_builder_filterer.class%"
         arguments:
             - "@security.token_storage"
+            - "@security.authorization_checker"
             - "@darvin_utils.mapping.metadata_factory"
