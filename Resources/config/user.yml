@@ -1,0 +1,9 @@
+parameters:
+    darvin_utils.user.query_builder_filterer.class: Darvin\Utils\User\UserQueryBuilderFilterer
+
+services:
+    darvin_utils.user.query_builder_filterer:
+        class: "%darvin_utils.user.query_builder_filterer.class%"
+        arguments:
+            - "@security.token_storage"
+            - "@darvin_utils.mapping.metadata_factory"

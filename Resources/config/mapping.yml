@@ -15,6 +15,8 @@ parameters:
 
     darvin_utils.mapping.annotation_driver.updated_at.class: Darvin\Utils\Mapping\AnnotationDriver\UpdatedAtDriver
 
+    darvin_utils.mapping.annotation_driver.user.class: Darvin\Utils\Mapping\AnnotationDriver\UserDriver
+
     darvin_utils.mapping.metadata_factory.class: Darvin\Utils\Mapping\MetadataFactory
 
 services:
@@ -63,6 +65,12 @@ services:
 
     darvin_utils.mapping.annotation_driver.updated_at:
         class:  "%darvin_utils.mapping.annotation_driver.updated_at.class%"
+        parent: darvin_utils.mapping.annotation_driver.abstract
+        tags:
+            - { name: darvin_utils.annotation_driver }
+
+    darvin_utils.mapping.annotation_driver.user:
+        class:  "%darvin_utils.mapping.annotation_driver.user.class%"
         parent: darvin_utils.mapping.annotation_driver.abstract
         tags:
             - { name: darvin_utils.annotation_driver }

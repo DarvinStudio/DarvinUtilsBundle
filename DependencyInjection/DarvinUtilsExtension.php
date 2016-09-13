@@ -51,6 +51,7 @@ class DarvinUtilsExtension extends Extension
             'sluggable',
             'stringifier',
             'transliteratable',
+            'user',
         ] as $resource) {
             $loader->load($resource.'.yml');
         }
