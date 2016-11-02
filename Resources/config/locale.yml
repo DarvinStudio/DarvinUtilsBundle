@@ -1,0 +1,9 @@
+parameters:
+    darvin_utils.locale.provider.class: Darvin\Utils\Locale\LocaleProvider
+
+services:
+    darvin_utils.locale.provider:
+        class: "%darvin_utils.locale.provider.class%"
+        arguments:
+            - "@request_stack"
+            - "%locale%"

@@ -43,6 +43,7 @@ class DarvinUtilsExtension extends Extension
             'default_value',
             'flash',
             'intl',
+            'locale',
             'mapping',
             'new_object',
             'object_namer',
