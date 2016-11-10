@@ -1,6 +1,16 @@
 parameters:
     darvin_utils.object_namer.class: Darvin\Utils\ObjectNamer\ObjectNamer
 
+    darvin_utils.object_namer.twig_extension.class: Darvin\Utils\Twig\Extension\ObjectNamerExtension
+
 services:
     darvin_utils.object_namer:
         class: "%darvin_utils.object_namer.class%"
+
+    darvin_utils.object_namer.twig_extension:
+        class:  "%darvin_utils.object_namer.twig_extension.class%"
+        public: false
+        arguments:
+            - "@darvin_utils.object_namer"
+        tags:
+            - { name: twig.extension }
