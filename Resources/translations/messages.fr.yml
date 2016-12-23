@@ -1,0 +1,6 @@
+boolean:
+    - 'Pas de'
+    - Oui
+flash:
+    error:
+        form: 'Des erreurs détectées. Les corriger et de soumettre à nouveau le formulaire'
