@@ -42,6 +42,7 @@ class DarvinUtilsExtension extends Extension
             'custom_object',
             'default_value',
             'flash',
+            'form',
             'intl',
             'locale',
             'mapping',
