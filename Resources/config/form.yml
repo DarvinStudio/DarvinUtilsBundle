@@ -1,8 +1,8 @@
 parameters:
-    darvin_utils.form.disclaimer_extension.class: Darvin\Utils\Form\Extension\DisclaimerExtension
+    darvin_utils.form.description_extension.class: Darvin\Utils\Form\Extension\DescriptionExtension
 
 services:
-    darvin_utils.form.disclaimer_extension:
-        class: "%darvin_utils.form.disclaimer_extension.class%"
+    darvin_utils.form.description_extension:
+        class: "%darvin_utils.form.description_extension.class%"
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
