@@ -13,15 +13,17 @@ namespace Darvin\UtilsBundle\DependencyInjection;
 use Darvin\Utils\DependencyInjection\ConfigInjector;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * This is the class that loads and manages your bundle configuration
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class DarvinUtilsExtension extends Extension
+class DarvinUtilsExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}
@@ -59,6 +61,22 @@ class DarvinUtilsExtension extends Extension
         }
         if ($config['mailer']['enabled']) {
             $loader->load('mailer.yml');
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function prepend(ContainerBuilder $container)
+    {
+        $fileLocator = new FileLocator(__DIR__.'/../Resources/config/app');
+
+        foreach ([
+            'stof_doctrine_extensions',
+        ] as $extension) {
+            if ($container->hasExtension($extension)) {
+                $container->prependExtensionConfig($extension, Yaml::parse(file_get_contents($fileLocator->locate($extension.'.yml')))[$extension]);
+            }
         }
     }
 }
