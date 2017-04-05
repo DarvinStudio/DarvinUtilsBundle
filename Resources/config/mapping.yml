@@ -19,6 +19,8 @@ parameters:
 
     darvin_utils.mapping.metadata_factory.class: Darvin\Utils\Mapping\MetadataFactory
 
+    darvin_utils.mapping.set_default_discriminator_listener.class: Darvin\Utils\EventListener\SetDefaultDiscriminatorListener
+
 services:
     darvin_utils.mapping.annotation_driver.abstract:
         class:    "%darvin_utils.mapping.annotation_driver.abstract.class%"
@@ -79,3 +81,9 @@ services:
         class: "%darvin_utils.mapping.metadata_factory.class%"
         arguments:
             - "@darvin_utils.object_manager.provider"
+
+    darvin_utils.mapping.set_default_discriminator_listener:
+        class:  "%darvin_utils.mapping.set_default_discriminator_listener.class%"
+        public: false
+        tags:
+            - { name: doctrine.event_listener, event: postGenerateSchemaTable }
