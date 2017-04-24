@@ -16,7 +16,7 @@
         "doctrine/orm":              "^2.4.8",
         "doctrine/doctrine-bundle":  "~1.4",
         "twig/extensions":           "^1.3",
-        "darvinstudio/darvin-utils": "^5"
+        "darvinstudio/darvin-utils": "^6"
     },
     "autoload": {
         "psr-4": { "Darvin\\UtilsBundle\\": "" }
