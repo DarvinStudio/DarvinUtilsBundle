@@ -29,16 +29,18 @@ class ValidateResolveTargetEntitiesConfigPass implements CompilerPassInterface
                 continue;
             }
             foreach ($part['orm']['resolve_target_entities'] as $target => $replacement) {
-                if (!interface_exists($target)) {
-                    throw new ConfigurationException(sprintf('Target interface "%s" does not exist.', $target));
+                if (!interface_exists($target) && !class_exists($target)) {
+                    throw new ConfigurationException(sprintf('Target interface/class "%s" does not exist.', $target));
                 }
                 if (!class_exists($replacement)) {
                     throw new ConfigurationException(sprintf('Replacement entity class "%s" does not exist.', $replacement));
                 }
-                if (!in_array($target, class_implements($replacement))) {
-                    throw new ConfigurationException(
-                        sprintf('Replacement entity class "%s" must implement target interface "%s".', $replacement, $target)
-                    );
+                if (!in_array($target, array_merge(class_implements($replacement), class_parents($replacement)))) {
+                    throw new ConfigurationException(sprintf(
+                        'Replacement entity class "%s" must implement/extend target interface/class "%s".', 
+                        $replacement, 
+                        $target
+                    ));
                 }
             }
         }
