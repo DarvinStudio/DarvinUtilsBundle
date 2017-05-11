@@ -43,7 +43,6 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'cloner',
             'custom_object',
             'default_value',
-            'doctrine',
             'flash',
             'form',
             'homepage',

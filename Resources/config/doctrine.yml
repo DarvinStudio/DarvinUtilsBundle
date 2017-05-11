@@ -1,8 +1,0 @@
-parameters:
-    darvin_utils.doctrine.orm.entity_util.class: Darvin\Utils\Doctrine\ORM\EntityUtil
-
-services:
-    darvin_utils.doctrine.orm.entity_util:
-        class: "%darvin_utils.doctrine.orm.entity_util.class%"
-        arguments:
-            - "@darvin_utils.entity_manager.provider"
