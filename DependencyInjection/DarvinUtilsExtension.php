@@ -63,6 +63,9 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         if ($config['mailer']['enabled']) {
             $loader->load('mailer.yml');
         }
+        if (interface_exists('Doctrine\Common\DataFixtures\FixtureInterface')) {
+            $loader->load('data_fixture.yml');
+        }
     }
 
     /**
