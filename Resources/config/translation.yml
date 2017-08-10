@@ -1,0 +1,12 @@
+parameters:
+    darvin_utils.translation.translate_command.class: Darvin\Utils\Command\TranslateTranslationsCommand
+    darvin_utils.translation.translate_command.name:  darvin:utils:translations:translate
+
+services:
+    darvin_utils.translation.translate_command:
+        class: "%darvin_utils.translation.translate_command.class%"
+        arguments:
+            - "%darvin_utils.translation.translate_command.name%"
+            - "@=service('service_container').hasParameter('yandex_translate_api_key') ? parameter('yandex_translate_api_key') : null"
+        tags:
+            - { name: console.command }

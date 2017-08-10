@@ -55,6 +55,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'service',
             'sluggable',
             'stringifier',
+            'translation',
             'transliteratable',
             'user',
         ] as $resource) {

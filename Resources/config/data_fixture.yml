@@ -1,11 +1,12 @@
 parameters:
     darvin_utils.data_fixture.load_command.class: Darvin\Utils\Command\LoadDataFixtureCommand
+    darvin_utils.data_fixture.load_command.name:  darvin:utils:fixture:load
 
 services:
     darvin_utils.data_fixture.load_command:
         class: "%darvin_utils.data_fixture.load_command.class%"
         arguments:
-            - darvin:utils:fixture:load
+            - "%darvin_utils.data_fixture.load_command.name%"
             - "@service_container"
             - "@doctrine.orm.entity_manager"
         tags:
