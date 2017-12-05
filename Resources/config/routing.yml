@@ -1,0 +1,24 @@
+parameters:
+    darvin_utils.routing.route_cache_warmer.class: Darvin\Utils\Routing\RouteCacheWarmer
+
+    darvin_utils.routing.route_manager.cached.class: Darvin\Utils\Routing\CachedRouteManager
+
+services:
+    darvin_utils.routing.route_cache_warmer:
+        class:  "%darvin_utils.routing.route_cache_warmer.class%"
+        public: false
+        arguments:
+            - "@darvin_utils.routing.route_manager.cached"
+        tags:
+            - { name: kernel.cache_warmer }
+
+    darvin_utils.routing.route_manager:
+        alias: darvin_utils.routing.route_manager.cached
+
+    darvin_utils.routing.route_manager.cached:
+        class:  "%darvin_utils.routing.route_manager.cached.class%"
+        public: false
+        arguments:
+            - "@router"
+            - "%kernel.cache_dir%/darvin/utils/routes.php"
+            - "%kernel.debug%"
