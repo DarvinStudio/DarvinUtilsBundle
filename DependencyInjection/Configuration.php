@@ -38,6 +38,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('charset')->defaultValue('utf-8')->end()
                         ->scalarNode('from')->isRequired()->end()
+                        ->booleanNode('prepend_host')->defaultTrue()->end()
                     ->end()
                 ->end()
             ->end();

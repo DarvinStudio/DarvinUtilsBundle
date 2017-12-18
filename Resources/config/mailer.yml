@@ -11,3 +11,4 @@ services:
             - "@translator"
             - "%darvin_utils.mailer.charset%"
             - "%darvin_utils.mailer.from%"
+            - "%darvin_utils.mailer.prepend_host%"
