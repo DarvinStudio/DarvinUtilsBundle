@@ -19,6 +19,6 @@ services:
         class:  "%darvin_utils.routing.route_manager.cached.class%"
         public: false
         arguments:
-            - "@router"
+            - "@router.default"
             - "%kernel.cache_dir%/darvin/utils/routes.php"
             - "%kernel.debug%"
