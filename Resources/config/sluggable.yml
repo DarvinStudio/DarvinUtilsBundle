@@ -19,6 +19,7 @@ services:
         class:  "%darvin_utils.sluggable.subscriber.class%"
         public: false
         arguments:
+            - "@darvin_utils.entity_manager.provider"
             - "@darvin_utils.sluggable.manager"
         tags:
             - { name: doctrine.event_subscriber, priority: 200 }
