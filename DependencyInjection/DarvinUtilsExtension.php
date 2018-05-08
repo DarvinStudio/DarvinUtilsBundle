@@ -58,6 +58,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'stringifier',
             'translation',
             'transliteratable',
+            'tree',
             'user',
         ] as $resource) {
             $loader->load($resource.'.yml');

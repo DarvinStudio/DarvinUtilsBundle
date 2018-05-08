@@ -1,0 +1,11 @@
+parameters:
+    darvin_utils.tree.sorter.class: Darvin\Utils\Tree\TreeSorter
+
+services:
+    darvin_utils.tree.sorter:
+        class:  "%darvin_utils.tree.sorter.class%"
+        public: true
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@property_accessor"
+            - "@stof_doctrine_extensions.listener.tree"
