@@ -6,3 +6,5 @@
 6.4.0: Always use locale "en" in the number and integer form view transformers.
 
 6.4.2: Add generic tree sorter.
+
+6.4.3: Init commands only in "dev" environment.

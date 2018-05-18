@@ -56,18 +56,24 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'service',
             'sluggable',
             'stringifier',
-            'translation',
             'transliteratable',
             'tree',
             'user',
         ] as $resource) {
             $loader->load($resource.'.yml');
         }
+        if ('dev' === $container->getParameter('kernel.environment')) {
+            foreach ([
+                'translation',
+            ] as $resource) {
+                $loader->load(sprintf('dev/%s.yml', $resource));
+            }
+            if (interface_exists('Doctrine\Common\DataFixtures\FixtureInterface')) {
+                $loader->load('dev/data_fixture.yml');
+            }
+        }
         if ($config['mailer']['enabled']) {
             $loader->load('mailer.yml');
-        }
-        if (interface_exists('Doctrine\Common\DataFixtures\FixtureInterface')) {
-            $loader->load('data_fixture.yml');
         }
     }
 
