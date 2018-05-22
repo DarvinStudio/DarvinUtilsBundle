@@ -8,3 +8,11 @@
 6.4.2: Add generic tree sorter.
 
 6.4.3: Init commands only in "dev" environment.
+
+6.4.4: Mailer: allow to configure from name:
+
+```yaml
+darvin_utils:
+    mailer:
+        from_name: Почта России
+```
