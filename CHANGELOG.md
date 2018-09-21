@@ -28,3 +28,5 @@ To convert translations file to title case use
 ```shell
 $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 ```
+
+6.4.6: Remove "symfony/symfony" from dependencies.
