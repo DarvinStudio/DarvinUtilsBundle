@@ -16,3 +16,11 @@ darvin_utils:
     mailer:
         from_name: Почта России
 ```
+
+6.4.5: Add title case translations command.
+
+To convert translations file to title case use
+
+```shell
+$ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
+```

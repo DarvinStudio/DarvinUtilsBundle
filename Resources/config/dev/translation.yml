@@ -1,8 +1,22 @@
 parameters:
+    darvin_utils.translation.title_case_command.class:        Darvin\Utils\Command\TitleCaseTranslationsCommand
+    darvin_utils.translation.title_case_command.name:         darvin:utils:translations:title-case
+    darvin_utils.translation.title_case_command.base_url:     http://brettterpstra.com
+    darvin_utils.translation.title_case_command.http_timeout: 30
+
     darvin_utils.translation.translate_command.class: Darvin\Utils\Command\TranslateTranslationsCommand
     darvin_utils.translation.translate_command.name:  darvin:utils:translations:translate
 
 services:
+    darvin_utils.translation.title_case_command:
+        class: "%darvin_utils.translation.title_case_command.class%"
+        arguments:
+            - "%darvin_utils.translation.title_case_command.name%"
+            - "%darvin_utils.translation.title_case_command.base_url%"
+            - "%darvin_utils.translation.title_case_command.http_timeout%"
+        tags:
+            - { name: console.command }
+
     darvin_utils.translation.translate_command:
         class: "%darvin_utils.translation.translate_command.class%"
         arguments:
