@@ -17,7 +17,11 @@ darvin_utils:
         from_name: Почта России
 ```
 
-6.4.5: Add title case translations command.
+6.4.5:
+
+- add title case translations command;
+
+- convert .en translations to title case.
 
 To convert translations file to title case use
 
