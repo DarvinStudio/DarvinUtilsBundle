@@ -3,6 +3,9 @@ parameters:
     darvin_utils.data_fixture.load_command.name:  darvin:utils:fixture:load
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.data_fixture.load_command:
         class: "%darvin_utils.data_fixture.load_command.class%"
         arguments:

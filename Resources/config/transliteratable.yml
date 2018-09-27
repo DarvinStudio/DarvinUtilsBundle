@@ -4,6 +4,9 @@ parameters:
     darvin_utils.transliteratable.transliterator.class: Darvin\Utils\Transliteratable\Transliterator
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.transliteratable.subscriber:
         class:  "%darvin_utils.transliteratable.subscriber.class%"
         public: false

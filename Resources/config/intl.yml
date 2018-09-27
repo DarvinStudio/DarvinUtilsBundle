@@ -2,6 +2,9 @@ parameters:
     darvin_utils.intl.twig_extension.class: Twig_Extensions_Extension_Intl
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.intl.twig_extension:
         class:  "%darvin_utils.intl.twig_extension.class%"
         public: false

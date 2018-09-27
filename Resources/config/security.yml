@@ -2,6 +2,9 @@ parameters:
     darvin_utils.security.accessibility_checker.class: Darvin\Utils\Security\Authorization\AccessibilityChecker
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.security.accessibility_checker:
         class: "%darvin_utils.security.accessibility_checker.class%"
         arguments:

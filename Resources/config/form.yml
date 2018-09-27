@@ -6,6 +6,9 @@ parameters:
     darvin_utils.form.number_type_extension.class: Darvin\Utils\Form\Extension\NumberTypeExtension
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.form.description_extension:
         class: "%darvin_utils.form.description_extension.class%"
         tags:

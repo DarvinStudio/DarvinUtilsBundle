@@ -2,6 +2,9 @@ parameters:
     darvin_utils.mailer.class: Darvin\Utils\Mailer\Mailer
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.mailer:
         class: "%darvin_utils.mailer.class%"
         arguments:

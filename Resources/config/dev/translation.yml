@@ -8,6 +8,9 @@ parameters:
     darvin_utils.translation.translate_command.name:  darvin:utils:translations:translate
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.translation.title_case_command:
         class: "%darvin_utils.translation.title_case_command.class%"
         arguments:
