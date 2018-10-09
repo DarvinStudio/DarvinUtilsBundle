@@ -12,10 +12,8 @@
         }
     ],
     "require": {
-        "doctrine/orm":              "^2.4.8",
-        "doctrine/doctrine-bundle":  "~1.4",
-        "twig/extensions":           "^1.3",
-        "darvinstudio/darvin-utils": "^6"
+        "twig/extensions":           "^1.5",
+        "darvinstudio/darvin-utils": "^7"
     },
     "autoload": {
         "psr-4": { "Darvin\\UtilsBundle\\": "" }
