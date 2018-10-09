@@ -62,4 +62,4 @@ echo $pageClone->getContent(); // 'Hello, world!'
 ```
 
 После клонирования сущности (непосредственного или сущности в свойстве) вызывается событие
- "Darvin\Utils\Event\CloneEvents::CREATED" ("darvin_utils.clone.created"). Класс события - "Darvin\Utils\Event\CloneEvent".
+ "Darvin\Utils\Event\ClonableEvents::CLONED" ("darvin_utils.clonable.cloned"). Класс события - "Darvin\Utils\Event\CloneEvent".

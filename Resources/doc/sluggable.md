@@ -63,8 +63,8 @@ class Page
 **2. Event subscriber "darvin_utils.slug.subscriber" автоматически сгенерирует slug и присвоит его свойству Page::$slug
  (в приведенном выше примере).**
 
-После обновления slug'ов subscriber вызывает событие "Darvin\Utils\Event\Events::POST_SLUGS_UPDATE"
- ("darvin_utils.post_slugs_update"). Класс события - "Darvin\Utils\Event\SlugsUpdateEvent".
+После обновления slug'ов subscriber вызывает событие "Darvin\Utils\Event\SluggableEvents::SLUGS_UPDATED"
+ ("darvin_utils.sluggable.slugs_updated"). Класс события - "Darvin\Utils\Event\SlugsUpdateEvent".
 
 ## Добавление обработчика slug'ов
 
