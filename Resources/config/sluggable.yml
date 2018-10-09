@@ -1,7 +1,7 @@
 parameters:
     darvin_utils.sluggable.manager.entity.class: Darvin\Utils\Sluggable\SluggableEntityManager
 
-    darvin_utils.sluggable.subscriber.class: Darvin\Utils\EventListener\SluggableSubscriber
+    darvin_utils.sluggable.slugify_event_subscriber.class: Darvin\Utils\EventListener\SlugifySubscriber
 
 services:
     _defaults:
@@ -11,18 +11,18 @@ services:
         alias: darvin_utils.sluggable.manager.entity
 
     darvin_utils.sluggable.manager.entity:
-        class: "%darvin_utils.sluggable.manager.entity.class%"
+        class: '%darvin_utils.sluggable.manager.entity.class%'
         arguments:
-            - "@darvin_utils.entity_manager.provider"
-            - "@event_dispatcher"
-            - "@darvin_utils.mapping.metadata_factory"
-            - "@property_accessor"
+            - '@darvin_utils.entity_manager.provider'
+            - '@event_dispatcher'
+            - '@darvin_utils.mapping.metadata_factory'
+            - '@property_accessor'
 
-    darvin_utils.sluggable.subscriber:
-        class:  "%darvin_utils.sluggable.subscriber.class%"
+    darvin_utils.sluggable.slugify_event_subscriber:
+        class:  '%darvin_utils.sluggable.slugify_event_subscriber.class%'
         public: false
         arguments:
-            - "@darvin_utils.entity_manager.provider"
-            - "@darvin_utils.sluggable.manager"
+            - '@darvin_utils.entity_manager.provider'
+            - '@darvin_utils.sluggable.manager'
         tags:
             - { name: doctrine.event_subscriber, priority: 200 }

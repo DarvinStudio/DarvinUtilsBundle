@@ -1,15 +1,15 @@
 parameters:
-    darvin_utils.default_value.subscriber.class: Darvin\Utils\EventListener\DefaultValueSubscriber
+    darvin_utils.default_value.set_event_subscriber.class: Darvin\Utils\EventListener\SetDefaultValuesSubscriber
 
 services:
     _defaults:
         public: true
 
-    darvin_utils.default_value.subscriber:
-        class:  "%darvin_utils.default_value.subscriber.class%"
+    darvin_utils.default_value.set_event_subscriber:
+        class:  '%darvin_utils.default_value.set_event_subscriber.class%'
         public: false
         arguments:
-            - "@darvin_utils.mapping.metadata_factory"
-            - "@property_accessor"
+            - '@darvin_utils.mapping.metadata_factory'
+            - '@property_accessor'
         tags:
             - { name: doctrine.event_subscriber, priority: 500 }
