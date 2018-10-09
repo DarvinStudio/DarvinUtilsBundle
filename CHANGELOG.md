@@ -35,4 +35,6 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 
 7.0.0:
  
-- change dependency versions.
+- change dependency versions;
+
+- remove outdated docs.
