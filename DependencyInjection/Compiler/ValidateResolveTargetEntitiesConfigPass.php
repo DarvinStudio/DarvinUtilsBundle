@@ -10,7 +10,6 @@
 
 namespace Darvin\UtilsBundle\DependencyInjection\Compiler;
 
-use Darvin\Utils\Exception\ConfigurationException;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -30,13 +29,13 @@ class ValidateResolveTargetEntitiesConfigPass implements CompilerPassInterface
             }
             foreach ($part['orm']['resolve_target_entities'] as $target => $replacement) {
                 if (!interface_exists($target) && !class_exists($target)) {
-                    throw new ConfigurationException(sprintf('Target interface/class "%s" does not exist.', $target));
+                    throw new \LogicException(sprintf('Target interface/class "%s" does not exist.', $target));
                 }
                 if (!class_exists($replacement)) {
-                    throw new ConfigurationException(sprintf('Replacement entity class "%s" does not exist.', $replacement));
+                    throw new \LogicException(sprintf('Replacement entity class "%s" does not exist.', $replacement));
                 }
                 if (!in_array($target, array_merge(class_implements($replacement), class_parents($replacement)))) {
-                    throw new ConfigurationException(sprintf(
+                    throw new \LogicException(sprintf(
                         'Replacement entity class "%s" must implement/extend target interface/class "%s".', 
                         $replacement, 
                         $target
