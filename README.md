@@ -21,12 +21,3 @@
 - [**Stringifier**](Resources/doc/stringifier.md) - сервис приведения свойств объектов Doctrine к строке;
 - [**Transliteratable**](Resources/doc/transliteratable.md) - функционал, позволяющий автоматически транслитерировать
  значения свойств сущностей.
-
-### Справочники:
-
-- [**DI-теги**](Resources/doc/reference/di_tags.md);
-- [**Конфигурация**](Resources/doc/reference/configuration.md);
-- [**Публичные сервисы**](Resources/doc/reference/services.md);
-- [**События**](Resources/doc/reference/events.md).
-
-### [Рекомендации по стилю кода](Resources/doc/coding_standards.md)

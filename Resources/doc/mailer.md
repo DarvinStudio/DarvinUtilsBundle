@@ -25,5 +25,5 @@ $this->getContainer()->get('darvin_utils.mailer')->send(
 
 - в качестве аргумента "subject" можно передавать строку перевода, при этом можно использовать аргумент "subjectParams"
  для передачи параметров перевода (см. пример выше);
-- имя отправителя задается параметром "darvin_utils.mailer.from" [конфигурации](reference/configuration.md) бандла;
-- кодировка письма задается параметром "darvin_utils.mailer.charset" [конфигурации](reference/configuration.md) бандла.
+- имя отправителя задается параметром "darvin_utils.mailer.from" конфигурации бандла;
+- кодировка письма задается параметром "darvin_utils.mailer.charset" конфигурации бандла.
