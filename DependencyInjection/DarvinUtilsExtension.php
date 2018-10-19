@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Igor Nikolaev <igor.sv.n@gmail.com>
  * @copyright Copyright (c) 2015-2018, Darvin Studio
@@ -28,7 +28,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration(new Configuration(), $configs);
 
@@ -49,6 +49,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'mapping',
             'new_object',
             'object_namer',
+            'orm',
             'routing',
             'security',
             'service',
@@ -78,7 +79,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     /**
      * {@inheritdoc}
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $fileLocator = new FileLocator(__DIR__.'/../Resources/config/app');
 

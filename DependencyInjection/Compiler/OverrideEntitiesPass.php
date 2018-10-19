@@ -59,24 +59,25 @@ class OverrideEntitiesPass implements CompilerPassInterface
                 }
                 foreach (class_implements($fqcn) as $interface) {
                     if (sprintf('%sInterface', $fqcn) === $interface) {
-                        $implementations[$interface] = $replacements[$fqcn] ?? $fqcn;
+                        $implementations[$interface] = $replacements[$interface] = $replacements[$fqcn] ?? $fqcn;
 
                         break;
                     }
                 }
             }
         }
-        if (!empty($replacements) && isset($bundles['DarvinAdminBundle'])) {
-            $container->setParameter(
-                'darvin_admin.entity_override',
-                array_merge($replacements, $container->getParameter('darvin_admin.entity_override'))
-            );
-        }
         if (!empty($implementations)) {
             $listener = $container->getDefinition('doctrine.orm.listeners.resolve_target_entity');
 
             foreach ($implementations as $interface => $implementation) {
                 $listener->addMethodCall('addResolveTargetEntity', [$interface, $implementation, []]);
+            }
+        }
+        if (!empty($replacements)) {
+            $resolver = $container->getDefinition('darvin_utils.orm.entity_resolver');
+
+            foreach ($replacements as $entity => $replacement) {
+                $resolver->addMethodCall('addReplacement', [$entity, $replacement]);
             }
         }
     }

@@ -1,0 +1,9 @@
+parameters:
+    darvin_utils.orm.entity_resolver.class: Darvin\Utils\ORM\EntityResolver
+
+services:
+    _defaults:
+        public: true
+
+    darvin_utils.orm.entity_resolver:
+        class: '%darvin_utils.orm.entity_resolver.class%'
