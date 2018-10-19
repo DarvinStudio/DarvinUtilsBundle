@@ -36,7 +36,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('mailer')
                     ->canBeEnabled()
                     ->children()
-                        ->scalarNode('charset')->defaultValue('utf-8')->end()
+                        ->scalarNode('charset')->defaultValue('utf-8')->cannotBeEmpty()->end()
                         ->scalarNode('from')->isRequired()->end()
                         ->scalarNode('from_name')->defaultNull()->end()
                         ->booleanNode('prepend_host')->defaultTrue();

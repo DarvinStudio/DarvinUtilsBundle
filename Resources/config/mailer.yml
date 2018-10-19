@@ -1,6 +1,8 @@
 parameters:
     darvin_utils.mailer.class: Darvin\Utils\Mailer\Mailer
 
+    darvin_utils.mailer.translation_domain: email
+
 services:
     _defaults:
         public: true
@@ -10,9 +12,10 @@ services:
         arguments:
             - "@logger"
             - "@request_stack"
-            - "@?mailer"
             - "@translator"
+            - "%darvin_utils.mailer.translation_domain%"
             - "%darvin_utils.mailer.charset%"
             - "%darvin_utils.mailer.from%"
             - "%darvin_utils.mailer.from_name%"
             - "%darvin_utils.mailer.prepend_host%"
+            - "@?mailer"
