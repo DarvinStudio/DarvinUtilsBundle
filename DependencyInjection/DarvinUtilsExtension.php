@@ -83,6 +83,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         $fileLocator = new FileLocator(__DIR__.'/../Resources/config/app');
 
         foreach ([
+            'doctrine',
             'stof_doctrine_extensions',
         ] as $extension) {
             if ($container->hasExtension($extension)) {

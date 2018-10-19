@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Igor Nikolaev <igor.sv.n@gmail.com>
  * @copyright Copyright (c) 2015, Darvin Studio
@@ -13,7 +13,7 @@ namespace Darvin\UtilsBundle;
 use Darvin\UtilsBundle\DependencyInjection\Compiler\AddAnnotationDriversPass;
 use Darvin\UtilsBundle\DependencyInjection\Compiler\AddSlugHandlersPass;
 use Darvin\UtilsBundle\DependencyInjection\Compiler\CreateServiceProvidersPass;
-use Darvin\UtilsBundle\DependencyInjection\Compiler\ValidateResolveTargetEntitiesConfigPass;
+use Darvin\UtilsBundle\DependencyInjection\Compiler\OverrideEntitiesPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -25,7 +25,7 @@ class DarvinUtilsBundle extends Bundle
     /**
      * {@inheritdoc}
      */
-    public function build(ContainerBuilder $container)
+    public function build(ContainerBuilder $container): void
     {
         parent::build($container);
 
@@ -33,6 +33,6 @@ class DarvinUtilsBundle extends Bundle
             ->addCompilerPass(new AddAnnotationDriversPass())
             ->addCompilerPass(new AddSlugHandlersPass())
             ->addCompilerPass(new CreateServiceProvidersPass())
-            ->addCompilerPass(new ValidateResolveTargetEntitiesConfigPass());
+            ->addCompilerPass(new OverrideEntitiesPass());
     }
 }
