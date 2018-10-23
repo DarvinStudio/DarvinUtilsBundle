@@ -21,12 +21,24 @@ use Symfony\Component\Finder\Finder;
 class OverrideEntitiesPass implements CompilerPassInterface
 {
     /**
+     * @var \Symfony\Component\Filesystem\Filesystem
+     */
+    private $filesystem;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->filesystem = new Filesystem();
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function process(ContainerBuilder $container): void
     {
         $bundles         = $container->getParameter('kernel.bundles_metadata');
-        $filesystem      = new Filesystem();
         $implementations = $replacements = [];
 
         foreach ($bundles as $bundle => $attr) {
@@ -36,7 +48,7 @@ class OverrideEntitiesPass implements CompilerPassInterface
 
             $dir = implode(DIRECTORY_SEPARATOR, [$attr['path'], 'Entity']);
 
-            if (!$filesystem->exists($dir)) {
+            if (!$this->filesystem->exists($dir)) {
                 continue;
             }
             /** @var \Symfony\Component\Finder\SplFileInfo $file */
