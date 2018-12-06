@@ -1,0 +1,18 @@
+parameters:
+    darvin_utils.price.formatter.class: Darvin\UtilsBundle\Price\PriceFormatter
+
+    darvin_utils.price.twig_extension.class: Darvin\Utils\Twig\Extension\PriceExtension
+
+services:
+    darvin_utils.price.formatter:
+        class: "%darvin_utils.price.formatter.class%"
+        arguments:
+            - "@darvin_utils.templating.provider"
+
+    darvin_utils.price.twig_extension:
+        class:  "%darvin_utils.price.twig_extension.class%"
+        public: false
+        arguments:
+            - "@darvin_utils.price.formatter"
+        tags:
+            - { name: twig.extension }

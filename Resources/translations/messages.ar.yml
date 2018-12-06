@@ -4,3 +4,5 @@ boolean:
 flash:
     error:
         form: 'شكل الأخطاء المكتشفة. اصلاحها وإعادة تشكيل'
+price:
+    default: AED&nbsp;%price%
