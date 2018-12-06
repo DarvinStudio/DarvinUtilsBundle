@@ -3,4 +3,6 @@ boolean:
     - Oui
 flash:
     error:
-        form: 'Des erreurs détectées. Les corriger et de soumettre à nouveau le formulaire'
+        form: 'Des Erreurs Détectées. Les corriger et de soumettre à nouveau le Formulaire'
+price:
+    default: '%price%&nbsp;€'

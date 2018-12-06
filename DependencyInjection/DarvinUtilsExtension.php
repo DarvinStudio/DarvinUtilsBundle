@@ -50,6 +50,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'new_object',
             'object_namer',
             'orm',
+            'price',
             'routing',
             'security',
             'service',

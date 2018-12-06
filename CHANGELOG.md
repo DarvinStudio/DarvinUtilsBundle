@@ -33,6 +33,8 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 
 6.4.7: Force make services public by default.
 
+6.5.0: Add "format_price" Twig filter.
+
 7.0.0:
  
 - change dependency versions;
