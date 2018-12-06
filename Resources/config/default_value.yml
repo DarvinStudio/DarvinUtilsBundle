@@ -2,6 +2,9 @@ parameters:
     darvin_utils.default_value.subscriber.class: Darvin\Utils\EventListener\DefaultValueSubscriber
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.default_value.subscriber:
         class:  "%darvin_utils.default_value.subscriber.class%"
         public: false

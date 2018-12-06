@@ -4,6 +4,9 @@ parameters:
     darvin_utils.sluggable.subscriber.class: Darvin\Utils\EventListener\SluggableSubscriber
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.sluggable.manager:
         alias: darvin_utils.sluggable.manager.entity
 

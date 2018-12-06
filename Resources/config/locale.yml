@@ -2,6 +2,9 @@ parameters:
     darvin_utils.locale.provider.class: Darvin\Utils\Locale\LocaleProvider
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.locale.provider:
         class: "%darvin_utils.locale.provider.class%"
         arguments:

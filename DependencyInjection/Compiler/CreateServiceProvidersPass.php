@@ -10,9 +10,9 @@
 
 namespace Darvin\UtilsBundle\DependencyInjection\Compiler;
 
+use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
 
 /**
  * Create service providers compiler pass
@@ -86,7 +86,7 @@ class CreateServiceProvidersPass implements CompilerPassInterface
                 );
             }
 
-            $definitions[$providerId] = (new DefinitionDecorator(self::PARENT_ID))->addArgument($id);
+            $definitions[$providerId] = (new ChildDefinition(self::PARENT_ID))->addArgument($id);
         }
 
         $container->addDefinitions($definitions);

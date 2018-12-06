@@ -2,6 +2,9 @@ parameters:
     darvin_utils.tree.sorter.class: Darvin\Utils\Tree\TreeSorter
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.tree.sorter:
         class:  "%darvin_utils.tree.sorter.class%"
         public: true

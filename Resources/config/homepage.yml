@@ -2,6 +2,9 @@ parameters:
     darvin_utils.homepage.dummy_router.class: Darvin\Utils\Homepage\DummyHomepageRouter
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.homepage.router:
         alias: darvin_utils.homepage.dummy_router
 

@@ -2,6 +2,9 @@ parameters:
     darvin_utils.anti_spam.form_type.class: Darvin\Utils\Form\Type\AntiSpamType
 
 services:
+    _defaults:
+        public: true
+
     darvin_utils.anti_spam.form_type:
         class: "%darvin_utils.anti_spam.form_type.class%"
         tags:
