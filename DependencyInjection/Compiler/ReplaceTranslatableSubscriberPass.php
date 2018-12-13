@@ -27,8 +27,8 @@ class ReplaceTranslatableSubscriberPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container): void
     {
-        if ($container->hasDefinition(static::ID)) {
-            $container->getDefinition(static::ID)
+        if ($container->hasDefinition(self::ID)) {
+            $container->getDefinition(self::ID)
                 ->setClass(TranslatableSubscriber::class)
                 ->addArgument(new Reference('darvin_utils.orm.entity_resolver'));
         }
