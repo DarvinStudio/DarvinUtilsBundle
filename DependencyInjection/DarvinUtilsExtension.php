@@ -58,7 +58,6 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'sluggable',
             'stringifier',
             'transliteratable',
-            'tree',
             'user',
         ] as $resource) {
             $loader->load($resource.'.yml');
@@ -75,6 +74,12 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         }
         if ($config['mailer']['enabled']) {
             $loader->load('mailer.yml');
+        }
+
+        $bundles = $container->getParameter('kernel.bundles');
+
+        if (isset($bundles['StofDoctrineExtensionsBundle'])) {
+            $loader->load('tree.yml');
         }
     }
 
