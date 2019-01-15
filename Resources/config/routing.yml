@@ -22,6 +22,8 @@ services:
         class:  "%darvin_utils.routing.route_manager.cached.class%"
         public: false
         arguments:
+            - "@darvin_utils.locale.provider"
             - "@router.default"
             - "%kernel.cache_dir%/darvin/utils/routes.php"
             - "%kernel.debug%"
+            - "%locales%"
