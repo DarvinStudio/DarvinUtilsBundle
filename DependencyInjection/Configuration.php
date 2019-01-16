@@ -27,20 +27,22 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('darvin_utils');
 
-        /** @var \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $rootNode */
-        $rootNode = $treeBuilder->getRootNode();
+        /** @var \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $root */
+        $root = $treeBuilder->getRootNode();
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
-        $rootNode
+        $root
             ->children()
                 ->arrayNode('mailer')->canBeEnabled()
                     ->children()
                         ->scalarNode('charset')->defaultValue('utf-8')->cannotBeEmpty()->end()
-                        ->scalarNode('from')->isRequired()->end()
-                        ->scalarNode('from_name')->defaultNull()->end()
-                        ->booleanNode('prepend_host')->defaultTrue();
+                        ->booleanNode('add_host')->defaultFalse()->end()
+                        ->arrayNode('from')->isRequired()
+                            ->children()
+                                ->scalarNode('email')->isRequired()->end()
+                                ->scalarNode('name')->defaultNull();
 
         return $treeBuilder;
     }
