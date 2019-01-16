@@ -18,4 +18,4 @@ services:
             - "%darvin_utils.mailer.from%"
             - "%darvin_utils.mailer.from_name%"
             - "%darvin_utils.mailer.prepend_host%"
-            - "@?mailer"
+            - "@mailer"

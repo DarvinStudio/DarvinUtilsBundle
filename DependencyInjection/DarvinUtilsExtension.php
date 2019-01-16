@@ -30,11 +30,11 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $config = $this->processConfiguration(new Configuration(), $configs);
+        $bundles = $container->getParameter('kernel.bundles');
+        $config  = $this->processConfiguration(new Configuration(), $configs);
+        $loader  = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         (new ConfigInjector())->inject($config, $container, $this->getAlias());
-
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         foreach ([
             'anti_spam',
@@ -72,6 +72,14 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             }
         }
         if ($config['mailer']['enabled']) {
+            if (!isset($bundles['SwiftmailerBundle'])) {
+                throw new \RuntimeException(<<<MESSAGE
+In order to use mailer please install Swiftmailer bundle:
+$ composer require symfony/swiftmailer-bundle
+MESSAGE
+                );
+            }
+
             $loader->load('mailer.yml');
         }
 
