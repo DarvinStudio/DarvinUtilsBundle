@@ -32,7 +32,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         $bundles = $container->getParameter('kernel.bundles');
         $config  = $this->processConfiguration(new Configuration(), $configs);
 
-        (new ConfigInjector())->inject($config, $container, $this->getAlias());
+        (new ConfigInjector($container))->inject($config, $this->getAlias());
 
         (new ConfigLoader($container, __DIR__.'/../Resources/config'))->load([
             'anti_spam',
