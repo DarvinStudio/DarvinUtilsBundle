@@ -11,12 +11,11 @@
 namespace Darvin\UtilsBundle\DependencyInjection;
 
 use Darvin\Utils\DependencyInjection\ConfigInjector;
-use Symfony\Component\Config\FileLocator;
+use Darvin\Utils\DependencyInjection\ConfigLoader;
+use Darvin\Utils\DependencyInjection\ExtensionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
-use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -32,11 +31,10 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     {
         $bundles = $container->getParameter('kernel.bundles');
         $config  = $this->processConfiguration(new Configuration(), $configs);
-        $loader  = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         (new ConfigInjector())->inject($config, $container, $this->getAlias());
 
-        foreach ([
+        (new ConfigLoader($container, __DIR__.'/../Resources/config'))->load([
             'anti_spam',
             'cloner',
             'custom_object',
@@ -58,36 +56,30 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'stringifier',
             'transliteratable',
             'user',
-        ] as $resource) {
-            $loader->load($resource.'.yaml');
-        }
-        if ('dev' === $container->getParameter('kernel.environment')) {
-            foreach ([
-                'translation',
-            ] as $resource) {
-                $loader->load(sprintf('dev/%s.yaml', $resource));
-            }
-            if (interface_exists('Doctrine\Common\DataFixtures\FixtureInterface')) {
-                $loader->load('dev/data_fixture.yaml');
-            }
-        }
-        if ($config['mailer']['enabled']) {
-            if (!isset($bundles['SwiftmailerBundle'])) {
-                throw new \RuntimeException(<<<MESSAGE
+
+            'tree'             => ['bundle' => 'StofDoctrineExtensionsBundle'],
+
+            'dev/translation'  => ['env' => 'dev'],
+
+            'dev/data_fixture' => ['env' => 'dev', 'callback' => function () {
+                return interface_exists('Doctrine\Common\DataFixtures\FixtureInterface');
+            }],
+
+            'mailer' => ['callback' => function () use ($bundles, $config) {
+                if (!$config['mailer']['enabled']) {
+                    return false;
+                }
+                if (!isset($bundles['SwiftmailerBundle'])) {
+                    throw new \RuntimeException(<<<MESSAGE
 In order to use mailer please install Swiftmailer bundle:
 $ composer require symfony/swiftmailer-bundle
 MESSAGE
-                );
-            }
+                    );
+                }
 
-            $loader->load('mailer.yaml');
-        }
-
-        $bundles = $container->getParameter('kernel.bundles');
-
-        if (isset($bundles['StofDoctrineExtensionsBundle'])) {
-            $loader->load('tree.yaml');
-        }
+                return true;
+            }],
+        ]);
     }
 
     /**
@@ -95,15 +87,9 @@ MESSAGE
      */
     public function prepend(ContainerBuilder $container): void
     {
-        $fileLocator = new FileLocator(__DIR__.'/../Resources/config/app');
-
-        foreach ([
+        (new ExtensionConfigurator($container, __DIR__.'/../Resources/config/app'))->configure([
             'doctrine',
             'stof_doctrine_extensions',
-        ] as $extension) {
-            if ($container->hasExtension($extension)) {
-                $container->prependExtensionConfig($extension, Yaml::parse(file_get_contents($fileLocator->locate($extension.'.yaml')))[$extension]);
-            }
-        }
+        ]);
     }
 }
