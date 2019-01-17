@@ -59,16 +59,16 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'transliteratable',
             'user',
         ] as $resource) {
-            $loader->load($resource.'.yml');
+            $loader->load($resource.'.yaml');
         }
         if ('dev' === $container->getParameter('kernel.environment')) {
             foreach ([
                 'translation',
             ] as $resource) {
-                $loader->load(sprintf('dev/%s.yml', $resource));
+                $loader->load(sprintf('dev/%s.yaml', $resource));
             }
             if (interface_exists('Doctrine\Common\DataFixtures\FixtureInterface')) {
-                $loader->load('dev/data_fixture.yml');
+                $loader->load('dev/data_fixture.yaml');
             }
         }
         if ($config['mailer']['enabled']) {
@@ -80,13 +80,13 @@ MESSAGE
                 );
             }
 
-            $loader->load('mailer.yml');
+            $loader->load('mailer.yaml');
         }
 
         $bundles = $container->getParameter('kernel.bundles');
 
         if (isset($bundles['StofDoctrineExtensionsBundle'])) {
-            $loader->load('tree.yml');
+            $loader->load('tree.yaml');
         }
     }
 
@@ -102,7 +102,7 @@ MESSAGE
             'stof_doctrine_extensions',
         ] as $extension) {
             if ($container->hasExtension($extension)) {
-                $container->prependExtensionConfig($extension, Yaml::parse(file_get_contents($fileLocator->locate($extension.'.yml')))[$extension]);
+                $container->prependExtensionConfig($extension, Yaml::parse(file_get_contents($fileLocator->locate($extension.'.yaml')))[$extension]);
             }
         }
     }
