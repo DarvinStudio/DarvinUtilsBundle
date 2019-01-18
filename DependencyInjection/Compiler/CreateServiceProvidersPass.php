@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Igor Nikolaev <igor.sv.n@gmail.com>
  * @copyright Copyright (c) 2016-2018, Darvin Studio
@@ -19,16 +19,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class CreateServiceProvidersPass implements CompilerPassInterface
 {
-    const ID_SUFFIX = '.provider';
+    private const ID_SUFFIX      = '.provider';
+    private const PARENT_ID      = 'darvin_utils.service.abstract_provider';
+    private const TAG_PROVIDABLE = 'darvin_utils.providable';
 
-    const PARENT_ID = 'darvin_utils.service.abstract_provider';
-
-    const TAG_PROVIDABLE = 'darvin_utils.providable';
-
-    /**
-     * @var array
-     */
-    private static $ids = [
+    private const IDS = [
         'darvin_utils.authorization_checker.provider' => 'security.authorization_checker',
         'darvin_utils.entity_manager.provider'        => 'doctrine.orm.default_entity_manager',
         'darvin_utils.object_manager.provider'        => 'doctrine.orm.default_entity_manager',
@@ -38,40 +33,12 @@ class CreateServiceProvidersPass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
-        $this->addServiceProviders($container, self::$ids);
+        $ids = self::IDS;
 
-        $this->createServiceProviders($container, array_keys($container->findTaggedServiceIds(self::TAG_PROVIDABLE)));
-    }
-
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container DI container
-     * @param string[]                                                $ids       Service IDs
-     */
-    public function createServiceProviders(ContainerBuilder $container, array $ids)
-    {
-        if (empty($ids)) {
-            return;
-        }
-
-        $ids = array_combine(array_map(function ($id) {
-            return $id.self::ID_SUFFIX;
-        }, $ids), $ids);
-
-        $this->addServiceProviders($container, $ids);
-    }
-
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container DI container
-     * @param array                                                   $ids       { string providerId => string serviceId }
-     *
-     * @throws \RuntimeException
-     */
-    private function addServiceProviders(ContainerBuilder $container, array $ids)
-    {
-        if (empty($ids)) {
-            return;
+        foreach (array_keys($container->findTaggedServiceIds(self::TAG_PROVIDABLE)) as $id) {
+            $ids[$id.self::ID_SUFFIX] = $id;
         }
 
         $definitions = [];
