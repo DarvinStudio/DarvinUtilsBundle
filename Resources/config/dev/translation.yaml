@@ -24,6 +24,6 @@ services:
         class: "%darvin_utils.translation.translate_command.class%"
         arguments:
             - "%darvin_utils.translation.translate_command.name%"
-            - "@=service('service_container').hasParameter('yandex_translate_api_key') ? parameter('yandex_translate_api_key') : null"
+            - "%darvin_utils.yandex_translate_api_key%"
         tags:
             - { name: console.command }
