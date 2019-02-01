@@ -10,15 +10,7 @@ Mailer - сервис отправки электронной почты.
 Пример использования:
 
 ```php
-$this->getContainer()->get('darvin_utils.mailer')->send(
-    'email.hello.subject',
-    'Hello, world!',
-    'world@example.com',
-    array(
-        '%name%' => 'world',
-    ),
-    'text/plain'
-);
+$this->getContainer()->get('darvin_utils.mailer')->send('email.hello.subject', 'Hello, world!', 'world@example.com');
 ```
 
 Особенности:
