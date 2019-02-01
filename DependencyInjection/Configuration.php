@@ -1,7 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Igor Nikolaev <igor.sv.n@gmail.com>
- * @copyright Copyright (c) 2015-2018, Darvin Studio
+ * @copyright Copyright (c) 2015-2019, Darvin Studio
  * @link      https://www.darvin-studio.ru
  *
  * For the full copyright and license information, please view the LICENSE
@@ -23,12 +23,12 @@ class Configuration implements ConfigurationInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('darvin_utils');
+        $builder = new TreeBuilder('darvin_utils');
 
         /** @var \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $root */
-        $root = $treeBuilder->getRootNode();
+        $root = $builder->getRootNode();
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
@@ -38,13 +38,13 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('yandex_translate_api_key')->defaultNull()->end()
                 ->arrayNode('mailer')->canBeEnabled()
                     ->children()
-                        ->scalarNode('charset')->defaultValue('utf-8')->cannotBeEmpty()->end()
                         ->booleanNode('add_host')->defaultFalse()->end()
+                        ->arrayNode('defaults')->useAttributeAsKey('name')->prototype('variable')->end()->end()
                         ->arrayNode('from')->isRequired()
                             ->children()
-                                ->scalarNode('email')->isRequired()->end()
+                                ->scalarNode('email')->isRequired()->cannotBeEmpty()->end()
                                 ->scalarNode('name')->defaultNull();
 
-        return $treeBuilder;
+        return $builder;
     }
 }

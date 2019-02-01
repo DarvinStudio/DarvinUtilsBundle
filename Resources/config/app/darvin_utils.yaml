@@ -1,0 +1,5 @@
+darvin_utils:
+    mailer:
+        defaults:
+            charset:      utf-8
+            content_type: text/html

@@ -88,6 +88,7 @@ MESSAGE
     public function prepend(ContainerBuilder $container): void
     {
         (new ExtensionConfigurator($container, __DIR__.'/../Resources/config/app'))->configure([
+            'darvin_utils',
             'doctrine',
             'stof_doctrine_extensions',
         ]);
