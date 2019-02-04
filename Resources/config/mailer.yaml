@@ -1,6 +1,8 @@
 parameters:
     darvin_utils.mailer.class: Darvin\Utils\Mailer\Mailer
 
+    darvin_utils.mailer.template.class: Darvin\Utils\Mailer\TemplateMailer
+
 services:
     _defaults:
         public: true
@@ -16,3 +18,9 @@ services:
             - "%darvin_utils.mailer.from.email%"
             - "%darvin_utils.mailer.from.name%"
             - "@mailer"
+
+    darvin_utils.mailer.template:
+        class: "%darvin_utils.mailer.template.class%"
+        arguments:
+            - "@darvin_utils.mailer"
+            - "@darvin_utils.templating.provider"
