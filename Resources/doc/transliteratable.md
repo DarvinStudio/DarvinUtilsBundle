@@ -31,7 +31,7 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column
      * @Darvin\Transliteratable(sanitize=true, allowedSymbols={"_"}, separator="-")
      */
     private $slug;

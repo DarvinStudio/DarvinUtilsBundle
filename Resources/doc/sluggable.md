@@ -45,7 +45,7 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column
      * @Assert\NotBlank
      */
     private $title;
@@ -53,7 +53,7 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column
      * @Darvin\Slug(sourcePropertyPaths={"category.slug", "title"}, separator="/")
      */
     private $slug;

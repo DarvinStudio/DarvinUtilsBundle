@@ -29,7 +29,7 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column
      * @Assert\NotBlank
      */
     private $title;
@@ -37,7 +37,7 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column
      * @Darvin\DefaultValue(sourcePropertyPath="title")
      */
     private $metaTitle;
