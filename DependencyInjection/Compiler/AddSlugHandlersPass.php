@@ -26,8 +26,9 @@ class AddSlugHandlersPass implements CompilerPassInterface
     public function process(ContainerBuilder $container): void
     {
         $manager = $container->getDefinition('darvin_utils.sluggable.manager.entity');
+        $ids     = $container->findTaggedServiceIds('darvin_utils.slug_handler');
 
-        foreach (array_keys((new TaggedServiceIdsSorter())->sort($container->findTaggedServiceIds('darvin_utils.slug_handler'))) as $id) {
+        foreach (array_keys((new TaggedServiceIdsSorter())->sort($ids)) as $id) {
             $manager->addMethodCall('addSlugHandler', [new Reference($id)]);
         }
     }
