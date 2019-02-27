@@ -33,6 +33,7 @@ class Configuration implements ConfigurationInterface
         // more information on that topic.
         $rootNode
             ->children()
+                ->enumNode('transliterator')->values(['default', 'strict'])->defaultValue('default')->cannotBeEmpty()->end()
                 ->arrayNode('mailer')
                     ->canBeEnabled()
                     ->children()

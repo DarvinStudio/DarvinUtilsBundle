@@ -1,7 +1,9 @@
 parameters:
     darvin_utils.transliteratable.subscriber.class: Darvin\Utils\EventListener\TransliteratableSubscriber
 
-    darvin_utils.transliteratable.transliterator.class: Darvin\Utils\Transliteratable\Transliterator
+    darvin_utils.transliteratable.transliterator.default.class: Darvin\Utils\Transliteratable\DefaultTransliterator
+
+    darvin_utils.transliteratable.transliterator.strict.class: Darvin\Utils\Transliteratable\StrictTransliterator
 
 services:
     _defaults:
@@ -17,5 +19,10 @@ services:
         tags:
             - { name: doctrine.event_subscriber, priority: 300 }
 
-    darvin_utils.transliteratable.transliterator:
-        class: "%darvin_utils.transliteratable.transliterator.class%"
+    darvin_utils.transliteratable.transliterator.default:
+        class:  "%darvin_utils.transliteratable.transliterator.default.class%"
+        public: false
+
+    darvin_utils.transliteratable.transliterator.strict:
+        class:  "%darvin_utils.transliteratable.transliterator.strict.class%"
+        public: false

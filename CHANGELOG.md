@@ -34,3 +34,12 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 6.4.7: Force make services public by default.
 
 6.5.0: Add "format_price" Twig filter.
+
+6.5.2: Add strict transliterator.
+
+Use configuration to choose transliterator:
+
+```yaml
+darvin_utils:
+    transliterator: default # One of "default"; "strict"
+```

@@ -81,6 +81,11 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         if (isset($bundles['StofDoctrineExtensionsBundle'])) {
             $loader->load('tree.yml');
         }
+
+        $container->setAlias(
+            'darvin_utils.transliteratable.transliterator',
+            sprintf('darvin_utils.transliteratable.transliterator.%s', $config['transliterator'])
+        );
     }
 
     /**
