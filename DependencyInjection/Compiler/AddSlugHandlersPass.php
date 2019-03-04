@@ -10,7 +10,7 @@
 
 namespace Darvin\UtilsBundle\DependencyInjection\Compiler;
 
-use Darvin\Utils\DependencyInjection\TaggedServiceIdsSorter;
+use Darvin\Utils\DependencyInjection\ServiceSorter;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -26,9 +26,8 @@ class AddSlugHandlersPass implements CompilerPassInterface
     public function process(ContainerBuilder $container): void
     {
         $manager = $container->getDefinition('darvin_utils.sluggable.manager.entity');
-        $ids     = $container->findTaggedServiceIds('darvin_utils.slug_handler');
 
-        foreach (array_keys((new TaggedServiceIdsSorter())->sort($ids)) as $id) {
+        foreach (array_keys((new ServiceSorter())->sort($container->findTaggedServiceIds('darvin_utils.slug_handler'))) as $id) {
             $manager->addMethodCall('addSlugHandler', [new Reference($id)]);
         }
     }
