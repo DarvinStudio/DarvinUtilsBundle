@@ -61,10 +61,6 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'dev/translation'  => ['env' => 'dev'],
 
-            'dev/data_fixture' => ['env' => 'dev', 'callback' => function () {
-                return interface_exists('Doctrine\Common\DataFixtures\FixtureInterface');
-            }],
-
             'mailer' => ['callback' => function () use ($bundles, $config) {
                 if (!$config['mailer']['enabled']) {
                     return false;
