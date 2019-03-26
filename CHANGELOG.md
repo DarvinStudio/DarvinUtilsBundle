@@ -43,3 +43,5 @@ Use configuration to choose transliterator:
 darvin_utils:
     transliterator: default # One of "default"; "strict"
 ```
+
+6.5.3: Add "format" option to price formatter.
