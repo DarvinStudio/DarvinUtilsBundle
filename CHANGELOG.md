@@ -35,6 +35,8 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 
 6.5.0: Add "format_price" Twig filter.
 
+6.5.3: Add "format" option to price formatter.
+
 7.0.0:
  
 - change dependency versions;

@@ -36,6 +36,10 @@ class PriceFormatter implements PriceFormatterInterface
      */
     public function format($price, array $options = [])
     {
+        if (!isset($options['format'])) {
+            $options['format'] = 'default';
+        }
+
         return $this->getTemplating()->render(isset($options['template']) ? $options['template'] : '@DarvinUtils/price.html.twig', [
             'price'   => $price,
             'options' => $options,
