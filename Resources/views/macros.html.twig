@@ -48,7 +48,7 @@
                         {{ value }}
                     </a>
                 {% else %}
-                    {{ value|trans }}
+                    {{ value|trans|raw }}
                 {% endif %}
             </span>
         {% endif %}
