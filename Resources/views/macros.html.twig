@@ -1,0 +1,56 @@
+{% macro property(name, title, value) %}
+
+    {% import _self as that %}
+
+    <div class="details-list__property">
+        {% if name %}
+            <span class="details-list__property-name"
+                  style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #7e7e7e;">
+                {% if value is iterable %}
+                    {{ (title ~ '.title')|trans }}
+                {% else %}
+                    {{ title|trans }}
+                {% endif %}
+            </span>
+        {% endif %}
+        {% if value is not same as(null) %}
+            <span class="details-list__property-value"
+                  style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #333333;">
+                {% if value is iterable %}
+                    {% if value is not empty %}
+
+                        {% set keys = value|keys %}
+
+                        {% if keys == keys|keys %}
+                            <ol>
+                                {% for item_name, item_value in value %}
+                                    <li>{{ that.property(null, title, item_value) }}</li>
+                                {% endfor %}
+                            </ol>
+                        {% else %}
+                            <ul>
+                                {% for item_name, item_value in value %}
+                                    <li>{{ that.property(item_name, title ~ '.item.' ~ item_name, item_value) }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endif %}
+                {% elseif value is same as(true) or value is same as(false) %}
+                    {{ ('boolean.' ~ (value ? 1 : 0))|trans }}
+                {% elseif 'email' in name|lower %}
+                    <a href="mailto:{{ value }}"
+                       style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #333333;">
+                        {{ value }}
+                    </a>
+                {% elseif 'phone' in name|lower %}
+                    <a href="tel:{{ value }}"
+                       style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #333333;">
+                        {{ value }}
+                    </a>
+                {% else %}
+                    {{ value|trans }}
+                {% endif %}
+            </span>
+        {% endif %}
+    </div>
+{% endmacro %}
