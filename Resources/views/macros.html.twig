@@ -1,6 +1,12 @@
-{% macro property(name, title, value) %}
+{% macro property(name, title, value, trans_domain) %}
 
     {% import _self as that %}
+
+    {% if trans_domain %}
+
+        {% trans_default_domain trans_domain %}
+
+    {% endif %}
 
     <div class="details-list__property">
         {% if name %}
@@ -24,13 +30,13 @@
                         {% if keys == keys|keys %}
                             <ol>
                                 {% for item_name, item_value in value %}
-                                    <li>{{ that.property(null, title, item_value) }}</li>
+                                    <li>{{ that.property(null, title, item_value, trans_domain) }}</li>
                                 {% endfor %}
                             </ol>
                         {% else %}
                             <ul>
                                 {% for item_name, item_value in value %}
-                                    <li>{{ that.property(item_name, title ~ '.item.' ~ item_name, item_value) }}</li>
+                                    <li>{{ that.property(item_name, title ~ '.item.' ~ item_name, item_value, trans_domain) }}</li>
                                 {% endfor %}
                             </ul>
                         {% endif %}
