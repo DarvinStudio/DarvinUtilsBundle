@@ -2,7 +2,7 @@
 
     {% import _self as that %}
 
-    {% if trans_domain %}
+    {% if trans_domain is defined %}
 
         {% trans_default_domain trans_domain %}
 
