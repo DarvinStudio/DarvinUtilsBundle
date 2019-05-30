@@ -13,7 +13,7 @@
     ],
     "require": {
         "twig/extensions":           "^1.5",
-        "darvinstudio/darvin-utils": "^7"
+        "darvinstudio/darvin-utils": "*"
     },
     "suggest": {
         "symfony/swiftmailer-bundle": "Allows to use mailer"
