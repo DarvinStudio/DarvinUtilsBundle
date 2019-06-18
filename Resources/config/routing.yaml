@@ -24,6 +24,6 @@ services:
         arguments:
             - "@darvin_utils.locale.provider"
             - "@router.default"
-            - "%kernel.cache_dir%/darvin/utils/routes.php"
+            - "%kernel.cache_dir%/darvin_utils/routes.php"
             - "%kernel.debug%"
             - "%locales%"
