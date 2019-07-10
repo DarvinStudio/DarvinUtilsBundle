@@ -1,8 +1,6 @@
 parameters:
     darvin_utils.new_object.counter.entity.class: Darvin\Utils\NewObject\NewEntityCounter
 
-    darvin_utils.new_object.twig_extension.class: Darvin\Utils\Twig\Extension\NewObjectExtension
-
 services:
     _defaults:
         public: true
@@ -16,11 +14,3 @@ services:
             - "@doctrine.orm.entity_manager"
             - "@darvin_utils.mapping.metadata_factory"
             - "@darvin_utils.user.query_builder_filterer"
-
-    darvin_utils.new_object.twig_extension:
-        class:  "%darvin_utils.new_object.twig_extension.class%"
-        public: false
-        arguments:
-            - "@darvin_utils.new_object.counter"
-        tags:
-            - { name: twig.extension }

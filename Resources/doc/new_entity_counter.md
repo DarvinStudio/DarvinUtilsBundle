@@ -37,5 +37,3 @@ $newPagesCount = $this->getContainer()->get('darvin_utils.new_object.counter')->
 ```
 
 Для проверки возможности подсчета новых сущностей того или иного класса сервис содержит метод "isCountable()".
-
-Методы сервиса доступны в Twig - это функции "utils_count_new_objects()" и "utils_new_objects_countable()" соответственно.
