@@ -44,3 +44,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 - remove outdated docs;
 
 - add entity resolver.
+
+7.0.3: Increase priority of override entities compiler pass.

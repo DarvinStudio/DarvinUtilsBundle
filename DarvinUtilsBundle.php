@@ -14,6 +14,7 @@ use Darvin\UtilsBundle\DependencyInjection\Compiler\AddAnnotationDriversPass;
 use Darvin\UtilsBundle\DependencyInjection\Compiler\AddSlugHandlersPass;
 use Darvin\UtilsBundle\DependencyInjection\Compiler\CreateServiceProvidersPass;
 use Darvin\UtilsBundle\DependencyInjection\Compiler\OverrideEntitiesPass;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -33,6 +34,6 @@ class DarvinUtilsBundle extends Bundle
             ->addCompilerPass(new AddAnnotationDriversPass())
             ->addCompilerPass(new AddSlugHandlersPass())
             ->addCompilerPass(new CreateServiceProvidersPass())
-            ->addCompilerPass(new OverrideEntitiesPass());
+            ->addCompilerPass(new OverrideEntitiesPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 10);
     }
 }
