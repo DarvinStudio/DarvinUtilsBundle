@@ -42,7 +42,7 @@
                         {% endif %}
                     {% endif %}
                 {% elseif value is same as(true) or value is same as(false) %}
-                    {{ ('boolean.' ~ (value ? 1 : 0))|trans }}
+                    {{ ('boolean.' ~ (value ? 'yes' : 'no'))|trans }}
                 {% elseif 'email' in name|lower %}
                     <a href="mailto:{{ value }}"
                        style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #333333;">

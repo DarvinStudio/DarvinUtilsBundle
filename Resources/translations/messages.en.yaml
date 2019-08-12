@@ -1,6 +1,7 @@
 boolean:
-    - No
-    - Yes
+    indeterminate: Indeterminate
+    no:            No
+    yes:           Yes
 
 flash:
     error:

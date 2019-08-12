@@ -1,6 +1,7 @@
 boolean:
-    - 没有
-    - 是的
+    indeterminate: 不确定
+    'no': 没有
+    'yes': 是的
 flash:
     error:
         form: '形成的错误检测。 解决这些问题，并重新提交形式'

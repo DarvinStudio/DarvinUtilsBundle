@@ -1,6 +1,7 @@
 boolean:
-    - Нет
-    - Да
+    indeterminate: Не определено
+    no:            Нет
+    yes:           Да
 
 flash:
     error:
