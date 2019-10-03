@@ -48,3 +48,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.0.3: Increase priority of override entities compiler pass.
 
 7.0.4: Refactor stringifying booleans.
+
+7.0.5: Add compress response event subscriber.

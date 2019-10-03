@@ -36,6 +36,11 @@ class Configuration implements ConfigurationInterface
         $root
             ->children()
                 ->scalarNode('yandex_translate_api_key')->defaultNull()->end()
+                ->arrayNode('response')->addDefaultsIfNotSet()
+                    ->children()
+                        ->booleanNode('compress')->defaultFalse()->end()
+                    ->end()
+                ->end()
                 ->arrayNode('mailer')->canBeEnabled()
                     ->children()
                         ->booleanNode('add_host')->defaultFalse()->end()

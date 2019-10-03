@@ -75,6 +75,10 @@ MESSAGE
 
                 return true;
             }],
+
+            'response/compress' => ['callback' => function () use ($config) {
+                return $config['response']['compress'];
+            }],
         ]);
     }
 
