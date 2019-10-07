@@ -15,9 +15,6 @@
         "twig/extensions":           "^1.5",
         "darvinstudio/darvin-utils": "*"
     },
-    "suggest": {
-        "symfony/swiftmailer-bundle": "Allows to use mailer"
-    },
     "autoload": {
         "psr-4": { "Darvin\\UtilsBundle\\": "" }
     }

@@ -50,3 +50,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.0.4: Refactor stringifying booleans.
 
 7.0.5: Add compress response event subscriber.
+
+7.1.0: Move mailer to Mailer bundle.

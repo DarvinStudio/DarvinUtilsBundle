@@ -29,8 +29,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $bundles = $container->getParameter('kernel.bundles');
-        $config  = $this->processConfiguration(new Configuration(), $configs);
+        $config = $this->processConfiguration(new Configuration(), $configs);
 
         (new ConfigInjector($container))->inject($config, $this->getAlias());
 
@@ -61,21 +60,6 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'dev/translation'  => ['env' => 'dev'],
 
-            'mailer' => ['callback' => function () use ($bundles, $config) {
-                if (!$config['mailer']['enabled']) {
-                    return false;
-                }
-                if (!isset($bundles['SwiftmailerBundle'])) {
-                    throw new \RuntimeException(<<<MESSAGE
-In order to use mailer please install Swiftmailer bundle:
-$ composer require symfony/swiftmailer-bundle
-MESSAGE
-                    );
-                }
-
-                return true;
-            }],
-
             'response/compress' => ['callback' => function () use ($config) {
                 return $config['response']['compress'];
             }],
@@ -88,7 +72,6 @@ MESSAGE
     public function prepend(ContainerBuilder $container): void
     {
         (new ExtensionConfigurator($container, __DIR__.'/../Resources/config/app'))->configure([
-            'darvin_utils',
             'doctrine',
             'stof_doctrine_extensions',
         ]);

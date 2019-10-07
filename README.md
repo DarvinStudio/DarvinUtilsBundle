@@ -12,7 +12,6 @@
 - [**Default value**](Resources/doc/default_value.md) - функционал, позволяющий автоматически присваивать свойству
  сущности, значение которого не задано, значение другого свойства;
 - [**Flash notifier**](Resources/doc/flash_notifier.md) - сервис, упрощающий добавление flash-сообщений;
-- [**Mailer**](Resources/doc/mailer.md) - сервис отправки электронной почты;
 - [**Metadata factory**](Resources/doc/metadata_factory.md) - фабрика метаданных на базе аннотаций;
 - [**New entity counter**](Resources/doc/new_entity_counter.md) - сервис подсчета количества новых сущностей;
 - [**Object namer**](Resources/doc/object_namer.md) - сервис генерации имени объекта в нотации "under_score" по его

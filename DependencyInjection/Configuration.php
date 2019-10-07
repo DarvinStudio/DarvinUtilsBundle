@@ -38,17 +38,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('yandex_translate_api_key')->defaultNull()->end()
                 ->arrayNode('response')->addDefaultsIfNotSet()
                     ->children()
-                        ->booleanNode('compress')->defaultFalse()->end()
-                    ->end()
-                ->end()
-                ->arrayNode('mailer')->canBeEnabled()
-                    ->children()
-                        ->booleanNode('add_host')->defaultFalse()->end()
-                        ->arrayNode('defaults')->useAttributeAsKey('name')->prototype('variable')->end()->end()
-                        ->arrayNode('from')->isRequired()
-                            ->children()
-                                ->scalarNode('email')->isRequired()->cannotBeEmpty()->end()
-                                ->scalarNode('name')->defaultNull();
+                        ->booleanNode('compress')->defaultFalse();
 
         return $builder;
     }
