@@ -3,7 +3,15 @@
     {% import _self as that %}
 
     {{ that.email_property(name, title, value, trans_domain) }}
+{% endmacro %}
 
+{% macro email_data(data, trans_prefix, trans_domain) %}
+
+    {% import _self as that %}
+
+    {% for name, value in data %}
+        {{ that.email_property(name, trans_prefix ~ name, value, trans_domain) }}
+    {% endfor %}
 {% endmacro %}
 
 {% macro email_property(name, title, value, trans_domain) %}
