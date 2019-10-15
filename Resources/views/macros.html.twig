@@ -2,6 +2,14 @@
 
     {% import _self as that %}
 
+    {{ that.email_property(name, title, value, trans_domain) }}
+
+{% endmacro %}
+
+{% macro email_property(name, title, value, trans_domain) %}
+
+    {% import _self as that %}
+
     {% if trans_domain is defined %}
 
         {% trans_default_domain trans_domain %}
@@ -30,13 +38,13 @@
                         {% if keys == keys|keys %}
                             <ol>
                                 {% for item_name, item_value in value %}
-                                    <li>{{ that.property(null, title, item_value, trans_domain) }}</li>
+                                    <li>{{ that.email_property(null, title, item_value, trans_domain) }}</li>
                                 {% endfor %}
                             </ol>
                         {% else %}
                             <ul>
                                 {% for item_name, item_value in value %}
-                                    <li>{{ that.property(item_name, title ~ '.item.' ~ item_name, item_value, trans_domain) }}</li>
+                                    <li>{{ that.email_property(item_name, title ~ '.item.' ~ item_name, item_value, trans_domain) }}</li>
                                 {% endfor %}
                             </ul>
                         {% endif %}
