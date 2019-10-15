@@ -83,9 +83,13 @@
 
     {% import _self as that %}
 
-    {% for name, value in data %}
-        {{ that.table_property(name, trans_prefix ~ name, value, trans_domain) }}
-    {% endfor %}
+    {% if data is not empty %}
+        <table>
+            {% for name, value in data %}
+                {{ that.table_property(name, trans_prefix ~ name, value, trans_domain) }}
+            {% endfor %}
+        </table>
+    {% endif %}
 {% endmacro %}
 
 {% macro table_property(name, title, value, trans_domain) %}
@@ -98,40 +102,36 @@
 
     {% endif %}
 
-    <div class="details-list__property">
+    <tr>
         {% if name %}
-            <span class="details-list__property-name"
-                  style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #7e7e7e;">
+            <th>
                 {% if value is iterable %}
                     {{ (title ~ '.title')|trans }}
                 {% else %}
                     {{ title|trans }}
                 {% endif %}
-            </span>
+            </th>
         {% endif %}
-        <span class="details-list__property-value"
-              style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #333333;">
+        <td>
             {% if value is same as(null) %}
                 -
             {% else %}
                 {% if value is iterable %}
                     {% if value is not empty %}
+                        <table>
 
-                        {% set keys = value|keys %}
+                            {% set keys = value|keys %}
 
-                        {% if keys == keys|keys %}
-                            <ol>
+                            {% if keys == keys|keys %}
                                 {% for item_name, item_value in value %}
-                                    <li>{{ that.table_property(null, title, item_value, trans_domain) }}</li>
+                                    {{ that.table_property(null, title, item_value, trans_domain) }}
                                 {% endfor %}
-                            </ol>
-                        {% else %}
-                            <ul>
+                            {% else %}
                                 {% for item_name, item_value in value %}
-                                    <li>{{ that.table_property(item_name, title ~ '.item.' ~ item_name, item_value, trans_domain) }}</li>
+                                    {{ that.table_property(item_name, title ~ '.item.' ~ item_name, item_value, trans_domain) }}
                                 {% endfor %}
-                            </ul>
-                        {% endif %}
+                            {% endif %}
+                        </table>
                     {% endif %}
                 {% elseif value is same as(true) or value is same as(false) %}
                     {{ ('boolean.' ~ (value ? 'yes' : 'no'))|trans }}
@@ -149,6 +149,6 @@
                     {{ value|trans|raw }}
                 {% endif %}
             {% endif %}
-        </span>
-    </div>
+        </td>
+    <tr>
 {% endmacro %}
