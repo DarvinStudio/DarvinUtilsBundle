@@ -35,9 +35,11 @@
                 {% endif %}
             </span>
         {% endif %}
-        {% if value is not same as(null) %}
-            <span class="details-list__property-value"
-                  style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #333333;">
+        <span class="details-list__property-value"
+              style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #333333;">
+            {% if value is same as(null) %}
+                -
+            {% else %}
                 {% if value is iterable %}
                     {% if value is not empty %}
 
@@ -72,8 +74,8 @@
                 {% else %}
                     {{ value|trans|raw }}
                 {% endif %}
-            </span>
-        {% endif %}
+            {% endif %}
+        </span>
     </div>
 {% endmacro %}
 
@@ -107,9 +109,11 @@
                 {% endif %}
             </span>
         {% endif %}
-        {% if value is not same as(null) %}
-            <span class="details-list__property-value"
-                  style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #333333;">
+        <span class="details-list__property-value"
+              style="font-family: Arial, sans-serif; font-size: 15px; line-height: 23px; color: #333333;">
+            {% if value is same as(null) %}
+                -
+            {% else %}
                 {% if value is iterable %}
                     {% if value is not empty %}
 
@@ -144,7 +148,7 @@
                 {% else %}
                     {{ value|trans|raw }}
                 {% endif %}
-            </span>
-        {% endif %}
+            {% endif %}
+        </span>
     </div>
 {% endmacro %}
