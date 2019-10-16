@@ -54,3 +54,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.1.0: Move mailer to Mailer bundle.
 
 7.1.1: Add "email_data()" and "table_data()" macros.
+
+7.1.2: Rename "email_data()" macro to "div_data()". Remove "property()" macro.

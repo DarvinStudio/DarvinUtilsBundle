@@ -1,20 +1,26 @@
-{% macro property(name, title, value, trans_domain) %}
-
-    {% import _self as that %}
-
-    {{ that.email_property(name, title, value, trans_domain) }}
-{% endmacro %}
-
-{% macro email_data(data, trans_prefix, trans_domain) %}
+{% macro div_data(data, trans_prefix, trans_domain) %}
 
     {% import _self as that %}
 
     {% for name, value in data %}
-        {{ that.email_property(name, trans_prefix ~ name, value, trans_domain) }}
+        {{ that.div_property(name, trans_prefix ~ name, value, trans_domain) }}
     {% endfor %}
 {% endmacro %}
 
-{% macro email_property(name, title, value, trans_domain) %}
+{% macro table_data(data, trans_prefix, trans_domain) %}
+
+    {% import _self as that %}
+
+    {% if data is not empty %}
+        <table>
+            {% for name, value in data %}
+                {{ that.table_property(name, trans_prefix ~ name, value, trans_domain) }}
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro div_property(name, title, value, trans_domain) %}
 
     {% import _self as that %}
 
@@ -45,16 +51,16 @@
 
                         {% set keys = value|keys %}
 
-                        {% if keys == keys|keys %}
+                        {% if keys is same as(keys|keys) %}
                             <ol>
                                 {% for item_name, item_value in value %}
-                                    <li>{{ that.email_property(null, title, item_value, trans_domain) }}</li>
+                                    <li>{{ that.div_property(null, title, item_value, trans_domain) }}</li>
                                 {% endfor %}
                             </ol>
                         {% else %}
                             <ul>
                                 {% for item_name, item_value in value %}
-                                    <li>{{ that.email_property(item_name, title ~ '.item.' ~ item_name, item_value, trans_domain) }}</li>
+                                    <li>{{ that.div_property(item_name, title ~ '.item.' ~ item_name, item_value, trans_domain) }}</li>
                                 {% endfor %}
                             </ul>
                         {% endif %}
@@ -77,19 +83,6 @@
             {% endif %}
         </span>
     </div>
-{% endmacro %}
-
-{% macro table_data(data, trans_prefix, trans_domain) %}
-
-    {% import _self as that %}
-
-    {% if data is not empty %}
-        <table>
-            {% for name, value in data %}
-                {{ that.table_property(name, trans_prefix ~ name, value, trans_domain) }}
-            {% endfor %}
-        </table>
-    {% endif %}
 {% endmacro %}
 
 {% macro table_property(name, title, value, trans_domain) %}
@@ -122,7 +115,7 @@
 
                             {% set keys = value|keys %}
 
-                            {% if keys == keys|keys %}
+                            {% if keys is same as(keys|keys) %}
                                 {% for item_name, item_value in value %}
                                     {{ that.table_property(null, title, item_value, trans_domain) }}
                                 {% endfor %}
