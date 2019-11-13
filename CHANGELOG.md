@@ -58,3 +58,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.1.2: Rename "email_data()" macro to "div_data()". Remove "property()" macro.
 
 7.1.3: Do not render empty properties' titles in data macros.
+
+7.1.4: Apply "raw" filter in price template.
