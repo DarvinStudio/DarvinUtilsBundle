@@ -60,3 +60,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.1.3: Do not render empty properties' titles in data macros.
 
 7.1.4: Apply "raw" filter in price template.
+
+7.1.6: Make providable services public.

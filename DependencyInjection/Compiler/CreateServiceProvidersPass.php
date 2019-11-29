@@ -44,14 +44,13 @@ class CreateServiceProvidersPass implements CompilerPassInterface
         $definitions = [];
 
         foreach ($ids as $providerId => $id) {
-            if ($container->hasDefinition($id) && !$container->getDefinition($id)->isPublic()) {
-                throw new \RuntimeException(sprintf('Unable to create provider for service "%s": service is not public.', $id));
-            }
             if ($container->hasDefinition($providerId)) {
                 throw new \RuntimeException(
                     sprintf('Unable to create provider for service "%s": service "%s" already exists.', $id, $providerId)
                 );
             }
+
+            $container->getDefinition($id)->setPublic(true);
 
             $definitions[$providerId] = (new ChildDefinition(self::PARENT_ID))->addArgument($id);
         }
