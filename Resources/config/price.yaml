@@ -10,7 +10,7 @@ services:
     darvin_utils.price.formatter:
         class: "%darvin_utils.price.formatter.class%"
         arguments:
-            - "@darvin_utils.templating.provider"
+            - "@darvin_utils.twig.provider"
 
     darvin_utils.price.twig_extension:
         class:  "%darvin_utils.price.twig_extension.class%"

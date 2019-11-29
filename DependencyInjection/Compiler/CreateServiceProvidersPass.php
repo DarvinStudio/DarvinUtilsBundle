@@ -27,7 +27,7 @@ class CreateServiceProvidersPass implements CompilerPassInterface
         'darvin_utils.authorization_checker.provider' => 'security.authorization_checker',
         'darvin_utils.entity_manager.provider'        => 'doctrine.orm.default_entity_manager',
         'darvin_utils.object_manager.provider'        => 'doctrine.orm.default_entity_manager',
-        'darvin_utils.templating.provider'            => 'templating',
+        'darvin_utils.twig.provider'                  => 'twig',
     ];
 
     /**

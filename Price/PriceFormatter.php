@@ -1,7 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Igor Nikolaev <igor.sv.n@gmail.com>
- * @copyright Copyright (c) 2018, Darvin Studio
+ * @copyright Copyright (c) 2018-2019, Darvin Studio
  * @link      https://www.darvin-studio.ru
  *
  * For the full copyright and license information, please view the LICENSE
@@ -12,6 +12,7 @@ namespace Darvin\UtilsBundle\Price;
 
 use Darvin\Utils\Price\PriceFormatterInterface;
 use Darvin\Utils\Service\ServiceProviderInterface;
+use Twig\Environment;
 
 /**
  * Price formatter
@@ -21,36 +22,36 @@ class PriceFormatter implements PriceFormatterInterface
     /**
      * @var \Darvin\Utils\Service\ServiceProviderInterface
      */
-    private $templatingProvider;
+    private $twigProvider;
 
     /**
-     * @param \Darvin\Utils\Service\ServiceProviderInterface $templatingProvider Templating service provider
+     * @param \Darvin\Utils\Service\ServiceProviderInterface $twigProvider Twig service provider
      */
-    public function __construct(ServiceProviderInterface $templatingProvider)
+    public function __construct(ServiceProviderInterface $twigProvider)
     {
-        $this->templatingProvider = $templatingProvider;
+        $this->twigProvider = $twigProvider;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function format($price, array $options = [])
+    public function format($price, array $options = []): string
     {
         if (!isset($options['format'])) {
             $options['format'] = 'default';
         }
 
-        return $this->getTemplating()->render(isset($options['template']) ? $options['template'] : '@DarvinUtils/price.html.twig', [
+        return $this->getTwig()->render(isset($options['template']) ? $options['template'] : '@DarvinUtils/price.html.twig', [
             'price'   => $price,
             'options' => $options,
         ]);
     }
 
     /**
-     * @return \Symfony\Component\Templating\EngineInterface
+     * @return \Twig\Environment
      */
-    final protected function getTemplating()
+    final protected function getTwig(): Environment
     {
-        return $this->templatingProvider->getService();
+        return $this->twigProvider->getService();
     }
 }
