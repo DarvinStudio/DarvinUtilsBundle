@@ -33,7 +33,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
         (new ConfigInjector($container))->inject($config, $this->getAlias());
 
-        (new ConfigLoader($container, __DIR__.'/../Resources/config'))->load([
+        (new ConfigLoader($container, __DIR__.'/../Resources/config/services'))->load([
             'anti_spam',
             'cloner',
             'custom_object',

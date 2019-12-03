@@ -62,3 +62,7 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.1.4: Apply "raw" filter in price template.
 
 7.1.6: Make providable services public.
+
+7.1.8:
+
+- Move service configs to "services" dir.
