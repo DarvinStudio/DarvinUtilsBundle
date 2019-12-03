@@ -4,12 +4,8 @@ parameters:
     darvin_utils.routing.route_manager.cached.class: Darvin\Utils\Routing\CachedRouteManager
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.routing.route_cache_warmer:
-        class:  "%darvin_utils.routing.route_cache_warmer.class%"
-        public: false
+        class: "%darvin_utils.routing.route_cache_warmer.class%"
         arguments:
             - "@darvin_utils.routing.route_manager.cached"
         tags:
@@ -19,8 +15,7 @@ services:
         alias: darvin_utils.routing.route_manager.cached
 
     darvin_utils.routing.route_manager.cached:
-        class:  "%darvin_utils.routing.route_manager.cached.class%"
-        public: false
+        class: "%darvin_utils.routing.route_manager.cached.class%"
         arguments:
             - "@darvin_utils.locale.provider"
             - "@router.default"

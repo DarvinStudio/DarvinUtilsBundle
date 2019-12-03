@@ -2,9 +2,6 @@ parameters:
     darvin_utils.cloner.class: Darvin\Utils\Cloner\Cloner
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.cloner:
         class: "%darvin_utils.cloner.class%"
         arguments:

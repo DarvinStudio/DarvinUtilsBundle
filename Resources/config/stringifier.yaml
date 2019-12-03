@@ -2,9 +2,6 @@ parameters:
     darvin_utils.stringifier.doctrine.class: Darvin\Utils\Strings\Stringifier\DoctrineStringifier
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.stringifier.doctrine:
         class: "%darvin_utils.stringifier.doctrine.class%"
         arguments:

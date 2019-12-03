@@ -4,15 +4,11 @@ parameters:
     darvin_utils.object_namer.twig_extension.class: Darvin\Utils\Twig\Extension\ObjectNamerExtension
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.object_namer:
         class: "%darvin_utils.object_namer.class%"
 
     darvin_utils.object_namer.twig_extension:
-        class:  "%darvin_utils.object_namer.twig_extension.class%"
-        public: false
+        class: "%darvin_utils.object_namer.twig_extension.class%"
         arguments:
             - "@darvin_utils.object_namer"
         tags:

@@ -4,9 +4,6 @@ parameters:
     darvin_utils.sluggable.slugify_event_subscriber.class: Darvin\Utils\EventListener\SlugifySubscriber
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.sluggable.manager:
         alias: darvin_utils.sluggable.manager.entity
 
@@ -19,8 +16,7 @@ services:
             - '@property_accessor'
 
     darvin_utils.sluggable.slugify_event_subscriber:
-        class:  '%darvin_utils.sluggable.slugify_event_subscriber.class%'
-        public: false
+        class: '%darvin_utils.sluggable.slugify_event_subscriber.class%'
         arguments:
             - '@darvin_utils.entity_manager.provider'
             - '@darvin_utils.sluggable.manager'

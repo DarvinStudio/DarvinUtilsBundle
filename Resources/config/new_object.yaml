@@ -2,9 +2,6 @@ parameters:
     darvin_utils.new_object.counter.entity.class: Darvin\Utils\NewObject\NewEntityCounter
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.new_object.counter:
         alias: darvin_utils.new_object.counter.entity
 

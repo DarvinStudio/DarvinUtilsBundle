@@ -2,12 +2,8 @@ parameters:
     darvin_utils.service.abstract_provider.class: Darvin\Utils\Service\ServiceProvider
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.service.abstract_provider:
         class:    "%darvin_utils.service.abstract_provider.class%"
         abstract: true
-        public:   false
         calls:
             - [ setContainer, [ "@service_container" ] ]

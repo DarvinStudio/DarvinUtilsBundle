@@ -4,12 +4,8 @@ parameters:
     darvin_utils.transliteratable.transliterator.class: Darvin\Utils\Transliteratable\Transliterator
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.transliteratable.transliterate_event_subscriber:
-        class:  '%darvin_utils.transliteratable.transliterate_event_subscriber.class%'
-        public: false
+        class: '%darvin_utils.transliteratable.transliterate_event_subscriber.class%'
         arguments:
             - '@darvin_utils.mapping.metadata_factory'
             - '@property_accessor'

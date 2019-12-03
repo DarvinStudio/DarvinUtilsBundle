@@ -2,9 +2,6 @@ parameters:
     darvin_utils.custom_object.loader.entity.class: Darvin\Utils\CustomObject\CustomEntityLoader
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.custom_object.loader:
         alias: darvin_utils.custom_object.loader.entity
 

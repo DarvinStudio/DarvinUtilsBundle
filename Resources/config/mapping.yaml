@@ -22,69 +22,57 @@ parameters:
     darvin_utils.mapping.set_default_discriminator_listener.class: Darvin\Utils\EventListener\SetDefaultDiscriminatorListener
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.mapping.annotation_driver.abstract:
         class:    "%darvin_utils.mapping.annotation_driver.abstract.class%"
         abstract: true
-        public:   false
         arguments:
             - "@annotation_reader"
 
     darvin_utils.mapping.annotation_driver.clonable:
         class:  "%darvin_utils.mapping.annotation_driver.clonable.class%"
         parent: darvin_utils.mapping.annotation_driver.abstract
-        public: false
         tags:
             - { name: darvin_utils.annotation_driver }
 
     darvin_utils.mapping.annotation_driver.custom_object:
         class:  "%darvin_utils.mapping.annotation_driver.custom_object.class%"
         parent: darvin_utils.mapping.annotation_driver.abstract
-        public: false
         tags:
             - { name: darvin_utils.annotation_driver }
 
     darvin_utils.mapping.annotation_driver.default_value:
         class:  "%darvin_utils.mapping.annotation_driver.default_value.class%"
         parent: darvin_utils.mapping.annotation_driver.abstract
-        public: false
         tags:
             - { name: darvin_utils.annotation_driver }
 
     darvin_utils.mapping.annotation_driver.new_object_flag:
         class:  "%darvin_utils.mapping.annotation_driver.new_object_flag.class%"
         parent: darvin_utils.mapping.annotation_driver.abstract
-        public: false
         tags:
             - { name: darvin_utils.annotation_driver }
 
     darvin_utils.mapping.annotation_driver.slug:
         class:  "%darvin_utils.mapping.annotation_driver.slug.class%"
         parent: darvin_utils.mapping.annotation_driver.abstract
-        public: false
         tags:
             - { name: darvin_utils.annotation_driver }
 
     darvin_utils.mapping.annotation_driver.transliteratable:
         class:  "%darvin_utils.mapping.annotation_driver.transliteratable.class%"
         parent: darvin_utils.mapping.annotation_driver.abstract
-        public: false
         tags:
             - { name: darvin_utils.annotation_driver }
 
     darvin_utils.mapping.annotation_driver.updated_at:
         class:  "%darvin_utils.mapping.annotation_driver.updated_at.class%"
         parent: darvin_utils.mapping.annotation_driver.abstract
-        public: false
         tags:
             - { name: darvin_utils.annotation_driver }
 
     darvin_utils.mapping.annotation_driver.user:
         class:  "%darvin_utils.mapping.annotation_driver.user.class%"
         parent: darvin_utils.mapping.annotation_driver.abstract
-        public: false
         tags:
             - { name: darvin_utils.annotation_driver }
 
@@ -94,7 +82,6 @@ services:
             - "@darvin_utils.object_manager.provider"
 
     darvin_utils.mapping.set_default_discriminator_listener:
-        class:  "%darvin_utils.mapping.set_default_discriminator_listener.class%"
-        public: false
+        class: "%darvin_utils.mapping.set_default_discriminator_listener.class%"
         tags:
             - { name: doctrine.event_listener, event: postGenerateSchemaTable }

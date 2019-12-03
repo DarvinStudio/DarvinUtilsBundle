@@ -2,9 +2,6 @@ parameters:
     darvin_utils.user.query_builder_filterer.class: Darvin\Utils\User\UserQueryBuilderFilterer
 
 services:
-    _defaults:
-        public: true
-
     darvin_utils.user.query_builder_filterer:
         class: "%darvin_utils.user.query_builder_filterer.class%"
         arguments:
