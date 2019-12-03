@@ -3,7 +3,7 @@ parameters:
 
 services:
     darvin_utils.service.abstract_provider:
-        class:    "%darvin_utils.service.abstract_provider.class%"
+        class:    '%darvin_utils.service.abstract_provider.class%'
         abstract: true
         calls:
-            - [ setContainer, [ "@service_container" ] ]
+            - [ setContainer, [ '@service_container' ] ]

@@ -3,9 +3,9 @@ parameters:
 
 services:
     darvin_utils.tree.sorter:
-        class:  "%darvin_utils.tree.sorter.class%"
+        class:  '%darvin_utils.tree.sorter.class%'
         public: true
         arguments:
-            - "@doctrine.orm.entity_manager"
-            - "@property_accessor"
-            - "@stof_doctrine_extensions.listener.tree"
+            - '@doctrine.orm.entity_manager'
+            - '@property_accessor'
+            - '@stof_doctrine_extensions.listener.tree'

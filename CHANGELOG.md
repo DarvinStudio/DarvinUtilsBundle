@@ -66,3 +66,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.1.8:
 
 - Move service configs to "services" dir.
+
+- Use single quotes in YAML.

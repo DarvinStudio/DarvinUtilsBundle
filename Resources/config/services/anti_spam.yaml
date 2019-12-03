@@ -3,6 +3,6 @@ parameters:
 
 services:
     darvin_utils.anti_spam.form_type:
-        class: "%darvin_utils.anti_spam.form_type.class%"
+        class: '%darvin_utils.anti_spam.form_type.class%'
         tags:
             - { name: form.type }

@@ -8,10 +8,10 @@ services:
         alias: darvin_utils.homepage.dummy_provider
 
     darvin_utils.homepage.dummy_provider:
-        class: "%darvin_utils.homepage.dummy_provider.class%"
+        class: '%darvin_utils.homepage.dummy_provider.class%'
 
     darvin_utils.homepage.router:
         alias: darvin_utils.homepage.dummy_router
 
     darvin_utils.homepage.dummy_router:
-        class: "%darvin_utils.homepage.dummy_router.class%"
+        class: '%darvin_utils.homepage.dummy_router.class%'

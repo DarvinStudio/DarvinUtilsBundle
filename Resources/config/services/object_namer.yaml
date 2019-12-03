@@ -5,11 +5,11 @@ parameters:
 
 services:
     darvin_utils.object_namer:
-        class: "%darvin_utils.object_namer.class%"
+        class: '%darvin_utils.object_namer.class%'
 
     darvin_utils.object_namer.twig_extension:
-        class: "%darvin_utils.object_namer.twig_extension.class%"
+        class: '%darvin_utils.object_namer.twig_extension.class%'
         arguments:
-            - "@darvin_utils.object_namer"
+            - '@darvin_utils.object_namer'
         tags:
             - { name: twig.extension }

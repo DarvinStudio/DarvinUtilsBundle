@@ -3,6 +3,6 @@ parameters:
 
 services:
     darvin_utils.flash.notifier:
-        class: "%darvin_utils.flash.notifier.class%"
+        class: '%darvin_utils.flash.notifier.class%'
         arguments:
-            - "@session.flash_bag"
+            - '@session.flash_bag'

@@ -3,8 +3,8 @@ parameters:
 
 services:
     darvin_utils.locale.provider:
-        class:  "%darvin_utils.locale.provider.class%"
+        class:  '%darvin_utils.locale.provider.class%'
         public: true
         arguments:
-            - "@request_stack"
-            - "%locale%"
+            - '@request_stack'
+            - '%locale%'

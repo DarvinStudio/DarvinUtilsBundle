@@ -3,8 +3,8 @@ parameters:
 
 services:
     darvin_utils.cloner:
-        class: "%darvin_utils.cloner.class%"
+        class: '%darvin_utils.cloner.class%'
         arguments:
-            - "@event_dispatcher"
-            - "@darvin_utils.mapping.metadata_factory"
-            - "@property_accessor"
+            - '@event_dispatcher'
+            - '@darvin_utils.mapping.metadata_factory'
+            - '@property_accessor'

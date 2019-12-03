@@ -5,11 +5,11 @@ parameters:
 
 services:
     darvin_utils.form.integer_type_extension:
-        class: "%darvin_utils.form.integer_type_extension.class%"
+        class: '%darvin_utils.form.integer_type_extension.class%'
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\IntegerType }
 
     darvin_utils.form.number_type_extension:
-        class: "%darvin_utils.form.number_type_extension.class%"
+        class: '%darvin_utils.form.number_type_extension.class%'
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\NumberType }

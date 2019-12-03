@@ -3,6 +3,6 @@ parameters:
 
 services:
     darvin_utils.security.accessibility_checker:
-        class: "%darvin_utils.security.accessibility_checker.class%"
+        class: '%darvin_utils.security.accessibility_checker.class%'
         arguments:
-            - "@darvin_utils.authorization_checker.provider"
+            - '@darvin_utils.authorization_checker.provider'
