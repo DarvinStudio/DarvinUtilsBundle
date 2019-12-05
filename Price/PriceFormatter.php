@@ -33,7 +33,7 @@ class PriceFormatter implements PriceFormatterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function format($price, array $options = []): string
     {

@@ -34,7 +34,7 @@ class OverrideEntitiesPass implements CompilerPassInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function process(ContainerBuilder $container): void
     {
