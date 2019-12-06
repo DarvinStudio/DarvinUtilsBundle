@@ -10,6 +10,7 @@
 
 namespace Darvin\UtilsBundle\DependencyInjection\Compiler;
 
+use Darvin\UtilsBundle\DependencyInjection\DarvinUtilsExtension;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -26,7 +27,7 @@ class AddAnnotationDriversPass implements CompilerPassInterface
     {
         $factory = $container->getDefinition('darvin_utils.mapping.metadata_factory');
 
-        foreach (array_keys($container->findTaggedServiceIds('darvin_utils.annotation_driver')) as $id) {
+        foreach (array_keys($container->findTaggedServiceIds(DarvinUtilsExtension::TAG_ANNOTATION_DRIVER)) as $id) {
             $factory->addMethodCall('addAnnotationDriver', [new Reference($id)]);
         }
     }

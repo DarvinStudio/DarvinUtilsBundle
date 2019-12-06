@@ -13,6 +13,8 @@ namespace Darvin\UtilsBundle\DependencyInjection;
 use Darvin\Utils\DependencyInjection\ConfigInjector;
 use Darvin\Utils\DependencyInjection\ConfigLoader;
 use Darvin\Utils\DependencyInjection\ExtensionConfigurator;
+use Darvin\Utils\Mapping\AnnotationDriver\AnnotationDriverInterface;
+use Darvin\Utils\Sluggable\SlugHandlerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -24,11 +26,17 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  */
 class DarvinUtilsExtension extends Extension implements PrependExtensionInterface
 {
+    public const TAG_ANNOTATION_DRIVER = 'darvin_utils.annotation_driver';
+    public const TAG_SLUG_HANDLER      = 'darvin_utils.slug_handler';
+
     /**
      * {@inheritDoc}
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
+        $container->registerForAutoconfiguration(AnnotationDriverInterface::class)->addTag(self::TAG_ANNOTATION_DRIVER);
+        $container->registerForAutoconfiguration(SlugHandlerInterface::class)->addTag(self::TAG_SLUG_HANDLER);
+
         $config = $this->processConfiguration(new Configuration(), $configs);
 
         (new ConfigInjector($container))->inject($config, $this->getAlias());

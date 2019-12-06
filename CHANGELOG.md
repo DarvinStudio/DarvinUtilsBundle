@@ -68,3 +68,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 - Move service configs to "services" dir.
 
 - Use single quotes in YAML.
+
+7.1.9: Register interfaces for autoconfiguration.
