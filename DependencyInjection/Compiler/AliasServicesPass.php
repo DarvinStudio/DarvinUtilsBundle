@@ -27,7 +27,7 @@ class AliasServicesPass implements CompilerPassInterface
     {
         $aliases = $ambiguous = [];
 
-        $addAlias = function (string $alias, string $id, Definition $definition) use (&$aliases, &$ambiguous, $container) {
+        $addAlias = function (string $alias, string $id, Definition $definition) use (&$aliases, &$ambiguous, $container): void {
             if ($container->hasDefinition($alias) || $container->hasAlias($alias)) {
                 return;
             }
