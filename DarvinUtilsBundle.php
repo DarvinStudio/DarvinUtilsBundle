@@ -12,6 +12,7 @@ namespace Darvin\UtilsBundle;
 
 use Darvin\UtilsBundle\DependencyInjection\Compiler\AddAnnotationDriversPass;
 use Darvin\UtilsBundle\DependencyInjection\Compiler\AddSlugHandlersPass;
+use Darvin\UtilsBundle\DependencyInjection\Compiler\AliasServicesPass;
 use Darvin\UtilsBundle\DependencyInjection\Compiler\CreateServiceProvidersPass;
 use Darvin\UtilsBundle\DependencyInjection\Compiler\OverrideEntitiesPass;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
@@ -33,6 +34,7 @@ class DarvinUtilsBundle extends Bundle
         $container
             ->addCompilerPass(new AddAnnotationDriversPass())
             ->addCompilerPass(new AddSlugHandlersPass())
+            ->addCompilerPass(new AliasServicesPass())
             ->addCompilerPass(new CreateServiceProvidersPass())
             ->addCompilerPass(new OverrideEntitiesPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 10);
     }

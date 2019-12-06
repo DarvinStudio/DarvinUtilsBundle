@@ -70,3 +70,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 - Use single quotes in YAML.
 
 7.1.9: Register interfaces for autoconfiguration.
+
+7.2.0: Alias services for autowiring.
