@@ -1,7 +1,17 @@
 parameters:
+    darvin_utils.stringifier.class: Darvin\Utils\Strings\Stringifier\Stringifier
+
     darvin_utils.stringifier.doctrine.class: Darvin\Utils\Strings\Stringifier\DoctrineStringifier
 
 services:
+    Darvin\Utils\Strings\Stringifier\StringifierInterface:         '@darvin_utils.stringifier'
+    Darvin\Utils\Strings\Stringifier\DoctrineStringifierInterface: '@darvin_utils.stringifier.doctrine'
+
+    darvin_utils.stringifier:
+        class: '%darvin_utils.stringifier.class%'
+        arguments:
+            - '@translator'
+
     darvin_utils.stringifier.doctrine:
         class: '%darvin_utils.stringifier.doctrine.class%'
         arguments:
