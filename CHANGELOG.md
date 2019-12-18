@@ -75,4 +75,4 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 
 7.2.1: Add generic stringifier.
 
-7.3.0: Allow to disable form, security components.
+7.2.2: Allow to disable form, security components.
