@@ -44,6 +44,9 @@ class CreateServiceProvidersPass implements CompilerPassInterface
         $definitions = [];
 
         foreach ($ids as $providerId => $id) {
+            if (!$container->hasDefinition($id)) {
+                continue;
+            }
             if ($container->hasDefinition($providerId)) {
                 throw new \RuntimeException(
                     sprintf('Unable to create provider for service "%s": service "%s" already exists.', $id, $providerId)

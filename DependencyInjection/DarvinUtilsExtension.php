@@ -55,12 +55,10 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'orm',
             'price',
             'routing',
-            'security',
             'service',
             'sluggable',
             'stringifier',
             'transliteratable',
-            'user',
 
             'dev/translation' => ['env' => 'dev'],
 
@@ -70,6 +68,10 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'response/compress' => ['callback' => function () use ($config) {
                 return $config['response']['compress'];
+            }],
+
+            'security' => ['callback' => function () use ($config) {
+                return $config['security']['enabled'];
             }],
 
             'tree' => ['bundle' => 'StofDoctrineExtensionsBundle'],
@@ -84,6 +86,13 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         if (!class_exists('Symfony\Component\Form\FormInterface')) {
             $container->prependExtensionConfig($this->getAlias(), [
                 'form' => [
+                    'enabled' => false,
+                ],
+            ]);
+        }
+        if (!class_exists('Symfony\Component\Security\Core\User\UserInterface')) {
+            $container->prependExtensionConfig($this->getAlias(), [
+                'security' => [
                     'enabled' => false,
                 ],
             ]);
