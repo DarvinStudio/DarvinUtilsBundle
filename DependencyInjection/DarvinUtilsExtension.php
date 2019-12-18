@@ -83,14 +83,14 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
      */
     public function prepend(ContainerBuilder $container): void
     {
-        if (!class_exists('Symfony\Component\Form\FormInterface')) {
+        if (!interface_exists('Symfony\Component\Form\FormInterface')) {
             $container->prependExtensionConfig($this->getAlias(), [
                 'form' => [
                     'enabled' => false,
                 ],
             ]);
         }
-        if (!class_exists('Symfony\Component\Security\Core\User\UserInterface')) {
+        if (!interface_exists('Symfony\Component\Security\Core\User\UserInterface')) {
             $container->prependExtensionConfig($this->getAlias(), [
                 'security' => [
                     'enabled' => false,
