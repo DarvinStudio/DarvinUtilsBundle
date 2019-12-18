@@ -1,15 +1,22 @@
 parameters:
-    darvin_utils.form.integer_type_extension.class: Darvin\Utils\Form\Extension\IntegerTypeExtension
+    darvin_utils.form.extension.integer.class: Darvin\Utils\Form\Extension\IntegerTypeExtension
 
-    darvin_utils.form.number_type_extension.class: Darvin\Utils\Form\Extension\NumberTypeExtension
+    darvin_utils.form.extension.number.class: Darvin\Utils\Form\Extension\NumberTypeExtension
+
+    darvin_utils.form.type.anti_spam.class: Darvin\Utils\Form\Type\AntiSpamType
 
 services:
-    darvin_utils.form.integer_type_extension:
-        class: '%darvin_utils.form.integer_type_extension.class%'
+    darvin_utils.form.extension.integer:
+        class: '%darvin_utils.form.extension.integer.class%'
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\IntegerType }
 
-    darvin_utils.form.number_type_extension:
-        class: '%darvin_utils.form.number_type_extension.class%'
+    darvin_utils.form.extension.number:
+        class: '%darvin_utils.form.extension.number.class%'
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\NumberType }
+
+    darvin_utils.form.type.anti_spam:
+        class: '%darvin_utils.form.type.anti_spam.class%'
+        tags:
+            - { name: form.type }

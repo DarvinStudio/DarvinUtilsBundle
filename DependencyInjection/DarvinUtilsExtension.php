@@ -42,12 +42,10 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         (new ConfigInjector($container))->inject($config, $this->getAlias());
 
         (new ConfigLoader($container, __DIR__.'/../Resources/config/services'))->load([
-            'anti_spam',
             'cloner',
             'custom_object',
             'default_value',
             'flash',
-            'form',
             'homepage',
             'intl',
             'locale',
@@ -64,13 +62,17 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'transliteratable',
             'user',
 
-            'tree'             => ['bundle' => 'StofDoctrineExtensionsBundle'],
+            'dev/translation' => ['env' => 'dev'],
 
-            'dev/translation'  => ['env' => 'dev'],
+            'form' => ['callback' => function () use ($config) {
+                return $config['form']['enabled'];
+            }],
 
             'response/compress' => ['callback' => function () use ($config) {
                 return $config['response']['compress'];
             }],
+
+            'tree' => ['bundle' => 'StofDoctrineExtensionsBundle'],
         ]);
     }
 
@@ -79,6 +81,14 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
      */
     public function prepend(ContainerBuilder $container): void
     {
+        if (!class_exists('Symfony\Component\Form\AbstractType')) {
+            $container->prependExtensionConfig($this->getAlias(), [
+                'form' => [
+                    'enabled' => false,
+                ],
+            ]);
+        }
+
         (new ExtensionConfigurator($container, __DIR__.'/../Resources/config/app'))->configure([
             'doctrine',
             'stof_doctrine_extensions',
