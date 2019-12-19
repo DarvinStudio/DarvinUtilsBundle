@@ -75,6 +75,10 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             }],
 
             'tree' => ['bundle' => 'StofDoctrineExtensionsBundle'],
+
+            'user' => ['callback' => function () use ($config) {
+                return $config['user']['enabled'];
+            }],
         ]);
     }
 
