@@ -14,6 +14,7 @@
     "require": {
         "darvinstudio/darvin-utils": "*",
         "symfony/orm-pack":          "*",
+        "symfony/property-access":   "*",
         "twig/extensions":           "^1.5"
     },
     "autoload": {
