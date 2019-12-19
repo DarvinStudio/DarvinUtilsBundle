@@ -83,6 +83,8 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
      */
     public function prepend(ContainerBuilder $container): void
     {
+        $securityCore = interface_exists('Symfony\Component\Security\Core\User\UserInterface');
+
         if (!interface_exists('Symfony\Component\Form\FormInterface')) {
             $container->prependExtensionConfig($this->getAlias(), [
                 'form' => [
@@ -90,9 +92,16 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
                 ],
             ]);
         }
-        if (!interface_exists('Symfony\Component\Security\Core\User\UserInterface')) {
+        if (!$securityCore) {
             $container->prependExtensionConfig($this->getAlias(), [
                 'security' => [
+                    'enabled' => false,
+                ],
+            ]);
+        }
+        if (!$securityCore) {
+            $container->prependExtensionConfig($this->getAlias(), [
+                'user' => [
                     'enabled' => false,
                 ],
             ]);

@@ -1,20 +1,10 @@
 parameters:
     darvin_utils.security.accessibility_checker.class: Darvin\Utils\Security\Authorization\AccessibilityChecker
 
-    darvin_utils.user.query_builder_filterer.class: Darvin\Utils\User\UserQueryBuilderFilterer
-
 services:
     Darvin\Utils\Security\Authorization\AccessibilityCheckerInterface: '@darvin_utils.security.accessibility_checker'
-    Darvin\Utils\User\UserQueryBuilderFiltererInterface:               '@darvin_utils.user.query_builder_filterer'
 
     darvin_utils.security.accessibility_checker:
         class: '%darvin_utils.security.accessibility_checker.class%'
         arguments:
             - '@darvin_utils.authorization_checker.provider'
-
-    darvin_utils.user.query_builder_filterer:
-        class: '%darvin_utils.user.query_builder_filterer.class%'
-        arguments:
-            - '@security.token_storage'
-            - '@security.authorization_checker'
-            - '@darvin_utils.mapping.metadata_factory'

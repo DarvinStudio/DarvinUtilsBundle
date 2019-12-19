@@ -37,6 +37,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('form')->canBeDisabled()->end()
                 ->arrayNode('security')->canBeDisabled()->end()
+                ->arrayNode('user')->canBeDisabled()->end()
                 ->scalarNode('yandex_translate_api_key')->defaultNull()->end()
                 ->arrayNode('response')->addDefaultsIfNotSet()
                     ->children()
