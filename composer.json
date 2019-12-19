@@ -17,6 +17,10 @@
         "symfony/property-access":   "*",
         "twig/extensions":           "^1.5"
     },
+    "suggest": {
+        "symfony/form":          "Allows to use form components",
+        "symfony/security-core": "Allows to use security components"
+    },
     "autoload": {
         "psr-4": { "Darvin\\UtilsBundle\\": "" }
     }
