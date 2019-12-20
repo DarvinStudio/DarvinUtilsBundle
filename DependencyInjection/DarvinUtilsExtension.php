@@ -88,7 +88,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     {
         $securityCore = interface_exists('Symfony\Component\Security\Core\User\UserInterface');
 
-        if (!interface_exists('Symfony\Component\Form\FormInterface')) {
+        if (!class_exists('Symfony\Component\Form\Form')) {
             $container->prependExtensionConfig($this->getAlias(), [
                 'form' => [
                     'enabled' => false,
