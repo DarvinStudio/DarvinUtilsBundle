@@ -47,7 +47,6 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'default_value',
             'flash',
             'homepage',
-            'intl',
             'locale',
             'mapping',
             'new_object',

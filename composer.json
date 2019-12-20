@@ -14,8 +14,7 @@
     "require": {
         "darvinstudio/darvin-utils": "*",
         "symfony/orm-pack":          "*",
-        "symfony/property-access":   "*",
-        "twig/extensions":           "^1.5"
+        "symfony/property-access":   "*"
     },
     "suggest": {
         "symfony/form":          "Allows to use form components",
