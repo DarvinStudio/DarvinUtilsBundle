@@ -1,0 +1,8 @@
+parameters:
+    darvin_utils.object_namer.class: Darvin\Utils\ObjectNamer\ObjectNamer
+
+services:
+    Darvin\Utils\ObjectNamer\ObjectNamerInterface: '@darvin_utils.object_namer'
+
+    darvin_utils.object_namer:
+        class: '%darvin_utils.object_namer.class%'

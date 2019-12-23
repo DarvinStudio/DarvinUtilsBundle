@@ -4,6 +4,8 @@ parameters:
     darvin_utils.price.twig_extension.class: Darvin\Utils\Twig\Extension\PriceExtension
 
 services:
+    Darvin\Utils\Price\PriceFormatterInterface: '@darvin_utils.price.formatter'
+
     darvin_utils.price.formatter:
         class: '%darvin_utils.price.formatter.class%'
         arguments:

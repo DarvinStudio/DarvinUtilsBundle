@@ -17,8 +17,9 @@
         "symfony/property-access":   "*"
     },
     "suggest": {
-        "symfony/form":          "Allows to use form components",
-        "symfony/security-core": "Allows to use security components"
+        "symfony/form":          "Allows to use form dependent components",
+        "symfony/security-core": "Allows to use security dependent components",
+        "symfony/twig-bundle":   "Allows to use Twig dependent components"
     },
     "autoload": {
         "psr-4": { "Darvin\\UtilsBundle\\": "" }

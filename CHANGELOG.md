@@ -78,3 +78,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.2.2: Allow to disable form, security components.
 
 7.2.4: Remove Intl Twig functions.
+
+7.2.5: Make Twig optional.

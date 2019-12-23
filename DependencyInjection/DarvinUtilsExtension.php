@@ -53,9 +53,8 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'locale',
             'mapping',
             'new_object',
-            'object_namer',
+            'object_namer/common',
             'orm',
-            'price',
             'routing',
             'service',
             'sluggable',
@@ -65,6 +64,10 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'dev/translation' => ['env' => 'dev'],
 
             'form' => ['class' => self::COMPONENT_FORM],
+
+            'object_namer/twig' => ['bundle' => 'TwigBundle'],
+
+            'price' => ['bundle' => 'TwigBundle'],
 
             'response/compress' => ['callback' => function () use ($config) {
                 return $config['response']['compress'];
