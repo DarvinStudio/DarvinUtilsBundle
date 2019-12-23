@@ -1,8 +1,8 @@
 parameters:
-    darvin_utils.response.compress.event_subscriber.class: Darvin\Utils\EventListener\CompressResponseSubscriber
+    darvin_utils.response.compress.subscriber.class: Darvin\Utils\EventListener\CompressResponseSubscriber
 
 services:
-    darvin_utils.response.compress.event_subscriber:
-        class: '%darvin_utils.response.compress.event_subscriber.class%'
+    darvin_utils.response.compress.subscriber:
+        class: '%darvin_utils.response.compress.subscriber.class%'
         tags:
             - { name: kernel.event_subscriber }

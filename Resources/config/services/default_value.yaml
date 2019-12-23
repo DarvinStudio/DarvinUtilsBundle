@@ -1,9 +1,9 @@
 parameters:
-    darvin_utils.default_value.set_event_subscriber.class: Darvin\Utils\EventListener\SetDefaultValuesSubscriber
+    darvin_utils.default_value.subscriber.class: Darvin\Utils\EventListener\SetDefaultValuesSubscriber
 
 services:
-    darvin_utils.default_value.set_event_subscriber:
-        class: '%darvin_utils.default_value.set_event_subscriber.class%'
+    darvin_utils.default_value.subscriber:
+        class: '%darvin_utils.default_value.subscriber.class%'
         arguments:
             - '@darvin_utils.mapping.metadata_factory'
             - '@property_accessor'
