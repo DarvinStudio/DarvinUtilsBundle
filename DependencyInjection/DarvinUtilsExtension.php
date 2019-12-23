@@ -29,6 +29,10 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     public const TAG_ANNOTATION_DRIVER = 'darvin_utils.annotation_driver';
     public const TAG_SLUG_HANDLER      = 'darvin_utils.slug_handler';
 
+    private const BUNDLE_DOCTRINE_EXTENSIONS = 'StofDoctrineExtensionsBundle';
+    private const BUNDLE_SECURITY            = 'SecurityBundle';
+    private const BUNDLE_TWIG                = 'TwigBundle';
+
     private const COMPONENT_FORM            = 'Symfony\Component\Form\Form';
     private const COMPONENT_PROPERTY_ACCESS = 'Symfony\Component\PropertyAccess\PropertyAccessor';
     private const COMPONENT_TRANSLATION     = 'Symfony\Component\Translation\Translator';
@@ -67,15 +71,15 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'form' => ['class' => self::COMPONENT_FORM],
 
-            'object_namer/twig' => ['bundle' => 'TwigBundle'],
+            'object_namer/twig' => ['bundle' => self::BUNDLE_TWIG],
 
-            'price' => ['bundle' => 'TwigBundle'],
+            'price' => ['bundle' => self::BUNDLE_TWIG],
 
             'response/compress' => ['callback' => function () use ($config) {
                 return $config['response']['compress'];
             }],
 
-            'security' => ['bundle' => 'SecurityBundle'],
+            'security' => ['bundle' => self::BUNDLE_SECURITY],
 
             'sluggable' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
 
@@ -83,9 +87,9 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'transliteratable/subscriber' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
 
-            'tree' => ['bundle' => 'StofDoctrineExtensionsBundle'],
+            'tree' => ['bundle' => self::BUNDLE_DOCTRINE_EXTENSIONS, 'class' => self::COMPONENT_PROPERTY_ACCESS],
 
-            'user' => ['bundle' => 'SecurityBundle'],
+            'user' => ['bundle' => self::BUNDLE_SECURITY],
         ]);
     }
 
