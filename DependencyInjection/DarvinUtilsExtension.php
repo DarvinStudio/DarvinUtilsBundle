@@ -29,9 +29,10 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     public const TAG_ANNOTATION_DRIVER = 'darvin_utils.annotation_driver';
     public const TAG_SLUG_HANDLER      = 'darvin_utils.slug_handler';
 
-    private const COMPONENT_FORM        = 'Symfony\Component\Form\Form';
-    private const COMPONENT_SECURITY    = 'Symfony\Component\Security\Core\Security';
-    private const COMPONENT_TRANSLATION = 'Symfony\Component\Translation\Translator';
+    private const COMPONENT_FORM            = 'Symfony\Component\Form\Form';
+    private const COMPONENT_PROPERTY_ACCESS = 'Symfony\Component\PropertyAccess\PropertyAccessor';
+    private const COMPONENT_SECURITY        = 'Symfony\Component\Security\Core\Security';
+    private const COMPONENT_TRANSLATION     = 'Symfony\Component\Translation\Translator';
 
     /**
      * {@inheritDoc}
@@ -46,9 +47,6 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         (new ConfigInjector($container))->inject($config, $this->getAlias());
 
         (new ConfigLoader($container, __DIR__.'/../Resources/config/services'))->load([
-            'cloner',
-            'custom_object',
-            'default_value',
             'flash',
             'homepage',
             'locale',
@@ -58,8 +56,13 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'orm',
             'routing',
             'service',
-            'sluggable',
-            'transliteratable',
+            'transliteratable/common',
+
+            'cloner' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
+
+            'custom_object' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
+
+            'default_value' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
 
             'dev/translation' => ['env' => 'dev'],
 
@@ -75,7 +78,11 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'security' => ['class' => self::COMPONENT_SECURITY],
 
+            'sluggable' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
+
             'stringifier' => ['class' => self::COMPONENT_TRANSLATION],
+
+            'transliteratable/subscriber' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
 
             'tree' => ['bundle' => 'StofDoctrineExtensionsBundle'],
 

@@ -4,6 +4,8 @@ parameters:
     darvin_utils.sluggable.slugify_event_subscriber.class: Darvin\Utils\EventListener\SlugifySubscriber
 
 services:
+    Darvin\Utils\Sluggable\SluggableManagerInterface: '@darvin_utils.sluggable.manager.entity'
+
     darvin_utils.sluggable.manager:
         alias: darvin_utils.sluggable.manager.entity
 

@@ -13,14 +13,14 @@
     ],
     "require": {
         "darvinstudio/darvin-utils": "*",
-        "symfony/orm-pack":          "*",
-        "symfony/property-access":   "*"
+        "symfony/orm-pack":          "*"
     },
     "suggest": {
-        "symfony/form":          "Allows to use form dependent components",
-        "symfony/security-core": "Allows to use security dependent components",
-        "symfony/translation":   "Allows to use translation dependent components",
-        "symfony/twig-bundle":   "Allows to use Twig dependent components"
+        "symfony/form":            "Allows to use Form dependent components",
+        "symfony/property-access": "Allows to use PropertyAccess dependent components",
+        "symfony/security-core":   "Allows to use Security dependent components",
+        "symfony/translation":     "Allows to use Translation dependent components",
+        "symfony/twig-bundle":     "Allows to use Twig dependent components"
     },
     "autoload": {
         "psr-4": { "Darvin\\UtilsBundle\\": "" }

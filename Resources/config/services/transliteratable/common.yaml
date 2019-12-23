@@ -1,0 +1,8 @@
+parameters:
+    darvin_utils.transliteratable.transliterator.class: Darvin\Utils\Transliteratable\Transliterator
+
+services:
+    Darvin\Utils\Transliteratable\TransliteratorInterface: '@darvin_utils.transliteratable.transliterator'
+
+    darvin_utils.transliteratable.transliterator:
+        class: '%darvin_utils.transliteratable.transliterator.class%'

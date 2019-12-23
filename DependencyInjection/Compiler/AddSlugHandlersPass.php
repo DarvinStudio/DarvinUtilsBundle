@@ -20,12 +20,18 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class AddSlugHandlersPass implements CompilerPassInterface
 {
+    private const ID = 'darvin_utils.sluggable.manager.entity';
+
     /**
      * {@inheritDoc}
      */
     public function process(ContainerBuilder $container): void
     {
-        $manager = $container->getDefinition('darvin_utils.sluggable.manager.entity');
+        if (!$container->hasDefinition(self::ID)) {
+            return;
+        }
+
+        $manager = $container->getDefinition(self::ID);
 
         foreach (array_keys((new ServiceSorter())->sort($container->findTaggedServiceIds('darvin_utils.slug_handler'))) as $id) {
             $manager->addMethodCall('addSlugHandler', [new Reference($id)]);

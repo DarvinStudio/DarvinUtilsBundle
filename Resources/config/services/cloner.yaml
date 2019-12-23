@@ -2,6 +2,8 @@ parameters:
     darvin_utils.cloner.class: Darvin\Utils\Cloner\Cloner
 
 services:
+    Darvin\Utils\Cloner\ClonerInterface: '@darvin_utils.cloner'
+
     darvin_utils.cloner:
         class: '%darvin_utils.cloner.class%'
         arguments:

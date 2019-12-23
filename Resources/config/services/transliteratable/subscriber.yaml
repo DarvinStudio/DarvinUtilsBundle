@@ -1,0 +1,12 @@
+parameters:
+    darvin_utils.transliteratable.subscriber.class: Darvin\Utils\EventListener\TransliterateSubscriber
+
+services:
+    darvin_utils.transliteratable.subscriber:
+        class: '%darvin_utils.transliteratable.subscriber.class%'
+        arguments:
+            - '@darvin_utils.mapping.metadata_factory'
+            - '@property_accessor'
+            - '@darvin_utils.transliteratable.transliterator'
+        tags:
+            - { name: doctrine.event_subscriber, priority: 300 }
