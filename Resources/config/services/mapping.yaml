@@ -22,6 +22,8 @@ parameters:
     darvin_utils.mapping.set_default_discriminator_listener.class: Darvin\Utils\EventListener\SetDefaultDiscriminatorListener
 
 services:
+    Darvin\Utils\Mapping\MetadataFactoryInterface: '@darvin_utils.mapping.metadata_factory'
+
     darvin_utils.mapping.annotation_driver.abstract:
         class:    '%darvin_utils.mapping.annotation_driver.abstract.class%'
         abstract: true

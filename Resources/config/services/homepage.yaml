@@ -4,6 +4,9 @@ parameters:
     darvin_utils.homepage.dummy_router.class: Darvin\Utils\Homepage\DummyHomepageRouter
 
 services:
+    Darvin\Utils\Homepage\HomepageProviderInterface: '@darvin_utils.homepage.provider'
+    Darvin\Utils\Homepage\HomepageRouterInterface:   '@darvin_utils.homepage.router'
+
     darvin_utils.homepage.provider:
         alias: darvin_utils.homepage.dummy_provider
 

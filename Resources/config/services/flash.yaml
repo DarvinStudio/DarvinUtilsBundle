@@ -2,6 +2,8 @@ parameters:
     darvin_utils.flash.notifier.class: Darvin\Utils\Flash\FlashNotifier
 
 services:
+    Darvin\Utils\Flash\FlashNotifierInterface: '@darvin_utils.flash.notifier'
+
     darvin_utils.flash.notifier:
         class: '%darvin_utils.flash.notifier.class%'
         arguments:

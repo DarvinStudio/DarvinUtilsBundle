@@ -2,6 +2,8 @@ parameters:
     darvin_utils.orm.entity_resolver.class: Darvin\Utils\ORM\EntityResolver
 
 services:
+    Darvin\Utils\ORM\EntityResolverInterface: '@darvin_utils.orm.entity_resolver'
+
     darvin_utils.orm.entity_resolver:
         class:  '%darvin_utils.orm.entity_resolver.class%'
         public: true
