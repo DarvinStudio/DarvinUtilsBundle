@@ -33,9 +33,9 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     private const BUNDLE_SECURITY            = 'SecurityBundle';
     private const BUNDLE_TWIG                = 'TwigBundle';
 
-    private const COMPONENT_FORM            = 'Symfony\Component\Form\Form';
-    private const COMPONENT_PROPERTY_ACCESS = 'Symfony\Component\PropertyAccess\PropertyAccessor';
-    private const COMPONENT_TRANSLATION     = 'Symfony\Component\Translation\Translator';
+    private const CLASS_FORM            = 'Symfony\Component\Form\Form';
+    private const CLASS_PROPERTY_ACCESS = 'Symfony\Component\PropertyAccess\PropertyAccessor';
+    private const CLASS_TRANSLATION     = 'Symfony\Component\Translation\Translator';
 
     /**
      * {@inheritDoc}
@@ -61,15 +61,15 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'service',
             'transliteratable/common',
 
-            'cloner' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
+            'cloner' => ['class' => self::CLASS_PROPERTY_ACCESS],
 
-            'custom_object' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
+            'custom_object' => ['class' => self::CLASS_PROPERTY_ACCESS],
 
-            'default_value' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
+            'default_value' => ['class' => self::CLASS_PROPERTY_ACCESS],
 
             'dev/translation' => ['env' => 'dev'],
 
-            'form' => ['class' => self::COMPONENT_FORM],
+            'form' => ['class' => self::CLASS_FORM],
 
             'object_namer/twig' => ['bundle' => self::BUNDLE_TWIG],
 
@@ -81,13 +81,13 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'security' => ['bundle' => self::BUNDLE_SECURITY],
 
-            'sluggable' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
+            'sluggable' => ['class' => self::CLASS_PROPERTY_ACCESS],
 
-            'stringifier' => ['class' => self::COMPONENT_TRANSLATION],
+            'stringifier' => ['class' => self::CLASS_TRANSLATION],
 
-            'transliteratable/subscriber' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
+            'transliteratable/subscriber' => ['class' => self::CLASS_PROPERTY_ACCESS],
 
-            'tree' => ['bundle' => self::BUNDLE_DOCTRINE_EXTENSIONS, 'class' => self::COMPONENT_PROPERTY_ACCESS],
+            'tree' => ['bundle' => self::BUNDLE_DOCTRINE_EXTENSIONS, 'class' => self::CLASS_PROPERTY_ACCESS],
 
             'user' => ['bundle' => self::BUNDLE_SECURITY],
         ]);
