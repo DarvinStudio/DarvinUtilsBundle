@@ -29,6 +29,9 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     public const TAG_ANNOTATION_DRIVER = 'darvin_utils.annotation_driver';
     public const TAG_SLUG_HANDLER      = 'darvin_utils.slug_handler';
 
+    private const COMPONENT_FORM     = 'Symfony\Component\Form\Form';
+    private const COMPONENT_SECURITY = 'Symfony\Component\Security\Core\Security';
+
     /**
      * {@inheritDoc}
      */
@@ -61,23 +64,17 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'dev/translation' => ['env' => 'dev'],
 
-            'form' => ['callback' => function () use ($config) {
-                return $config['form']['enabled'];
-            }],
+            'form' => ['class' => self::COMPONENT_FORM],
 
             'response/compress' => ['callback' => function () use ($config) {
                 return $config['response']['compress'];
             }],
 
-            'security' => ['callback' => function () use ($config) {
-                return $config['security']['enabled'];
-            }],
+            'security' => ['class' => self::COMPONENT_SECURITY],
 
             'tree' => ['bundle' => 'StofDoctrineExtensionsBundle'],
 
-            'user' => ['callback' => function () use ($config) {
-                return $config['user']['enabled'];
-            }],
+            'user' => ['class' => self::COMPONENT_SECURITY],
         ]);
     }
 
@@ -86,31 +83,6 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
      */
     public function prepend(ContainerBuilder $container): void
     {
-        $formInstalled     = class_exists('Symfony\Component\Form\Form');
-        $securityInstalled = class_exists('Symfony\Component\Security\Core\Security');
-
-        if (!$formInstalled) {
-            $container->prependExtensionConfig($this->getAlias(), [
-                'form' => [
-                    'enabled' => false,
-                ],
-            ]);
-        }
-        if (!$securityInstalled) {
-            $container->prependExtensionConfig($this->getAlias(), [
-                'security' => [
-                    'enabled' => false,
-                ],
-            ]);
-        }
-        if (!$securityInstalled) {
-            $container->prependExtensionConfig($this->getAlias(), [
-                'user' => [
-                    'enabled' => false,
-                ],
-            ]);
-        }
-
         (new ExtensionConfigurator($container, __DIR__.'/../Resources/config/app'))->configure([
             'doctrine',
             'stof_doctrine_extensions',
