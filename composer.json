@@ -19,6 +19,7 @@
     "suggest": {
         "symfony/form":          "Allows to use form dependent components",
         "symfony/security-core": "Allows to use security dependent components",
+        "symfony/translation":   "Allows to use translation dependent components",
         "symfony/twig-bundle":   "Allows to use Twig dependent components"
     },
     "autoload": {

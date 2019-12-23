@@ -29,8 +29,9 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     public const TAG_ANNOTATION_DRIVER = 'darvin_utils.annotation_driver';
     public const TAG_SLUG_HANDLER      = 'darvin_utils.slug_handler';
 
-    private const COMPONENT_FORM     = 'Symfony\Component\Form\Form';
-    private const COMPONENT_SECURITY = 'Symfony\Component\Security\Core\Security';
+    private const COMPONENT_FORM        = 'Symfony\Component\Form\Form';
+    private const COMPONENT_SECURITY    = 'Symfony\Component\Security\Core\Security';
+    private const COMPONENT_TRANSLATION = 'Symfony\Component\Translation\Translator';
 
     /**
      * {@inheritDoc}
@@ -58,7 +59,6 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'routing',
             'service',
             'sluggable',
-            'stringifier',
             'transliteratable',
 
             'dev/translation' => ['env' => 'dev'],
@@ -74,6 +74,8 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             }],
 
             'security' => ['class' => self::COMPONENT_SECURITY],
+
+            'stringifier' => ['class' => self::COMPONENT_TRANSLATION],
 
             'tree' => ['bundle' => 'StofDoctrineExtensionsBundle'],
 
