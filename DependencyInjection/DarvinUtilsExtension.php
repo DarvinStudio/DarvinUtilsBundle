@@ -31,7 +31,6 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
     private const COMPONENT_FORM            = 'Symfony\Component\Form\Form';
     private const COMPONENT_PROPERTY_ACCESS = 'Symfony\Component\PropertyAccess\PropertyAccessor';
-    private const COMPONENT_SECURITY        = 'Symfony\Component\Security\Core\Security';
     private const COMPONENT_TRANSLATION     = 'Symfony\Component\Translation\Translator';
 
     /**
@@ -76,7 +75,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
                 return $config['response']['compress'];
             }],
 
-            'security' => ['class' => self::COMPONENT_SECURITY],
+            'security' => ['bundle' => 'SecurityBundle'],
 
             'sluggable' => ['class' => self::COMPONENT_PROPERTY_ACCESS],
 
@@ -86,7 +85,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'tree' => ['bundle' => 'StofDoctrineExtensionsBundle'],
 
-            'user' => ['class' => self::COMPONENT_SECURITY],
+            'user' => ['bundle' => 'SecurityBundle'],
         ]);
     }
 
