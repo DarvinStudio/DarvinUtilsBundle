@@ -79,4 +79,4 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 
 7.2.4: Remove Intl Twig functions.
 
-7.2.5: Make Twig optional.
+7.2.5: Make Twig, Translation and PropertyAccess components optional.
