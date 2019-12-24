@@ -50,6 +50,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         (new ConfigInjector($container))->inject($config, $this->getAlias());
 
         (new ConfigLoader($container, __DIR__.'/../Resources/config/services'))->load([
+            'callback',
             'flash',
             'homepage',
             'locale',

@@ -1,0 +1,10 @@
+parameters:
+    darvin_utils.callback.runner.class: Darvin\Utils\Callback\CallbackRunner
+
+services:
+    Darvin\Utils\Callback\CallbackRunnerInterface: '@darvin_utils.callback.runner'
+
+    darvin_utils.callback.runner:
+        class: '%darvin_utils.callback.runner.class%'
+        arguments:
+            - '@service_container'
