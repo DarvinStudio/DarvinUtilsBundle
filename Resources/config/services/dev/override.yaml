@@ -4,6 +4,8 @@ parameters:
 
     darvin_utils.override.config.class: Darvin\Utils\Override\Config\OverrideConfig
 
+    darvin_utils.override.overrider.entity.class: Darvin\Utils\Override\Overrider\EntityOverrider
+
     darvin_utils.override.overrider.template.class: Darvin\Utils\Override\Overrider\TemplateOverrider
 
     darvin_utils.override.overrider_pool.class: Darvin\Utils\Override\OverriderPool
@@ -21,6 +23,11 @@ services:
         class: '%darvin_utils.override.config.class%'
         arguments:
             - '%darvin_utils.override%'
+
+    darvin_utils.override.overrider.entity:
+        class: '%darvin_utils.override.overrider.entity.class%'
+        tags:
+            - { name: darvin_utils.overrider }
 
     darvin_utils.override.overrider.template:
         class: '%darvin_utils.override.overrider.template.class%'
