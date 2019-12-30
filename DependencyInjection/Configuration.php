@@ -78,7 +78,7 @@ class Configuration implements ConfigurationInterface
 
                                 $basePath = dirname((new \ReflectionClass($existingBundles[$bundleName]))->getFileName());
 
-                                foreach ($bundleAttr['subjects'] as $subjectName => $subjectAttr) {
+                                foreach ($bundleAttr['subjects'] as $subjectAttr) {
                                     foreach ($subjectAttr['templates'] as $relativePath) {
                                         $absolutePath = implode(DIRECTORY_SEPARATOR, [$basePath, $relativePath]);
 
