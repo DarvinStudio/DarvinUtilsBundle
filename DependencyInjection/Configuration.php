@@ -51,7 +51,15 @@ class Configuration implements ConfigurationInterface
     private function buildOverrideNode(): ArrayNodeDefinition
     {
         $root = (new TreeBuilder('override'))->getRootNode();
-        $root->addDefaultsIfNotSet();
+        $root->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('bundles')->useAttributeAsKey('name')
+                    ->prototype('array')
+                        ->children()
+                            ->arrayNode('subjects')->useAttributeAsKey('name')
+                                ->prototype('array')
+                                    ->children()
+                                        ->arrayNode('entities')->prototype('scalar')->cannotBeEmpty();
 
         return $root;
     }
