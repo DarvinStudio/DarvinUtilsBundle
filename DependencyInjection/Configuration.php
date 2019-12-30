@@ -10,6 +10,7 @@
 
 namespace Darvin\UtilsBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -35,11 +36,23 @@ class Configuration implements ConfigurationInterface
         // more information on that topic.
         $root
             ->children()
+                ->append($this->buildOverrideNode())
                 ->scalarNode('yandex_translate_api_key')->defaultNull()->end()
                 ->arrayNode('response')->addDefaultsIfNotSet()
                     ->children()
                         ->booleanNode('compress')->defaultFalse();
 
         return $builder;
+    }
+
+    /**
+     * @return \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition
+     */
+    private function buildOverrideNode(): ArrayNodeDefinition
+    {
+        $root = (new TreeBuilder('override'))->getRootNode();
+        $root->addDefaultsIfNotSet();
+
+        return $root;
     }
 }
