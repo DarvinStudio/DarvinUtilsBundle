@@ -82,9 +82,9 @@ class Configuration implements ConfigurationInterface
                                     foreach ($subjectAttr['templates'] as $relativePath) {
                                         $absolutePath = implode(DIRECTORY_SEPARATOR, [$basePath, $relativePath]);
 
-                                        if (!file_exists($absolutePath)) {
+                                        if (!is_readable($absolutePath)) {
                                             throw new \InvalidArgumentException(
-                                                sprintf('Template directory or file "%s" does not exist.', $absolutePath)
+                                                sprintf('Template directory or file "%s" is not readable.', $absolutePath)
                                             );
                                         }
                                     }
