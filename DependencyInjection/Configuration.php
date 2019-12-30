@@ -59,6 +59,7 @@ class Configuration implements ConfigurationInterface
                             ->arrayNode('subjects')->useAttributeAsKey('name')
                                 ->prototype('array')
                                     ->children()
+                                        ->arrayNode('templates')->prototype('scalar')->cannotBeEmpty()->end()->end()
                                         ->arrayNode('entities')
                                             ->prototype('scalar')
                                                 ->cannotBeEmpty()
