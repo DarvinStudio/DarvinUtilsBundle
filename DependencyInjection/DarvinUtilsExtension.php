@@ -15,6 +15,7 @@ use Darvin\Utils\DependencyInjection\ConfigLoader;
 use Darvin\Utils\DependencyInjection\ExtensionConfigurator;
 use Darvin\Utils\Mapping\AnnotationDriver\AnnotationDriverInterface;
 use Darvin\Utils\Sluggable\SlugHandlerInterface;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -45,7 +46,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         $container->registerForAutoconfiguration(AnnotationDriverInterface::class)->addTag(self::TAG_ANNOTATION_DRIVER);
         $container->registerForAutoconfiguration(SlugHandlerInterface::class)->addTag(self::TAG_SLUG_HANDLER);
 
-        $config = $this->processConfiguration(new Configuration(), $configs);
+        $config = $this->processConfiguration(new Configuration($container->getParameter('kernel.bundles')), $configs);
 
         (new ConfigInjector($container))->inject($config, $this->getAlias());
 
@@ -105,5 +106,13 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'doctrine',
             'stof_doctrine_extensions',
         ]);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getConfiguration(array $config, ContainerBuilder $container): ?ConfigurationInterface
+    {
+        return new Configuration($container->getParameter('kernel.bundles'));
     }
 }

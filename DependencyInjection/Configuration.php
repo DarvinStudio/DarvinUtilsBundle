@@ -22,6 +22,19 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
+     * @var array
+     */
+    private $bundles;
+
+    /**
+     * @param array $bundles Bundles
+     */
+    public function __construct(array $bundles)
+    {
+        $this->bundles = $bundles;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function getConfigTreeBuilder(): TreeBuilder
@@ -50,10 +63,24 @@ class Configuration implements ConfigurationInterface
      */
     private function buildOverrideNode(): ArrayNodeDefinition
     {
+        $existingBundles = $this->bundles;
+
         $root = (new TreeBuilder('override'))->getRootNode();
         $root->addDefaultsIfNotSet()
             ->children()
                 ->arrayNode('bundles')->useAttributeAsKey('name')
+                    ->validate()
+                        ->ifTrue(function (array $bundles) use ($existingBundles): bool {
+                            foreach (array_keys($bundles) as $bundle) {
+                                if (!isset($existingBundles[$bundle])) {
+                                    throw new \InvalidArgumentException(sprintf('Bundle "%s" does not exist.', $bundle));
+                                }
+                            }
+
+                            return false;
+                        })
+                        ->thenInvalid('')
+                    ->end()
                     ->prototype('array')
                         ->children()
                             ->arrayNode('subjects')->useAttributeAsKey('name')
