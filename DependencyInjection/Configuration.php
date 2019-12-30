@@ -59,7 +59,14 @@ class Configuration implements ConfigurationInterface
                             ->arrayNode('subjects')->useAttributeAsKey('name')
                                 ->prototype('array')
                                     ->children()
-                                        ->arrayNode('entities')->prototype('scalar')->cannotBeEmpty();
+                                        ->arrayNode('entities')
+                                            ->prototype('scalar')
+                                                ->cannotBeEmpty()
+                                                ->validate()
+                                                    ->ifTrue(function ($entity): bool {
+                                                        return !class_exists((string)$entity);
+                                                    })
+                                                    ->thenInvalid('Entity %s does not exist.');
 
         return $root;
     }
