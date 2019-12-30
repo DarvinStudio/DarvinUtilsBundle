@@ -2,10 +2,16 @@ parameters:
     darvin_utils.override.command.class: Darvin\Utils\Command\OverrideCommand
     darvin_utils.override.command.name:  darvin:utils:override
 
+    darvin_utils.override.overrider.class: Darvin\Utils\Override\Overrider
+
 services:
     darvin_utils.override.command:
         class: '%darvin_utils.override.command.class%'
         arguments:
             - '%darvin_utils.override.command.name%'
+            - '@darvin_utils.override.overrider'
         tags:
             - { name: console.command }
+
+    darvin_utils.override.overrider:
+        class: '%darvin_utils.override.overrider.class%'
