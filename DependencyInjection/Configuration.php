@@ -71,9 +71,23 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('bundles')->useAttributeAsKey('name')
                     ->validate()
                         ->ifTrue(function (array $bundles) use ($existingBundles): bool {
-                            foreach (array_keys($bundles) as $bundle) {
-                                if (!isset($existingBundles[$bundle])) {
-                                    throw new \InvalidArgumentException(sprintf('Bundle "%s" does not exist.', $bundle));
+                            foreach ($bundles as $bundleName => $bundleAttr) {
+                                if (!isset($existingBundles[$bundleName])) {
+                                    throw new \InvalidArgumentException(sprintf('Bundle "%s" does not exist.', $bundleName));
+                                }
+
+                                $basePath = dirname((new \ReflectionClass($existingBundles[$bundleName]))->getFileName());
+
+                                foreach ($bundleAttr['subjects'] as $subjectName => $subjectAttr) {
+                                    foreach ($subjectAttr['templates'] as $relativePath) {
+                                        $absolutePath = implode(DIRECTORY_SEPARATOR, [$basePath, $relativePath]);
+
+                                        if (!file_exists($absolutePath)) {
+                                            throw new \InvalidArgumentException(
+                                                sprintf('Template directory or file "%s" does not exist.', $absolutePath)
+                                            );
+                                        }
+                                    }
                                 }
                             }
 
