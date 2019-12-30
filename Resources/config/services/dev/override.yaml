@@ -4,14 +4,14 @@ parameters:
 
     darvin_utils.override.config.class: Darvin\Utils\Override\Config\OverrideConfig
 
-    darvin_utils.override.overrider.class: Darvin\Utils\Override\Overrider
+    darvin_utils.override.overrider_pool.class: Darvin\Utils\Override\OverriderPool
 
 services:
     darvin_utils.override.command:
         class: '%darvin_utils.override.command.class%'
         arguments:
             - '%darvin_utils.override.command.name%'
-            - '@darvin_utils.override.overrider'
+            - '@darvin_utils.override.overrider_pool'
         tags:
             - { name: console.command }
 
@@ -20,7 +20,7 @@ services:
         arguments:
             - '%darvin_utils.override%'
 
-    darvin_utils.override.overrider:
-        class: '%darvin_utils.override.overrider.class%'
+    darvin_utils.override.overrider_pool:
+        class: '%darvin_utils.override.overrider_pool.class%'
         arguments:
             - '@darvin_utils.override.config'
