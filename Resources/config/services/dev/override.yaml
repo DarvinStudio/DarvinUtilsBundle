@@ -1,0 +1,11 @@
+parameters:
+    darvin_utils.override.command.class: Darvin\Utils\Command\OverrideCommand
+    darvin_utils.override.command.name:  darvin:utils:override
+
+services:
+    darvin_utils.override.command:
+        class: '%darvin_utils.override.command.class%'
+        arguments:
+            - '%darvin_utils.override.command.name%'
+        tags:
+            - { name: console.command }

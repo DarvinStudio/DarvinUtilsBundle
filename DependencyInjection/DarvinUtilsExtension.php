@@ -68,6 +68,8 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'default_value' => ['class' => self::CLASS_PROPERTY_ACCESS],
 
+            'dev/override' => ['env' => 'dev'],
+
             'dev/translation' => ['env' => 'dev'],
 
             'form' => ['class' => self::CLASS_FORM],
