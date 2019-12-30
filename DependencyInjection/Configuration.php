@@ -66,49 +66,45 @@ class Configuration implements ConfigurationInterface
         $existingBundles = $this->bundles;
 
         $root = (new TreeBuilder('override'))->getRootNode();
-        $root->addDefaultsIfNotSet()
-            ->children()
-                ->arrayNode('bundles')->useAttributeAsKey('name')
-                    ->validate()
-                        ->ifTrue(function (array $bundles) use ($existingBundles): bool {
-                            foreach ($bundles as $bundleName => $bundleAttr) {
-                                if (!isset($existingBundles[$bundleName])) {
-                                    throw new \InvalidArgumentException(sprintf('Bundle "%s" does not exist.', $bundleName));
-                                }
+        $root->useAttributeAsKey('bundle')
+            ->validate()
+                ->ifTrue(function (array $bundles) use ($existingBundles): bool {
+                    foreach ($bundles as $bundle => $subjects) {
+                        if (!isset($existingBundles[$bundle])) {
+                            throw new \InvalidArgumentException(sprintf('Bundle "%s" does not exist.', $bundle));
+                        }
 
-                                $basePath = dirname((new \ReflectionClass($existingBundles[$bundleName]))->getFileName());
+                        $basePath = dirname((new \ReflectionClass($existingBundles[$bundle]))->getFileName());
 
-                                foreach ($bundleAttr['subjects'] as $subjectAttr) {
-                                    foreach ($subjectAttr['templates'] as $relativePath) {
-                                        $absolutePath = implode(DIRECTORY_SEPARATOR, [$basePath, $relativePath]);
+                        foreach ($subjects as $subjectAttr) {
+                            foreach ($subjectAttr['templates'] as $relativePath) {
+                                $absolutePath = implode(DIRECTORY_SEPARATOR, [$basePath, $relativePath]);
 
-                                        if (!is_readable($absolutePath)) {
-                                            throw new \InvalidArgumentException(
-                                                sprintf('Template directory or file "%s" is not readable.', $absolutePath)
-                                            );
-                                        }
-                                    }
+                                if (!is_readable($absolutePath)) {
+                                    throw new \InvalidArgumentException(
+                                        sprintf('Template directory or file "%s" is not readable.', $absolutePath)
+                                    );
                                 }
                             }
+                        }
+                    }
 
-                            return false;
-                        })
-                        ->thenInvalid('')
-                    ->end()
-                    ->prototype('array')
-                        ->children()
-                            ->arrayNode('subjects')->useAttributeAsKey('name')
-                                ->prototype('array')
-                                    ->children()
-                                        ->arrayNode('templates')->prototype('scalar')->cannotBeEmpty()->end()->end()
-                                        ->arrayNode('entities')
-                                            ->prototype('scalar')
-                                                ->cannotBeEmpty()
-                                                ->validate()
-                                                    ->ifTrue(function ($entity): bool {
-                                                        return !class_exists((string)$entity);
-                                                    })
-                                                    ->thenInvalid('Entity %s does not exist.');
+                    return false;
+                })
+                ->thenInvalid('')
+            ->end()
+            ->prototype('array')->useAttributeAsKey('subject')
+                ->prototype('array')
+                    ->children()
+                        ->arrayNode('templates')->prototype('scalar')->cannotBeEmpty()->end()->end()
+                        ->arrayNode('entities')
+                            ->prototype('scalar')
+                                ->cannotBeEmpty()
+                                ->validate()
+                                    ->ifTrue(function ($entity): bool {
+                                        return !class_exists((string)$entity);
+                                    })
+                                    ->thenInvalid('Entity %s does not exist.');
 
         return $root;
     }

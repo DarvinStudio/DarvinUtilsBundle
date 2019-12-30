@@ -16,4 +16,4 @@ services:
     darvin_utils.override.overrider:
         class: '%darvin_utils.override.overrider.class%'
         arguments:
-            - '%darvin_utils.override.bundles%'
+            - '%darvin_utils.override%'
