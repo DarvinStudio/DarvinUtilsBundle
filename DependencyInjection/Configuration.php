@@ -74,7 +74,7 @@ class Configuration implements ConfigurationInterface
                             throw new \InvalidArgumentException(sprintf('Bundle "%s" does not exist.', $bundle));
                         }
 
-                        $basePath = dirname((new \ReflectionClass($existingBundles[$bundle]))->getFileName());
+                        $basePath = sprintf('%s/Resources/views', dirname((new \ReflectionClass($existingBundles[$bundle]))->getFileName()));
 
                         foreach ($subjects as $subject) {
                             foreach ($subject['templates'] as $relativePath) {
