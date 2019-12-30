@@ -74,9 +74,17 @@ class Configuration implements ConfigurationInterface
                             throw new \InvalidArgumentException(sprintf('Bundle "%s" does not exist.', $bundle));
                         }
 
-                        $basePath = sprintf('%s/Resources/views', dirname((new \ReflectionClass($existingBundles[$bundle]))->getFileName()));
+                        $baseNamespace = preg_replace('/\\\[^\\\]+$/', '', $existingBundles[$bundle]);
+                        $basePath      = sprintf('%s/Resources/views', dirname((new \ReflectionClass($existingBundles[$bundle]))->getFileName()));
 
                         foreach ($subjects as $subject) {
+                            foreach ($subject['entities'] as $entity) {
+                                $class = sprintf('%s\Entity\%s', $baseNamespace, $entity);
+
+                                if (!class_exists($class)) {
+                                    throw new \InvalidArgumentException(sprintf('Entity class "%s" does not exist.', $class));
+                                }
+                            }
                             foreach ($subject['templates'] as $relativePath) {
                                 $absolutePath = implode(DIRECTORY_SEPARATOR, [$basePath, $relativePath]);
 
@@ -96,15 +104,8 @@ class Configuration implements ConfigurationInterface
             ->prototype('array')->useAttributeAsKey('subject')
                 ->prototype('array')
                     ->children()
-                        ->arrayNode('templates')->prototype('scalar')->cannotBeEmpty()->end()->end()
-                        ->arrayNode('entities')
-                            ->prototype('scalar')
-                                ->cannotBeEmpty()
-                                ->validate()
-                                    ->ifTrue(function ($entity): bool {
-                                        return !class_exists((string)$entity);
-                                    })
-                                    ->thenInvalid('Entity %s does not exist.');
+                        ->arrayNode('entities')->prototype('scalar')->cannotBeEmpty()->end()->end()
+                        ->arrayNode('templates')->prototype('scalar')->cannotBeEmpty();
 
         return $root;
     }
