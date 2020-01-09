@@ -14,20 +14,29 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * {{ class }}
-{% if repository_class %}
+{% if repository %}
  *
- * @ORM\Entity(repositoryClass="{{ repository_class }}")
+ * @ORM\Entity(repositoryClass="{{ repository }}")
 {% endif %}
  */
 class App{{ class }} extends {{ class }}
 {
-{% if translation_class %}
+{% if translatable %}
+    /**
+     * {@inheritDoc}
+     */
+    public static function getTranslatableEntityClass(): string
+    {
+        return {{ translatable }}::class;
+    }
+{% endif %}
+{% if translation %}
     /**
      * {@inheritDoc}
      */
     public static function getTranslationEntityClass(): string
     {
-        return {{ translation_class }}::class;
+        return {{ translation }}::class;
     }
 {% endif %}
 }
