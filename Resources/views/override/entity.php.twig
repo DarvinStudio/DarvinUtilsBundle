@@ -21,11 +21,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class App{{ class }} extends {{ class }}
 {
+{% if translation_class %}
     /**
-     * @return string
+     * {@inheritDoc}
      */
-    public static function getTranslationEntityClass()
+    public static function getTranslationEntityClass(): string
     {
-        return AppHomepageTranslation::class;
+        return {{ translation_class }}::class;
     }
+{% endif %}
 }
