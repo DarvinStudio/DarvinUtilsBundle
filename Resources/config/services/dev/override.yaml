@@ -26,6 +26,9 @@ services:
 
     darvin_utils.override.overrider.entity:
         class: '%darvin_utils.override.overrider.entity.class%'
+        arguments:
+            - '@twig'
+            - '%kernel.bundles_metadata%'
         tags:
             - { name: darvin_utils.overrider }
 
