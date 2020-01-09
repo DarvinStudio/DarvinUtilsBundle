@@ -46,7 +46,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         $container->registerForAutoconfiguration(AnnotationDriverInterface::class)->addTag(self::TAG_ANNOTATION_DRIVER);
         $container->registerForAutoconfiguration(SlugHandlerInterface::class)->addTag(self::TAG_SLUG_HANDLER);
 
-        $config = $this->processConfiguration(new Configuration($container->getParameter('kernel.bundles')), $configs);
+        $config = $this->processConfiguration($this->getConfiguration($configs, $container), $configs);
 
         (new ConfigInjector($container))->inject($config, $this->getAlias());
 
@@ -113,6 +113,6 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
      */
     public function getConfiguration(array $config, ContainerBuilder $container): ?ConfigurationInterface
     {
-        return new Configuration($container->getParameter('kernel.bundles'));
+        return new Configuration($container->getParameter('kernel.bundles_metadata'));
     }
 }

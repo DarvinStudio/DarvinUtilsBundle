@@ -24,14 +24,14 @@ class Configuration implements ConfigurationInterface
     /**
      * @var array
      */
-    private $bundles;
+    private $bundlesMeta;
 
     /**
-     * @param array $bundles Bundles
+     * @param array $bundlesMeta Bundles metadata
      */
-    public function __construct(array $bundles)
+    public function __construct(array $bundlesMeta)
     {
-        $this->bundles = $bundles;
+        $this->bundlesMeta = $bundlesMeta;
     }
 
     /**
@@ -63,19 +63,19 @@ class Configuration implements ConfigurationInterface
      */
     private function buildOverrideNode(): ArrayNodeDefinition
     {
-        $existingBundles = $this->bundles;
+        $bundlesMeta = $this->bundlesMeta;
 
         $root = (new TreeBuilder('override'))->getRootNode();
         $root->useAttributeAsKey('bundle')
             ->validate()
-                ->ifTrue(function (array $bundles) use ($existingBundles): bool {
+                ->ifTrue(function (array $bundles) use ($bundlesMeta): bool {
                     foreach ($bundles as $bundle => $subjects) {
-                        if (!isset($existingBundles[$bundle])) {
+                        if (!isset($bundlesMeta[$bundle])) {
                             throw new \InvalidArgumentException(sprintf('Bundle "%s" does not exist.', $bundle));
                         }
 
-                        $baseNamespace = preg_replace('/\\\[^\\\]+$/', '', $existingBundles[$bundle]);
-                        $basePath      = sprintf('%s/Resources/views', dirname((new \ReflectionClass($existingBundles[$bundle]))->getFileName()));
+                        $baseNamespace = $bundlesMeta[$bundle]['namespace'];
+                        $basePath      = sprintf('%s/Resources/views', $bundlesMeta[$bundle]['path']);
 
                         foreach ($subjects as $subject) {
                             foreach ($subject['entities'] as $entity) {
