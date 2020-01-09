@@ -9,13 +9,15 @@
 
 namespace App\Entity\{{ package_namespace }}{% if entity_namespace %}\{{ entity_namespace }}{% endif %};
 
-use {{ bundle_namespace }}\Entity{% if entity_namespace %}\{{ entity_namespace }}{% endif %}\{{ class }};
+use {{ fqcn }};
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * {{ class }}
+{% if repository_class %}
  *
- * @ORM\Entity(repositoryClass="Darvin\PageBundle\Repository\HomepageRepository")
+ * @ORM\Entity(repositoryClass="{{ repository_class }}")
+{% endif %}
  */
 class App{{ class }} extends {{ class }}
 {
