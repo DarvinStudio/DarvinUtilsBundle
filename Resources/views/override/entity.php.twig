@@ -13,11 +13,10 @@ use {{ fqcn }};
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * {{ class }}
-{% if repository %}
+ * {{ class|humanize }}
  *
- * @ORM\Entity(repositoryClass="{{ repository }}")
-{% endif %}
+ * @ORM\Entity{% if repository %}(repositoryClass="{{ repository }}"){% endif %}
+
  */
 class App{{ class }} extends {{ class }}
 {
