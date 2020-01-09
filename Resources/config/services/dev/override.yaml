@@ -28,9 +28,11 @@ services:
         class: '%darvin_utils.override.overrider.entity.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
+            - '@filesystem'
             - '@darvin_content.translatable.manager'
             - '@twig'
             - '%kernel.bundles_metadata%'
+            - '%kernel.project_dir%'
         tags:
             - { name: darvin_utils.overrider }
 

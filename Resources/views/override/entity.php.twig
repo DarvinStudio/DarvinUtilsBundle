@@ -26,7 +26,7 @@ class App{{ class }} extends {{ class }}
      */
     public static function getTranslatableEntityClass(): string
     {
-        return {{ translatable }}::class;
+        return App{{ translatable }}::class;
     }
 {% endif %}
 {% if translation %}
@@ -35,7 +35,7 @@ class App{{ class }} extends {{ class }}
      */
     public static function getTranslationEntityClass(): string
     {
-        return {{ translation }}::class;
+        return App{{ translation }}::class;
     }
 {% endif %}
 }
