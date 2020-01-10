@@ -106,6 +106,16 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'doctrine',
             'stof_doctrine_extensions',
         ]);
+
+        if ($container->hasExtension('twig')) {
+            $path = sprintf('%s/../Resources/views', dirname((new \ReflectionClass(ExtensionConfigurator::class))->getFileName()));
+
+            $container->prependExtensionConfig('twig', [
+                'paths' => [
+                    $path => 'DarvinUtils',
+                ],
+            ]);
+        }
     }
 
     /**
