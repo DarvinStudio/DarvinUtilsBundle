@@ -30,10 +30,12 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     public const TAG_ANNOTATION_DRIVER = 'darvin_utils.annotation_driver';
     public const TAG_SLUG_HANDLER      = 'darvin_utils.slug_handler';
 
+    private const BUNDLE_CONTENT             = 'DarvinContentBundle';
     private const BUNDLE_DOCTRINE_EXTENSIONS = 'StofDoctrineExtensionsBundle';
     private const BUNDLE_SECURITY            = 'SecurityBundle';
     private const BUNDLE_TWIG                = 'TwigBundle';
 
+    private const CLASS_FILESYSTEM      = 'Symfony\Component\Filesystem\Filesystem';
     private const CLASS_FORM            = 'Symfony\Component\Form\Form';
     private const CLASS_PROPERTY_ACCESS = 'Symfony\Component\PropertyAccess\PropertyAccessor';
     private const CLASS_TRANSLATION     = 'Symfony\Component\Translation\Translator';
@@ -69,7 +71,11 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
 
             'default_value' => ['class' => self::CLASS_PROPERTY_ACCESS],
 
-            'dev/override' => ['env' => 'dev'],
+            'dev/override' => [
+                'env'    => 'dev',
+                'class'  => self::CLASS_FILESYSTEM,
+                'bundle' => [self::BUNDLE_CONTENT, self::BUNDLE_TWIG],
+            ],
 
             'dev/translation' => ['env' => 'dev'],
 
