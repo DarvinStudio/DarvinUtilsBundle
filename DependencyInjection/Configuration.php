@@ -90,7 +90,7 @@ class Configuration implements ConfigurationInterface
 
                                 if (!is_readable($absolutePath)) {
                                     throw new \InvalidArgumentException(
-                                        sprintf('Template directory or file "%s" is not readable.', $absolutePath)
+                                        sprintf('Template file or directory "%s" is not readable.', $absolutePath)
                                     );
                                 }
                             }
