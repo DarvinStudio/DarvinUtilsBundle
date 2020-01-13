@@ -28,6 +28,8 @@ services:
 
     darvin_utils.override.overrider.admin:
         class: '%darvin_utils.override.overrider.admin.class%'
+        arguments:
+            - '@darvin_admin.configuration.section'
         tags:
             - { name: darvin_utils.overrider }
 

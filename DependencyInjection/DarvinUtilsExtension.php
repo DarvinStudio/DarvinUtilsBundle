@@ -30,6 +30,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     public const TAG_ANNOTATION_DRIVER = 'darvin_utils.annotation_driver';
     public const TAG_SLUG_HANDLER      = 'darvin_utils.slug_handler';
 
+    private const BUNDLE_ADMIN               = 'DarvinAdminBundle';
     private const BUNDLE_CONTENT             = 'DarvinContentBundle';
     private const BUNDLE_DOCTRINE_EXTENSIONS = 'StofDoctrineExtensionsBundle';
     private const BUNDLE_SECURITY            = 'SecurityBundle';
@@ -74,7 +75,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'dev/override' => [
                 'env'    => 'dev',
                 'class'  => self::CLASS_FILESYSTEM,
-                'bundle' => [self::BUNDLE_CONTENT, self::BUNDLE_TWIG],
+                'bundle' => [self::BUNDLE_ADMIN, self::BUNDLE_CONTENT, self::BUNDLE_TWIG],
             ],
 
             'dev/translation' => ['env' => 'dev'],
