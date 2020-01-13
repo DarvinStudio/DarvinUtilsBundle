@@ -38,6 +38,10 @@ services:
 
     darvin_utils.override.overrider.template:
         class: '%darvin_utils.override.overrider.template.class%'
+        arguments:
+            - '@filesystem'
+            - '%kernel.bundles_metadata%'
+            - '%kernel.project_dir%'
         tags:
             - { name: darvin_utils.overrider }
 
