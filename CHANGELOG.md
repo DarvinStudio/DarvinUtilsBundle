@@ -82,3 +82,11 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.2.5: Make Twig, Translation and PropertyAccess components optional.
 
 7.2.6: Add callback runner.
+
+7.3.0: 
+
+- Add override command.
+
+- Move price formatter to utils lib.
+
+- Move macros template to utils lib.
