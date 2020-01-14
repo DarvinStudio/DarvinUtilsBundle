@@ -104,8 +104,13 @@ class Configuration implements ConfigurationInterface
             ->prototype('array')->useAttributeAsKey('subject')
                 ->prototype('array')
                     ->children()
-                        ->arrayNode('entities')->prototype('scalar')->cannotBeEmpty()->end()->end()
-                        ->arrayNode('templates')->prototype('scalar')->cannotBeEmpty();
+                        ->arrayNode('entities')
+                            ->prototype('scalar')->cannotBeEmpty()->end()
+                            ->beforeNormalization()->castToArray()->end()
+                        ->end()
+                        ->arrayNode('templates')
+                            ->prototype('scalar')->cannotBeEmpty()->end()
+                            ->beforeNormalization()->castToArray();
 
         return $root;
     }

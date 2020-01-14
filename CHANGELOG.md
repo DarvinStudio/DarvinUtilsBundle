@@ -92,3 +92,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 - Move macros template to utils lib.
 
 - Move translations to utils lib.
+
+7.3.1: Simplify override configuration.
