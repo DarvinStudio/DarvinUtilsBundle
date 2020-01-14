@@ -30,6 +30,7 @@ services:
         class: '%darvin_utils.override.overrider.admin.class%'
         arguments:
             - '@darvin_admin.configuration.section'
+            - '%kernel.bundles_metadata%'
         tags:
             - { name: darvin_utils.overrider }
 
