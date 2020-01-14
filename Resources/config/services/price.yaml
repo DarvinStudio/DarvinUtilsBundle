@@ -1,5 +1,5 @@
 parameters:
-    darvin_utils.price.formatter.class: Darvin\UtilsBundle\Price\PriceFormatter
+    darvin_utils.price.formatter.class: Darvin\Utils\Price\PriceFormatter
 
     darvin_utils.price.twig_extension.class: Darvin\Utils\Twig\Extension\PriceExtension
 
