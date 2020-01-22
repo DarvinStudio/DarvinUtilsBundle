@@ -94,3 +94,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 - Move translations to utils lib.
 
 7.3.1: Simplify override configuration.
+
+7.3.2: Rename "Sluggable entity manager" => "Sluggable manager".

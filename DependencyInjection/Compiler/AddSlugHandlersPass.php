@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class AddSlugHandlersPass implements CompilerPassInterface
 {
-    private const ID = 'darvin_utils.sluggable.manager.entity';
+    private const ID = 'darvin_utils.sluggable.manager';
 
     /**
      * {@inheritDoc}

@@ -1,5 +1,5 @@
 parameters:
-    darvin_utils.sluggable.manager.entity.class: Darvin\Utils\Sluggable\SluggableEntityManager
+    darvin_utils.sluggable.manager.class: Darvin\Utils\Sluggable\SluggableManager
 
     darvin_utils.sluggable.subscriber.class: Darvin\Utils\EventListener\SlugifySubscriber
 
@@ -8,10 +8,7 @@ services:
     Darvin\Utils\EventListener\SlugifySubscriberInterface: '@darvin_utils.sluggable.subscriber'
 
     darvin_utils.sluggable.manager:
-        alias: darvin_utils.sluggable.manager.entity
-
-    darvin_utils.sluggable.manager.entity:
-        class: '%darvin_utils.sluggable.manager.entity.class%'
+        class: '%darvin_utils.sluggable.manager.class%'
         arguments:
             - '@darvin_utils.entity_manager.provider'
             - '@event_dispatcher'
