@@ -112,6 +112,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
         (new ExtensionConfigurator($container, __DIR__.'/../Resources/config/app'))->configure([
             'doctrine',
             'stof_doctrine_extensions',
+            'twig',
         ]);
 
         if ($container->hasExtension('framework') || $container->hasExtension('twig')) {

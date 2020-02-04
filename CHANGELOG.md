@@ -98,3 +98,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.3.2: Rename "Sluggable entity manager" => "Sluggable manager".
 
 7.3.3: Disable alias services compiler pass.
+
+7.3.4: Add antispam form theme.
