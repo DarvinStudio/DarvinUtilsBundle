@@ -1,0 +1,16 @@
+parameters:
+    darvin_utils.cloner.uploadable.tmp_dir: '%darvin_utils.tmp_dir%/cloner/uploadable'
+
+    darvin_utils.cloner.uploadable.copy_event_subscriber.class: Darvin\Utils\EventListener\Cloner\CopyUploadablesSubscriber
+
+services:
+    darvin_utils.cloner.uploadable.copy_event_subscriber:
+        class: '%darvin_utils.cloner.uploadable.copy_event_subscriber.class%'
+        arguments:
+            - '@filesystem'
+            - '@vich_uploader.metadata_reader'
+            - '@property_accessor'
+            - '@vich_uploader.storage'
+            - '%darvin_utils.cloner.uploadable.tmp_dir%'
+        tags:
+            - { name: kernel.event_subscriber }

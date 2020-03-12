@@ -50,6 +50,7 @@ class Configuration implements ConfigurationInterface
         $root
             ->children()
                 ->append($this->buildOverrideNode())
+                ->scalarNode('tmp_dir')->defaultValue(sprintf('%s/darvin/utils', sys_get_temp_dir()))->cannotBeEmpty()->end()
                 ->scalarNode('yandex_translate_api_key')->defaultNull()->end()
                 ->arrayNode('response')->addDefaultsIfNotSet()
                     ->children()

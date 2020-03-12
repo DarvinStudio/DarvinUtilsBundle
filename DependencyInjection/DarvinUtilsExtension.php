@@ -35,6 +35,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
     private const BUNDLE_DOCTRINE_EXTENSIONS = 'StofDoctrineExtensionsBundle';
     private const BUNDLE_SECURITY            = 'SecurityBundle';
     private const BUNDLE_TWIG                = 'TwigBundle';
+    private const BUNDLE_UPLOADER            = 'VichUploaderBundle';
 
     private const CLASS_FILESYSTEM      = 'Symfony\Component\Filesystem\Filesystem';
     private const CLASS_FORM            = 'Symfony\Component\Form\Form';
@@ -66,7 +67,8 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'service',
             'transliteratable/common',
 
-            'cloner' => ['class' => self::CLASS_PROPERTY_ACCESS],
+            'cloner/common'     => ['class' => self::CLASS_PROPERTY_ACCESS],
+            'cloner/uploadable' => ['class' => [self::CLASS_PROPERTY_ACCESS, self::CLASS_FILESYSTEM], 'bundle' => self::BUNDLE_UPLOADER],
 
             'custom_object' => ['class' => self::CLASS_PROPERTY_ACCESS],
 

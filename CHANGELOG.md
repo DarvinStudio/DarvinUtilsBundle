@@ -100,3 +100,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.3.3: Disable alias services compiler pass.
 
 7.3.4: Add antispam form theme.
+
+7.3.5: Add copy cloned uploadables event subscriber.
