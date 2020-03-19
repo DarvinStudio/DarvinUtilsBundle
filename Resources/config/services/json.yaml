@@ -1,0 +1,10 @@
+parameters:
+    darvin_utils.json.encoder.class: Darvin\Utils\Json\JsonEncoder
+
+services:
+    Darvin\Utils\Json\JsonEncoderInterface: '@darvin_utils.json.encoder'
+
+    darvin_utils.json.encoder:
+        class: '%darvin_utils.json.encoder.class%'
+        arguments:
+            - '%kernel.debug%'

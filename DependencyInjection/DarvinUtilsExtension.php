@@ -58,6 +58,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'callback',
             'flash',
             'homepage',
+            'json',
             'locale',
             'mapping',
             'new_object',
