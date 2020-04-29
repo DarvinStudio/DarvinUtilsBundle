@@ -104,3 +104,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.3.5: Add copy cloned uploadables event subscriber.
 
 7.3.6: Add JSON encoder.
+
+7.3.7: Change temporary files directory from "/tmp" to "%kernel.project_dir%/var/tmp".
