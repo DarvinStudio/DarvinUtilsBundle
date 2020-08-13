@@ -1,0 +1,13 @@
+parameters:
+    darvin_utils.cache.http.clear.command.class: Darvin\Utils\Command\Cache\Http\ClearCommand
+    darvin_utils.cache.http.clear.command.name:  darvin:utils:http-cache:clear
+
+services:
+    darvin_utils.cache.http.clear.command:
+        class: '%darvin_utils.cache.http.clear.command.class%'
+        arguments:
+            - '%darvin_utils.cache.http.clear.command.name%'
+            - '@filesystem'
+            - '%darvin_utils.cache.http.dir%'
+        tags:
+            - { name: console.command }

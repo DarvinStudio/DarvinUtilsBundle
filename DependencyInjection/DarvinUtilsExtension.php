@@ -68,6 +68,10 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'service',
             'transliteratable/common',
 
+            'cache/http' => ['callback' => function () use ($config): bool {
+                return $config['cache']['http']['enabled'];
+            }],
+
             'cloner/common'     => ['class' => self::CLASS_PROPERTY_ACCESS],
             'cloner/uploadable' => ['class' => [self::CLASS_PROPERTY_ACCESS, self::CLASS_FILESYSTEM], 'bundle' => self::BUNDLE_UPLOADER],
 
