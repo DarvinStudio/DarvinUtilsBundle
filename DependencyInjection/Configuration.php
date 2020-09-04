@@ -51,7 +51,6 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->append($this->buildOverrideNode())
                 ->scalarNode('tmp_dir')->defaultValue('%kernel.project_dir%/var/tmp/darvin/utils')->cannotBeEmpty()->end()
-                ->scalarNode('yandex_translate_api_key')->defaultNull()->end()
                 ->arrayNode('cache')->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('http')->canBeEnabled()

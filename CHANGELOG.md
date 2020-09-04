@@ -108,3 +108,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.3.7: Change temporary files directory from "/tmp" to "%kernel.project_dir%/var/tmp".
 
 7.3.8: Add HTTP cache clear command.
+
+7.3.9: Remove integration with yandex translate API.
