@@ -1,0 +1,21 @@
+parameters:
+    darvin_utils.cache.varnish.clear.clearer.class: Darvin\Utils\Cache\Varnish\VarnishCacheClearer
+
+    darvin_utils.cache.varnish.clear.command.class: Darvin\Utils\Command\Cache\Varnish\ClearCommand
+    darvin_utils.cache.varnish.clear.command.name:  darvin:utils:varnish-cache:clear
+
+services:
+    darvin_utils.cache.varnish.clear.clearer:
+        class: '%darvin_utils.cache.varnish.clear.clearer.class%'
+        arguments:
+            - '%darvin_utils.cache.varnish.url%'
+            - '%darvin_utils.cache.varnish.method%'
+            - '%darvin_utils.cache.varnish.timeout%'
+
+    darvin_utils.cache.varnish.clear.command:
+        class: '%darvin_utils.cache.varnish.clear.command.class%'
+        arguments:
+            - '%darvin_utils.cache.varnish.clear.command.name%'
+            - '@darvin_utils.cache.varnish.clear.clearer'
+        tags:
+            - { name: console.command }
