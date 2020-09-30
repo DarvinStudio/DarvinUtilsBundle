@@ -1,13 +1,22 @@
 parameters:
-    darvin_utils.homepage.dummy_router.class: Darvin\Utils\Homepage\DummyHomepageRouter
+    darvin_utils.homepage.provider.dummy.class: Darvin\Utils\Homepage\DummyHomepageProvider
+
+    darvin_utils.homepage.router.dummy.class: Darvin\Utils\Homepage\DummyHomepageRouter
 
 services:
     _defaults:
         public: true
+        
+    darvin_utils.homepage.provider:
+        alias: darvin_utils.homepage.provider.dummy
+
+    darvin_utils.homepage.provider.dummy:
+        class:  "%darvin_utils.homepage.provider.dummy.class%"
+        public: false
 
     darvin_utils.homepage.router:
-        alias: darvin_utils.homepage.dummy_router
+        alias: darvin_utils.homepage.router.dummy
 
-    darvin_utils.homepage.dummy_router:
-        class:  "%darvin_utils.homepage.dummy_router.class%"
+    darvin_utils.homepage.router.dummy:
+        class:  "%darvin_utils.homepage.router.dummy.class%"
         public: false
