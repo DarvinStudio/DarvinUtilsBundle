@@ -8,3 +8,4 @@ services:
         class: '%darvin_utils.data.view.factory.class%'
         arguments:
             - '@darvin_utils.stringifier'
+            - '@translator'
