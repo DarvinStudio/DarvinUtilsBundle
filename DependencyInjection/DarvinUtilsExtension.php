@@ -67,6 +67,7 @@ class DarvinUtilsExtension extends Extension implements PrependExtensionInterfac
             'routing',
             'service',
             'transliteratable/common',
+            'view',
 
             'cache/http' => ['callback' => function () use ($config): bool {
                 return $config['cache']['http']['enabled'];
