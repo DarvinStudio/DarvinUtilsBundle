@@ -1,0 +1,10 @@
+parameters:
+    darvin_utils.data.view.factory.class: Darvin\Utils\Data\View\Factory\DataViewFactory
+
+services:
+    Darvin\Utils\Data\View\Factory\DataViewFactoryInterface: '@darvin_utils.data.view.factory'
+
+    darvin_utils.data.view.factory:
+        class: '%darvin_utils.data.view.factory.class%'
+        arguments:
+            - '@darvin_utils.stringifier'
