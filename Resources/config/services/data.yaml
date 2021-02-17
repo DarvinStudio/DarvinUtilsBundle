@@ -1,16 +1,25 @@
 parameters:
     darvin_utils.data.view.factory.class: Darvin\Utils\Data\View\Factory\DataViewFactory
 
+    darvin_utils.data.view.renderer.class: Darvin\Utils\Data\View\Renderer\DataViewRenderer
+
     darvin_utils.data.view.twig.extension.class: Darvin\Utils\Twig\Extension\Data\ViewExtension
 
 services:
-    Darvin\Utils\Data\View\Factory\DataViewFactoryInterface: '@darvin_utils.data.view.factory'
+    Darvin\Utils\Data\View\Factory\DataViewFactoryInterface:   '@darvin_utils.data.view.factory'
+    Darvin\Utils\Data\View\Renderer\DataViewRendererInterface: '@darvin_utils.data.view.renderer'
 
     darvin_utils.data.view.factory:
         class: '%darvin_utils.data.view.factory.class%'
         arguments:
             - '@darvin_utils.stringifier'
             - '@translator'
+
+    darvin_utils.data.view.renderer:
+        class: '%darvin_utils.data.view.renderer.class%'
+        arguments:
+            - '@darvin_utils.data.view.factory'
+            - '@twig'
 
     darvin_utils.data.view.twig.extension:
         class: '%darvin_utils.data.view.twig.extension.class%'
