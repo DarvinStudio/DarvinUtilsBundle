@@ -3,7 +3,7 @@ parameters:
 
     darvin_utils.data.view.renderer.class: Darvin\Utils\Data\View\Renderer\DataViewRenderer
 
-    darvin_utils.data.view.twig.extension.class: Darvin\Utils\Twig\Extension\Data\ViewExtension
+    darvin_utils.data.view.twig.extension.class: Darvin\Utils\Twig\Extension\Data\View\ViewExtension
 
 services:
     Darvin\Utils\Data\View\Factory\DataViewFactoryInterface:   '@darvin_utils.data.view.factory'
