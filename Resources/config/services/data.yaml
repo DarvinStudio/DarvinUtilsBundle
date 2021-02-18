@@ -3,6 +3,8 @@ parameters:
 
     darvin_utils.data.view.renderer.class: Darvin\Utils\Data\View\Renderer\DataViewRenderer
 
+    darvin_utils.data.view.renderer.twig.extension.class: Darvin\Utils\Twig\Extension\Data\View\RendererExtension
+
     darvin_utils.data.view.twig.extension.class: Darvin\Utils\Twig\Extension\Data\View\ViewExtension
 
 services:
@@ -19,6 +21,13 @@ services:
         class: '%darvin_utils.data.view.renderer.class%'
         arguments:
             - '@twig'
+
+    darvin_utils.data.view.renderer.twig.extension:
+        class: '%darvin_utils.data.view.renderer.twig.extension.class%'
+        arguments:
+            - '@darvin_utils.data.view.renderer'
+        tags:
+            - { name: twig.extension }
 
     darvin_utils.data.view.twig.extension:
         class: '%darvin_utils.data.view.twig.extension.class%'
