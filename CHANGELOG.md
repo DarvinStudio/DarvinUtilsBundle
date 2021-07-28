@@ -114,3 +114,5 @@ $ /usr/bin/env php bin/console darvin:utils:translations:title-case <pathname>
 7.3.10: Add Varnish cache clear command.
 
 7.4.0: Add data view services.
+
+7.5.0: Move templates from Utils lib to make them overridable.
