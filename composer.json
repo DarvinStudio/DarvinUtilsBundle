@@ -15,6 +15,10 @@
         "darvinstudio/darvin-utils": "*",
         "symfony/orm-pack":          "*"
     },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^5.4",
+        "symfony/yaml":           "^4.4 || ^5.4"
+    },
     "suggest": {
         "symfony/form":            "Allows to use Form dependent components",
         "symfony/property-access": "Allows to use PropertyAccess dependent components",

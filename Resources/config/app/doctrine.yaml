@@ -1,3 +1,5 @@
 doctrine:
     orm:
-        resolve_target_entities: [.]
+        # Non-empty mapping with string keys turns on Doctrine's resolve target entity listener
+        # (it is configured in OverrideEntitiesPass); integer keys are not allowed on PHP 8.
+        resolve_target_entities: { '.': '.' }
